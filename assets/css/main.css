@@ -1731,9 +1731,11 @@ input, select, textarea {
 			#nav > ul > li.current_page_item > a,
 			#nav > ul > li.active > span,
 			#nav > ul > li.current_page_item > span {
-				background: rgba(15, 15, 20, 0.45);
-backdrop-filter: blur(6px);
-				box-shadow: inset 1px 1px 0px 0px rgba(0, 0, 0, 0.025), 1px 1px 0px 0px rgba(255, 255, 255, 0.025);
+				background: rgba(10, 15, 25, 0.25);
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+border: 1px solid rgba(255,255,255,0.15);
+box-shadow: 0 8px 25px rgba(0,0,0,0.35);
 			}
 
 			#nav > ul > li:last-child {

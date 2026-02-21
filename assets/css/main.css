@@ -1728,9 +1728,13 @@ input, select, textarea {
 			}
 
 			#nav > ul > li.active > a,
-			#nav > ul > li.current_page_item > a,
+			#nav > ul > li.current a {
+    background: rgba(255,255,255,0.18);
+}_page_item > a,
 			#nav > ul > li.active > span,
-			#nav > ul > li.current_page_item > span {
+			#nav > ul > li.current a {
+    background: rgba(255,255,255,0.18);
+}_page_item > span {
 				#nav {
     background: rgba(20, 25, 35, 0.45);
     backdrop-filter: blur(10px);

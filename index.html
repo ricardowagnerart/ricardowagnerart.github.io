@@ -21,54 +21,62 @@ position:fixed;
 top:0;
 left:0;
 width:100%;
-height:90px;
+height:88px;
 background:#000;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:0 60px;
+padding:0 55px;
 z-index:1000;
 }
 
 .logo{
-font-size:52px;
-font-weight:bold;
+font-size:50px;
+font-weight:700;
 line-height:.9;
+letter-spacing:-1px;
+}
+
+nav{
+display:flex;
+align-items:center;
 }
 
 nav a{
 color:#fff;
 text-decoration:none;
-margin-left:34px;
-font-size:14px;
+margin-left:30px;
+font-size:13px;
 font-weight:500;
-letter-spacing:.3px;
-transition:.3s;
+letter-spacing:.4px;
+text-transform:uppercase;
+opacity:.95;
+transition:opacity .3s;
 }
 
 nav a:hover{
-opacity:.6;
+opacity:.55;
 }
 
 /* ===== HERO ===== */
 .hero{
-margin-top:90px;
+margin-top:88px;
 width:100%;
-height:calc(100vh - 90px);
+height:calc(100vh - 88px);
 position:relative;
 overflow:hidden;
 }
 
-/* overlay tipo Kelly */
+/* overlay Kelly */
 .menu-overlay{
 position:absolute;
 top:0;
 left:0;
 width:100%;
-height:45%;
+height:38%;
 background:linear-gradient(
 to bottom,
-rgba(255,255,255,0.22),
+rgba(255,255,255,0.18),
 rgba(255,255,255,0)
 );
 opacity:0;
@@ -81,7 +89,7 @@ header:hover + .hero .menu-overlay{
 opacity:1;
 }
 
-/* ===== SLIDES ===== */
+/* ===== SLIDER ===== */
 .slide{
 position:absolute;
 width:100%;
@@ -89,39 +97,43 @@ height:100%;
 background-size:cover;
 background-position:center;
 opacity:0;
-animation:fade 20s infinite;
+animation:fade 24s infinite;
+transform:scale(1.03);
 }
 
 .slide:nth-child(2){background-image:url("images/cabeza11.jpg");animation-delay:0s;}
-.slide:nth-child(3){background-image:url("images/cabeza12.jpg");animation-delay:5s;}
-.slide:nth-child(4){background-image:url("images/cabeza4.jpg");animation-delay:10s;}
-.slide:nth-child(5){background-image:url("images/cabeza7.jpg");animation-delay:15s;}
+.slide:nth-child(3){background-image:url("images/cabeza12.jpg");animation-delay:6s;}
+.slide:nth-child(4){background-image:url("images/cabeza4.jpg");animation-delay:12s;}
+.slide:nth-child(5){background-image:url("images/cabeza7.jpg");animation-delay:18s;}
 
 @keyframes fade{
 0%{opacity:0;}
 5%{opacity:1;}
-25%{opacity:1;}
+24%{opacity:1;}
 30%{opacity:0;}
 100%{opacity:0;}
 }
 
-/* ===== TEXTO ===== */
+/* ===== TEXTO HERO ===== */
 .hero-text{
 position:absolute;
-bottom:55px;
-left:60px;
-font-size:50px;
-font-weight:400;
-max-width:850px;
+left:55px;
+bottom:50px;
+font-size:42px;
+font-weight:300;
+letter-spacing:.2px;
+line-height:1.2;
+max-width:760px;
 z-index:10;
+text-shadow:0 2px 8px rgba(0,0,0,.45);
 }
 
-/* ===== RESPONSIVE ===== */
+/* ===== MOBILE ===== */
 @media(max-width:900px){
 
 header{
-padding:0 20px;
-height:80px;
+padding:0 18px;
+height:78px;
 }
 
 .logo{
@@ -129,19 +141,20 @@ font-size:24px;
 }
 
 nav a{
-margin-left:12px;
-font-size:12px;
+font-size:11px;
+margin-left:10px;
 }
 
 .hero{
-margin-top:80px;
-height:calc(100vh - 80px);
+margin-top:78px;
+height:calc(100vh - 78px);
 }
 
 .hero-text{
-font-size:34px;
 left:20px;
-bottom:30px;
+bottom:28px;
+font-size:30px;
+max-width:90%;
 }
 }
 </style>

@@ -13,7 +13,7 @@ font-family:Arial,Helvetica,sans-serif;
 background:#fff;
 color:#111;
 opacity:0;
-animation:fadeIn .8s ease forwards;
+animation:fadeIn .6s ease forwards;
 }
 
 @keyframes fadeIn{to{opacity:1;}}
@@ -47,61 +47,54 @@ font-size:11px;
 letter-spacing:1px;
 text-transform:uppercase;
 opacity:.9;
-transition:.3s;
 }
 nav a:hover{opacity:.55;}
 
 /* ===== PAGE ===== */
 .page{
-max-width:1500px;
-margin:120px auto 80px;
-padding:0 40px;
+max-width:1300px;
+margin:120px auto 70px;
+padding:0 35px;
 }
 
 h1{
-font-size:64px;
+font-size:58px;
 font-weight:300;
-margin-bottom:60px;
+margin-bottom:45px;
 }
 
-/* ===== CURATORIAL FLOW ===== */
-.works{
-display:flex;
-flex-direction:column;
-gap:90px;
+/* ===== CLEAN GRID (FINAL) ===== */
+.gallery{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:30px;
 }
 
 .work{
 position:relative;
 overflow:hidden;
+background:#f3f3f3;
 }
 
 .work img{
 width:100%;
 display:block;
-transition:transform .8s ease;
+transition:transform .6s ease;
 }
-
-/* visual rhythm */
-.large img{max-height:950px;object-fit:cover;}
-.medium img{max-height:720px;object-fit:cover;}
-.small img{max-height:560px;object-fit:cover;}
 
 .work:hover img{
-transform:scale(1.015);
+transform:scale(1.02);
 }
 
-/* info */
 .info{
 position:absolute;
 left:0;
 bottom:0;
 width:100%;
-padding:20px 25px;
+padding:16px 20px;
 background:linear-gradient(to top,rgba(0,0,0,.65),transparent);
 color:#fff;
 font-size:13px;
-letter-spacing:.5px;
 opacity:0;
 transition:.3s;
 }
@@ -131,16 +124,13 @@ padding:0 18px;
 }
 
 h1{
-font-size:42px;
-margin-bottom:35px;
+font-size:40px;
+margin-bottom:25px;
 }
 
-.works{
-gap:30px;
-}
-
-.work img{
-max-height:none !important;
+.gallery{
+grid-template-columns:1fr;
+gap:20px;
 }
 }
 </style>
@@ -164,26 +154,26 @@ max-height:none !important;
 
 <h1>Works</h1>
 
-<div class="works">
+<div class="gallery">
 
-<div class="work large">
+<div class="work">
 <img src="images/cabeza11.jpg" alt="">
 <div class="info">Untitled — Oil on canvas</div>
 </div>
 
-<div class="work medium">
+<div class="work">
 <img src="images/cabeza12.jpg" alt="">
 <div class="info">Untitled — Mixed media</div>
 </div>
 
-<div class="work large">
+<div class="work">
 <img src="images/cabeza4.jpg" alt="">
-<div class="info">Untitled — Abstract series</div>
+<div class="info">Untitled — Abstract composition</div>
 </div>
 
-<div class="work small">
+<div class="work">
 <img src="images/cabeza7.jpg" alt="">
-<div class="info">Untitled — Composition study</div>
+<div class="info">Untitled — Study</div>
 </div>
 
 </div>
@@ -197,7 +187,7 @@ const url=this.getAttribute("href");
 if(url && !url.startsWith("#")){
 e.preventDefault();
 document.body.style.opacity="0";
-setTimeout(()=>{window.location=url;},300);
+setTimeout(()=>{window.location=url;},250);
 }
 });
 });

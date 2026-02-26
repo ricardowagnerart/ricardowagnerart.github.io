@@ -3,20 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Works — Ricardo Wagner</title>
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
 font-family:Arial, Helvetica, sans-serif;
-background:#fff;
+background:#000;
 overflow-x:hidden;
 }
 
@@ -30,25 +25,25 @@ width:100%;
 height:90px;
 background:#000;
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
 z-index:1000;
 }
 
 nav{
 display:flex;
-gap:60px;
+gap:55px;
 }
 
 nav a{
 color:#fff;
 text-decoration:none;
-font-size:14px;
+font-size:13px;
 letter-spacing:1px;
 text-transform:uppercase;
 }
 
-/* ===== WORKS HERO ===== */
+/* ===== HERO ===== */
 
 .works-hero{
 position:relative;
@@ -61,13 +56,46 @@ padding-top:140px;
 overflow:hidden;
 }
 
-.works-bg{
+/* slider background */
+
+.slider{
 position:absolute;
 inset:0;
-background:url("cabeza11.jpg") center center / cover no-repeat;
-opacity:0.4;
 z-index:0;
 }
+
+.slide{
+position:absolute;
+inset:0;
+background-size:cover;
+background-position:center;
+opacity:0;
+animation:fade 20s infinite;
+filter:brightness(0.9);
+}
+
+.slide:nth-child(1){background-image:url("cabeza11.jpg");animation-delay:0s;}
+.slide:nth-child(2){background-image:url("cabeza12.jpg");animation-delay:5s;}
+.slide:nth-child(3){background-image:url("cabeza4.jpg");animation-delay:10s;}
+.slide:nth-child(4){background-image:url("cabeza7.jpg");animation-delay:15s;}
+
+@keyframes fade{
+0%{opacity:0;}
+5%{opacity:.4;}
+25%{opacity:.4;}
+30%{opacity:0;}
+100%{opacity:0;}
+}
+
+/* overlay white layer */
+.slider::after{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(255,255,255,.6);
+}
+
+/* ===== MENU CENTER ===== */
 
 .works-menu{
 position:relative;
@@ -76,21 +104,28 @@ text-align:center;
 }
 
 .works-menu h1{
-font-size:80px;
-margin-bottom:50px;
+font-size:88px;
 color:#111;
+margin-bottom:60px;
 }
 
-.works-menu a{
-display:block;
+/* PC = EN UNA SOLA LÍNEA */
+.menu-line{
+display:flex;
+gap:70px;
+justify-content:center;
+align-items:center;
+}
+
+.menu-line a{
 font-size:64px;
-color:#888;
+color:#8a8a8a;
 text-decoration:none;
-margin:25px 0;
-transition:all .3s ease;
+transition:.25s ease;
+white-space:nowrap;
 }
 
-.works-menu a:hover{
+.menu-line a:hover{
 color:#000;
 }
 
@@ -98,9 +133,7 @@ color:#000;
 
 @media(max-width:768px){
 
-header{
-height:70px;
-}
+header{height:70px;}
 
 nav{
 gap:20px;
@@ -112,18 +145,24 @@ font-size:10px;
 
 .works-hero{
 height:auto;
-padding-top:100px;
+padding-top:110px;
 padding-bottom:80px;
 align-items:center;
 }
 
 .works-menu h1{
-font-size:40px;
+font-size:42px;
+margin-bottom:30px;
 }
 
-.works-menu a{
-font-size:32px;
-margin:18px 0;
+/* móvil vertical */
+.menu-line{
+flex-direction:column;
+gap:20px;
+}
+
+.menu-line a{
+font-size:32px; /* 50% aprox */
 }
 
 }
@@ -145,15 +184,23 @@ margin:18px 0;
 
 <section class="works-hero">
 
-<div class="works-bg"></div>
+<div class="slider">
+<div class="slide"></div>
+<div class="slide"></div>
+<div class="slide"></div>
+<div class="slide"></div>
+</div>
 
 <div class="works-menu">
 <h1>Works</h1>
 
+<div class="menu-line">
 <a href="#">Paintings</a>
 <a href="#">Drawings</a>
 <a href="#">Watercolors</a>
 <a href="#">Photography</a>
+</div>
+
 </div>
 
 </section>

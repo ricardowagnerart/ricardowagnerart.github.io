@@ -28,7 +28,6 @@ header{
     z-index:1000;
 }
 
-/* menú centrado */
 nav ul{
     display:flex;
     list-style:none;
@@ -36,12 +35,21 @@ nav ul{
 }
 
 nav ul li a{
+    position:relative;
+    display:inline-block;
     color:#fff;
     text-decoration:none;
-    font-size:11px; /* -45% aprox */
+    font-size:11px;
     font-weight:600;
     letter-spacing:1px;
     text-transform:uppercase;
+    transition:transform .35s ease, color .35s ease;
+}
+
+/* efecto hover menú (movimiento) */
+nav ul li a:hover{
+    transform:translateY(-3px);
+    color:#fff;
 }
 
 /* ===== HERO / SLIDER ===== */
@@ -58,6 +66,21 @@ nav ul li a{
     left:0;
     width:100%;
     height:calc(100vh - 170px);
+}
+
+/* velo blanco degradado */
+.slider::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        to bottom,
+        rgba(255,255,255,.22) 0%,
+        rgba(255,255,255,.08) 35%,
+        rgba(255,255,255,0) 70%
+    );
+    pointer-events:none;
+    z-index:2;
 }
 
 /* transición cinematic */
@@ -78,26 +101,11 @@ nav ul li a{
 .slide:nth-child(4){animation-delay:12s;}
 
 @keyframes cinematicFade{
-    0%{
-        opacity:0;
-        transform:scale(1.06);
-    }
-    8%{
-        opacity:1;
-        transform:scale(1.02);
-    }
-    22%{
-        opacity:1;
-        transform:scale(1);
-    }
-    30%{
-        opacity:0;
-        transform:scale(1.04);
-    }
-    100%{
-        opacity:0;
-        transform:scale(1.06);
-    }
+    0%{opacity:0;transform:scale(1.06);}
+    8%{opacity:1;transform:scale(1.02);}
+    22%{opacity:1;transform:scale(1);}
+    30%{opacity:0;transform:scale(1.04);}
+    100%{opacity:0;transform:scale(1.06);}
 }
 
 /* ===== TEXTO CENTRAL ===== */
@@ -184,11 +192,11 @@ nav ul li a{
 <section class="hero">
 
     <div class="slider">
-        <!-- imágenes llamadas cabeza -->
-        <img class="slide" src="cabeza1.jpg" alt="">
-        <img class="slide" src="cabeza2.jpg" alt="">
-        <img class="slide" src="cabeza3.jpg" alt="">
+        <!-- nombres EXACTOS -->
+        <img class="slide" src="cabeza11.jpg" alt="">
+        <img class="slide" src="cabeza12.jpg" alt="">
         <img class="slide" src="cabeza4.jpg" alt="">
+        <img class="slide" src="cabeza7.jpg" alt="">
     </div>
 
     <div class="hero-text">

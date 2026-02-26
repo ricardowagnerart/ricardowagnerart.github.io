@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Biography - Ricardo Wagner</title>
+<title>Biography — Ricardo Wagner</title>
 
 <style>
-
 *{
 margin:0;
 padding:0;
@@ -14,20 +13,21 @@ box-sizing:border-box;
 }
 
 body{
-font-family:Arial, Helvetica, sans-serif;
+font-family:Arial,Helvetica,sans-serif;
 background:#fff;
 color:#111;
+line-height:1.7;
 }
 
 /* ===== HEADER ===== */
 
 header{
-height:90px;
+height:74px;
 background:#000;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:0 40px;
+padding:0 52px;
 position:fixed;
 top:0;
 left:0;
@@ -36,155 +36,137 @@ z-index:1000;
 }
 
 .logo{
-font-size:56px;
-font-weight:900;
-color:white;
+font-size:24px;
+font-weight:600;
+color:#fff;
 text-decoration:none;
 white-space:nowrap;
-}
-
-nav{
-display:flex;
-align-items:center;
 }
 
 nav a{
 color:#fff;
 text-decoration:none;
-margin-left:30px;
-font-weight:700;
-font-size:28px;
+margin-left:24px;
+font-size:11px;
+letter-spacing:1px;
 text-transform:uppercase;
-white-space:nowrap;
+opacity:.9;
+}
+
+nav a.active{
+opacity:.45;
+pointer-events:none;
+}
+
+/* ===== PAGE ===== */
+
+.page{
+max-width:1000px;
+margin:130px auto 80px;
+padding:0 45px;
+}
+
+h1{
+font-size:64px;
+font-weight:300;
+margin-bottom:45px;
+letter-spacing:-1px;
 }
 
 /* ===== CONTENT ===== */
 
-main{
-margin-top:120px;
-padding:60px;
-max-width:1400px;
-margin-left:auto;
-margin-right:auto;
-}
-
 .section{
-margin-bottom:120px;
+margin-bottom:60px;
 }
 
-.section h1{
-font-size:70px;
-margin-bottom:40px;
-}
-
-.bio-image{
+/* IMÁGENES NORMALES */
+.section img{
 width:100%;
-max-width:900px;
+max-width:500px;   /* ← tamaño normal */
 display:block;
-margin:0 auto 40px auto;
-}
-
-.statement-image{
-width:100%;
-max-width:700px;
-display:block;
-margin:0 auto 40px auto;
+margin-bottom:20px;
 }
 
 .text{
-font-size:34px;
-line-height:1.5;
-max-width:1100px;
+font-size:20px;
+font-weight:300;
+max-width:900px;
 }
 
-.statement-title{
-font-size:60px;
-margin-bottom:40px;
-}
+/* ===== MOBILE ===== */
 
 @media(max-width:900px){
 
 header{
-padding:0 20px;
-height:80px;
+height:68px;
+padding:0 18px;
 }
 
 .logo{
-font-size:34px;
+font-size:19px;
 }
 
 nav a{
-font-size:16px;
-margin-left:14px;
+font-size:10px;
+margin-left:10px;
 }
 
-main{
-padding:30px;
-margin-top:100px;
+.page{
+margin:110px auto 50px;
+padding:0 20px;
 }
 
-.section h1{
+h1{
 font-size:42px;
+margin-bottom:30px;
 }
 
 .text{
-font-size:22px;
+font-size:17px;
 }
 
-.statement-title{
-font-size:42px;
+.section img{
+max-width:100%;
 }
-
 }
-
 </style>
 </head>
 
 <body>
 
 <header>
-
 <a href="index.html" class="logo">RICARDO WAGNER</a>
 
 <nav>
-<a href="biography.html">Biography</a>
+<a href="biography.html" class="active">Biography</a>
 <a href="works.html">Works</a>
 <a href="philosophy.html">Philosophy</a>
 <a href="exhibitions.html">Exhibitions</a>
 <a href="publications.html">Publications</a>
 </nav>
-
 </header>
 
-<main>
-
-<section class="section">
+<section class="page">
 
 <h1>Biography</h1>
 
-<img src="images/bio.jpg" class="bio-image">
-
+<div class="section">
+<img src="images/bio.jpg" alt="">
 <div class="text">
-Ricardo Wagner is a Dominican multidisciplinary visual artist based in Santo Domingo.  
+Ricardo Wagner is a Dominican multidisciplinary visual artist based in Santo Domingo.
 His work spans painting, drawing, watercolor, photography and mixed media.
 </div>
+</div>
 
-</section>
-
-<section class="section">
-
-<h1 class="statement-title">Statement</h1>
-
-<img src="images/statement.jpg" class="statement-image">
-
+<div class="section">
+<img src="images/statement.jpg" alt="">
 <div class="text">
-Painting for me is an exploration of existence and the infinite.  
-My work investigates creation, human presence and the tension between the sacred and the earthly through abstraction.
+Painting for me is an exploration of existence and the infinite.
+My work investigates origin, human presence and the tension between the sacred and the earthly through abstraction.
+</div>
 </div>
 
 </section>
-
-</main>
 
 </body>
 </html>

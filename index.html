@@ -9,115 +9,145 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-font-family:Arial,Helvetica,sans-serif;
-background:#fff;
-overflow-x:hidden;
-opacity:0;
-animation:fadeIn .6s ease forwards;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#000;
+    overflow:hidden;
 }
-
-@keyframes fadeIn{to{opacity:1;}}
 
 /* ===== HEADER ===== */
 header{
-height:74px;
-background:#000;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:0 52px;
-position:fixed;
-top:0;left:0;
-width:100%;
-z-index:1000;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:90px;
+    background:#000;
+    display:flex;
+    align-items:center;
+    justify-content:center; /* menú centrado */
+    z-index:1000;
 }
 
+/* nombre izquierda */
 .logo{
-font-size:24px;
-font-weight:600;
-color:#fff;
-text-decoration:none;
+    position:absolute;
+    left:60px;
+    color:#fff;
+    font-size:40px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
 }
 
-nav a{
-color:#fff;
-text-decoration:none;
-margin-left:24px;
-font-size:11px;
-letter-spacing:1px;
-text-transform:uppercase;
-opacity:.9;
-transition:.3s;
+/* menú centrado */
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:50px;
 }
 
-nav a:hover{opacity:.55;}
-
-/* ===== SLIDER ===== */
-.slider{
-margin-top:74px;
-width:100%;
-height:calc(100vh - 74px);
-position:relative;
-overflow:hidden;
+nav ul li a{
+    color:#fff;
+    text-decoration:none;
+    font-size:20px;
+    font-weight:600;
+    letter-spacing:.5px;
+    text-transform:uppercase;
 }
 
-.slide{
-position:absolute;
-width:100%;
-height:100%;
-opacity:0;
-transition:opacity 1.2s ease;
+/* ===== HERO ===== */
+.hero{
+    position:relative;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
 }
 
-.slide.active{
-opacity:1;
+/* imagen recortada como marcaste */
+.hero img{
+    position:absolute;
+    top:90px; /* debajo del header */
+    left:0;
+    width:100%;
+    height:calc(100vh - 170px); /* recorte inferior */
+    object-fit:cover;
 }
 
-.slide img{
-width:100%;
-height:100%;
-object-fit:cover;
+/* nombre centrado sobre la obra */
+.hero-text{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    color:#fff;
+    z-index:2;
 }
 
-/* ===== MENU HOVER VEIL (KELLY STYLE) ===== */
-.veil{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:45%;
-background:linear-gradient(to bottom,
-rgba(255,255,255,.55),
-rgba(255,255,255,0));
-opacity:0;
-pointer-events:none;
-transition:.35s;
-z-index:5;
+.hero-text h1{
+    font-size:90px;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
 }
 
-header:hover ~ .slider .veil{
-opacity:1;
+.hero-text p{
+    margin-top:14px;
+    font-size:34px;
+    font-weight:300;
+    opacity:.9;
 }
 
-/* ===== MOBILE ===== */
-@media(max-width:900px){
-
-header{
-height:68px;
-padding:0 18px;
+/* ===== RESPONSIVE ===== */
+@media(max-width:1100px){
+    .logo{
+        font-size:30px;
+        left:25px;
+    }
+    nav ul{
+        gap:25px;
+    }
+    nav ul li a{
+        font-size:16px;
+    }
+    .hero-text h1{
+        font-size:58px;
+    }
+    .hero-text p{
+        font-size:24px;
+    }
 }
 
-.logo{font-size:19px;}
+@media(max-width:768px){
+    header{
+        height:75px;
+    }
 
-nav a{
-font-size:10px;
-margin-left:10px;
-}
+    .logo{
+        font-size:26px;
+        left:20px;
+    }
 
-.slider{
-margin-top:68px;
-height:calc(100vh - 68px);
-}
+    nav ul{
+        gap:16px;
+    }
+
+    nav ul li a{
+        font-size:13px;
+    }
+
+    .hero img{
+        top:75px;
+        height:calc(100vh - 140px);
+    }
+
+    .hero-text h1{
+        font-size:42px;
+    }
+
+    .hero-text p{
+        font-size:18px;
+    }
 }
 </style>
 </head>
@@ -125,60 +155,27 @@ height:calc(100vh - 68px);
 <body>
 
 <header>
-<a href="index.html" class="logo">RICARDO WAGNER</a>
+    <div class="logo">RICARDO WAGNER</div>
 
-<nav>
-<a href="biography.html">Biography</a>
-<a href="works.html">Works</a>
-<a href="philosophy.html">Philosophy</a>
-<a href="exhibitions.html">Exhibitions</a>
-<a href="publications.html">Publications</a>
-</nav>
+    <nav>
+        <ul>
+            <li><a href="biography.html">BIOGRAPHY</a></li>
+            <li><a href="works.html">WORKS</a></li>
+            <li><a href="philosophy.html">PHILOSOPHY</a></li>
+            <li><a href="exhibitions.html">EXHIBITIONS</a></li>
+            <li><a href="publications.html">PUBLICATIONS</a></li>
+        </ul>
+    </nav>
 </header>
 
-<section class="slider">
+<section class="hero">
+    <img src="watercolors1.jpg" alt="Artwork">
 
-<div class="veil"></div>
-
-<div class="slide active">
-<img src="images/cabeza11.jpg" alt="">
-</div>
-
-<div class="slide">
-<img src="images/cabeza12.jpg" alt="">
-</div>
-
-<div class="slide">
-<img src="images/cabeza4.jpg" alt="">
-</div>
-
-<div class="slide">
-<img src="images/cabeza7.jpg" alt="">
-</div>
-
+    <div class="hero-text">
+        <h1>RICARDO WAGNER</h1>
+        <p>Visual Artist — Abstraction, Matter & Infinity</p>
+    </div>
 </section>
-
-<script>
-let slides=document.querySelectorAll(".slide");
-let index=0;
-
-setInterval(()=>{
-slides[index].classList.remove("active");
-index=(index+1)%slides.length;
-slides[index].classList.add("active");
-},4000);
-
-document.querySelectorAll("a").forEach(link=>{
-link.addEventListener("click",function(e){
-const url=this.getAttribute("href");
-if(url && !url.startsWith("#")){
-e.preventDefault();
-document.body.style.opacity="0";
-setTimeout(()=>{window.location=url;},250);
-}
-});
-});
-</script>
 
 </body>
 </html>

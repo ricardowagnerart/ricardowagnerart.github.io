@@ -15,7 +15,7 @@ background:#000;
 overflow-x:hidden;
 }
 
-/* ===== TOP BAR ===== */
+/* ===== HEADER ===== */
 
 header{
 position:fixed;
@@ -44,32 +44,33 @@ text-transform:uppercase;
 .works-hero{
 position:relative;
 width:100%;
-height:85vh;
+height:100vh;
 display:flex;
 justify-content:center;
-align-items:flex-start;
-padding-top:140px;
+align-items:center;
 overflow:hidden;
-background:#000;
 }
 
-/* ===== BACKGROUND IMAGE (VISIBLE) ===== */
+/* ===== MOVING BACKGROUND ===== */
 
 .bg{
 position:absolute;
 top:0;
 left:0;
-width:100%;
+width:120%;
 height:100%;
-background-image:url("./images/cabeza11.jpg");
-background-size:cover;
-background-position:center center;
-background-repeat:no-repeat;
-opacity:0.40; /* 60% transparente */
+background:url("./images/cabeza11.jpg") center center / cover no-repeat;
+opacity:0.40;
+animation:pan 20s linear infinite alternate;
 z-index:0;
 }
 
-/* ===== CENTER MENU ===== */
+@keyframes pan{
+0%{transform:translateX(0);}
+100%{transform:translateX(-8%);}
+}
+
+/* ===== MENU ===== */
 
 .works-menu{
 position:relative;
@@ -80,7 +81,7 @@ text-align:center;
 .works-menu h1{
 font-size:44px;
 color:#111;
-margin-bottom:35px;
+margin-bottom:30px;
 }
 
 .menu-line{
@@ -95,11 +96,18 @@ font-size:32px;
 color:#7d7d7d;
 text-decoration:none;
 transition:.25s ease;
-white-space:nowrap;
 }
 
+/* hover desktop */
 .menu-line a:hover{
-color:#000;
+color:#fff;
+transform:scale(1.06);
+}
+
+/* touch effect (NO black text) */
+.menu-line a:active{
+transform:scale(1.12);
+color:#fff;
 }
 
 /* ===== MOBILE ===== */
@@ -107,31 +115,61 @@ color:#000;
 @media(max-width:768px){
 
 header{
-height:70px;
+height:85px;
 }
 
 header a{
-font-size:28px;
+font-size:56px;
+line-height:0.9;
+text-align:center;
 }
 
 .works-hero{
-height:auto;
-padding-top:110px;
-padding-bottom:70px;
+height:100vh;
+align-items:center;
+padding-top:70px;
+}
+
+/* full screen background mobile */
+.bg{
+width:140%;
+height:100%;
+background-position:center center;
+animation:panMobile 18s linear infinite alternate;
+opacity:0.40;
+}
+
+@keyframes panMobile{
+0%{transform:translateX(0);}
+100%{transform:translateX(-12%);}
+}
+
+.works-menu{
+width:100%;
+text-align:center;
 }
 
 .works-menu h1{
-font-size:30px;
-margin-bottom:20px;
+font-size:32px;
+margin-bottom:22px;
+color:#111;
 }
 
+/* centered vertical menu mobile */
 .menu-line{
 flex-direction:column;
-gap:14px;
+gap:18px;
 }
 
 .menu-line a{
-font-size:22px;
+font-size:44px;
+color:#9a9a9a;
+}
+
+/* touch zoom mobile */
+.menu-line a:active{
+transform:scale(1.15);
+color:#fff;
 }
 
 }

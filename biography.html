@@ -9,10 +9,10 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-font-family:Georgia,"Times New Roman",serif;
+font-family:"Cormorant Garamond",serif;
 background:#fff;
 color:#111;
-line-height:1.75;
+line-height:1.85;
 }
 
 /* ===== HEADER ===== */
@@ -64,28 +64,27 @@ padding:0 45px;
 }
 
 h1{
-font-size:26px;
-font-weight:400;
-letter-spacing:.5px;
+font-size:22px;
+font-weight:500;
+letter-spacing:1px;
 margin-bottom:35px;
 text-transform:uppercase;
 }
 
-/* ===== LAYOUT ===== */
+/* ===== BIO SECTION ===== */
 
 .bio-wrap{
 display:flex;
-gap:50px;
+gap:55px;
 align-items:flex-start;
 margin-bottom:90px;
 }
 
-/* ===== IMAGE EFFECT ===== */
+/* FOTO */
 
 .photo-wrap{
 position:relative;
 max-width:520px;
-flex-shrink:0;
 cursor:zoom-in;
 overflow:hidden;
 }
@@ -96,61 +95,83 @@ display:block;
 transition:transform .6s ease, box-shadow .6s ease;
 }
 
-/* efecto elegante */
 .photo-wrap:hover .bio-photo{
-transform:scale(1.03);
-box-shadow:0 18px 40px rgba(0,0,0,.18);
+transform:scale(1.02);
+box-shadow:0 16px 35px rgba(0,0,0,.15);
 }
 
-/* icono lupa */
 .lens{
 position:absolute;
 right:14px;
 bottom:14px;
-background:rgba(0,0,0,.55);
+background:rgba(0,0,0,.5);
 color:#fff;
-font-size:18px;
+font-size:16px;
 padding:6px 10px;
 border-radius:20px;
 opacity:0;
 transition:.3s;
 }
 
-.photo-wrap:hover .lens{
-opacity:1;
-}
+.photo-wrap:hover .lens{opacity:1;}
 
-/* ===== TEXT ===== */
+/* TEXTO ELEGANTE */
 
 .bio-text{
-font-size:20px;
+font-size:24px;
+font-weight:300;
 max-width:700px;
 }
 
 .bio-text p{
-margin-bottom:22px;
+margin-bottom:24px;
 }
 
 /* ===== STATEMENT ===== */
 
+.statement-wrap{
+display:flex;
+gap:55px;
+align-items:flex-start;
+}
+
+.statement-photo{
+max-width:520px;
+cursor:zoom-in;
+overflow:hidden;
+position:relative;
+}
+
+.statement-photo img{
+width:100%;
+display:block;
+transition:.6s;
+}
+
+.statement-photo:hover img{
+transform:scale(1.02);
+box-shadow:0 16px 35px rgba(0,0,0,.15);
+}
+
 .statement{
-max-width:950px;
+max-width:700px;
 }
 
 .statement h2{
-font-size:26px;
-font-weight:400;
-letter-spacing:.5px;
-margin-bottom:30px;
+font-size:22px;
+font-weight:500;
+letter-spacing:1px;
+margin-bottom:25px;
 text-transform:uppercase;
 }
 
 .statement p{
-font-size:20px;
-margin-bottom:22px;
+font-size:24px;
+font-weight:300;
+margin-bottom:24px;
 }
 
-/* ===== LIGHTBOX (ZOOM) ===== */
+/* ===== LIGHTBOX ===== */
 
 .lightbox{
 position:fixed;
@@ -172,11 +193,7 @@ max-height:90%;
 
 @media(max-width:900px){
 
-header{
-height:68px;
-padding:0 18px;
-}
-
+header{height:68px;padding:0 18px;}
 .logo{font-size:19px;}
 
 nav a{
@@ -189,22 +206,19 @@ margin:110px auto 50px;
 padding:0 20px;
 }
 
-.bio-wrap{
+.bio-wrap,
+.statement-wrap{
 flex-direction:column;
-}
-
-.photo-wrap{
-max-width:100%;
 }
 
 .bio-text,
 .statement p{
-font-size:17px;
+font-size:18px;
 }
 
 h1,
 .statement h2{
-font-size:20px;
+font-size:18px;
 }
 }
 </style>
@@ -228,34 +242,47 @@ font-size:20px;
 
 <h1>Biography</h1>
 
+<!-- BIO -->
 <div class="bio-wrap">
 
-<!-- FOTO CON EFECTO -->
 <div class="photo-wrap" onclick="openZoom('images/bio.jpg')">
-<img src="images/bio.jpg" class="bio-photo" alt="">
+<img src="images/bio.jpg" class="bio-photo">
 <div class="lens">⌕</div>
 </div>
 
 <div class="bio-text">
-<p>Ricardo Wagner is a Dominican multidisciplinary visual artist based in Santo Domingo whose practice moves between painting, drawing, watercolor, photography and mixed media.</p>
-<p>Originally trained in advertising and communication, his work developed toward abstraction and informalism, exploring origin, existence and the relationship between humanity and nature.</p>
-<p>He is founder of HD Graph Estudio Gráfico and Bremen Printing, experiences that shaped his technical and visual understanding of image construction.</p>
-<p>His work has received recognition and awards, and has been featured in media such as Hoy, El Caribe, Diario Libre, Listín Diario and Noticias SIN.</p>
+<p>Ricardo Wagner is a Dominican multidisciplinary visual artist based in Santo Domingo. His artistic practice moves fluidly between oil and acrylic painting, mixed media, drawing, watercolor and photography.</p>
+
+<p>His visual language is rooted in abstraction and informalism, exploring the origins of existence, the evolution of humanity and the spiritual tension between the infinite and the tangible world.</p>
+
+<p>Originally trained in advertising and communication for development, Wagner’s background in graphic arts and printing deeply shaped his sensitivity to structure, material and visual rhythm. He is founder of HD Graph Estudio Gráfico and Bremen Printing.</p>
+
+<p>Throughout his career he has received awards in art competitions and his work has been featured in Dominican media including Hoy, El Caribe, Diario Libre, Listín Diario and Noticias SIN.</p>
+
+<p>His work seeks not to describe reality but to evoke it — creating spaces where the viewer encounters silence, mystery and contemplation through gesture, color and texture.</p>
 </div>
 
+</div>
+
+<!-- STATEMENT -->
+<div class="statement-wrap">
+
+<div class="statement-photo" onclick="openZoom('images/statement.jpg')">
+<img src="images/statement.jpg">
+<div class="lens">⌕</div>
 </div>
 
 <div class="statement">
-
 <h2>Statement</h2>
 
-<p>My work explores existence through abstraction. Painting becomes a space where gesture, matter and intuition create a dialogue between the visible and the invisible.</p>
+<p>My painting emerges from the search for origin and presence. I work from intuition, allowing gesture and material to guide the evolution of the image.</p>
 
-<p>I investigate the tension between the sacred and the earthly, the finite and the infinite, seeking to create contemplative experiences rather than representations.</p>
+<p>Abstraction allows me to approach what cannot be represented directly — the invisible forces that shape human existence and our connection with nature and the cosmos.</p>
 
-<p>Each painting develops through a balance between control and spontaneity, allowing the work to reveal its own internal structure and emotional resonance.</p>
+<p>Each work is a space of tension between control and surrender, where the sacred and the earthly coexist. I do not aim to impose meaning, but to open a contemplative field where viewers can encounter their own reflections.</p>
 
-<p>Ultimately, my intention is to invite reflection — to create a space where viewers encounter silence, presence and their own interpretation.</p>
+<p>Painting, for me, is an act of listening — a dialogue between matter, time and spirit.</p>
+</div>
 
 </div>
 
@@ -268,7 +295,7 @@ font-size:20px;
 
 <script>
 function openZoom(src){
-document.getElementById("zoomed").src = src;
+document.getElementById("zoomed").src=src;
 document.getElementById("lightbox").style.display="flex";
 }
 function closeZoom(){

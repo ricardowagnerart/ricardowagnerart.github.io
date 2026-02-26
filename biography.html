@@ -6,11 +6,7 @@
 <title>Biography — Ricardo Wagner</title>
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
 font-family:Arial,Helvetica,sans-serif;
@@ -19,8 +15,7 @@ color:#111;
 line-height:1.7;
 }
 
-/* ===== HEADER ===== */
-
+/* HEADER */
 header{
 height:74px;
 background:#000;
@@ -29,8 +24,7 @@ justify-content:space-between;
 align-items:center;
 padding:0 52px;
 position:fixed;
-top:0;
-left:0;
+top:0;left:0;
 width:100%;
 z-index:1000;
 }
@@ -58,10 +52,9 @@ opacity:.45;
 pointer-events:none;
 }
 
-/* ===== PAGE ===== */
-
+/* PAGE */
 .page{
-max-width:1000px;
+max-width:1300px;
 margin:130px auto 80px;
 padding:0 45px;
 }
@@ -69,32 +62,33 @@ padding:0 45px;
 h1{
 font-size:64px;
 font-weight:300;
-margin-bottom:45px;
+margin-bottom:50px;
 letter-spacing:-1px;
 }
 
-/* ===== CONTENT ===== */
-
-.section{
-margin-bottom:60px;
+.bio-wrap{
+display:flex;
+gap:50px;
+align-items:flex-start;
 }
 
-/* IMÁGENES NORMALES */
-.section img{
+.bio-photo{
 width:100%;
-max-width:500px;   /* ← tamaño normal */
-display:block;
-margin-bottom:20px;
+max-width:520px;
+flex-shrink:0;
 }
 
-.text{
+.bio-text{
 font-size:20px;
 font-weight:300;
-max-width:900px;
+max-width:700px;
 }
 
-/* ===== MOBILE ===== */
+.bio-text p{
+margin-bottom:24px;
+}
 
+/* MOBILE */
 @media(max-width:900px){
 
 header{
@@ -102,9 +96,7 @@ height:68px;
 padding:0 18px;
 }
 
-.logo{
-font-size:19px;
-}
+.logo{font-size:19px;}
 
 nav a{
 font-size:10px;
@@ -121,12 +113,16 @@ font-size:42px;
 margin-bottom:30px;
 }
 
-.text{
-font-size:17px;
+.bio-wrap{
+flex-direction:column;
 }
 
-.section img{
+.bio-photo{
 max-width:100%;
+}
+
+.bio-text{
+font-size:17px;
 }
 }
 </style>
@@ -150,20 +146,50 @@ max-width:100%;
 
 <h1>Biography</h1>
 
-<div class="section">
-<img src="images/bio.jpg" alt="">
-<div class="text">
-Ricardo Wagner is a Dominican multidisciplinary visual artist based in Santo Domingo.
-His work spans painting, drawing, watercolor, photography and mixed media.
-</div>
+<div class="bio-wrap">
+
+<img src="images/bio.jpg" class="bio-photo" alt="Ricardo Wagner">
+
+<div class="bio-text">
+
+<p>
+Ricardo Wagner is a Dominican multidisciplinary visual artist based in Santo Domingo whose practice moves between painting, drawing, watercolor, photography and mixed media. His artistic language is rooted in abstraction and informalism, developing a body of work that explores the relationship between humanity, nature and the infinite through gesture, texture and conceptual depth.
+</p>
+
+<p>
+Originally trained in advertising and communication at the Universidad Autónoma de Santo Domingo, Wagner built a strong foundation in visual communication and graphic structure before fully dedicating himself to the visual arts. This early formation shaped his understanding of composition, symbolic language and the power of images as vehicles of meaning, elements that continue to inform his artistic practice today.
+</p>
+
+<p>
+Beyond his work as a painter, Wagner has developed a broad professional trajectory that includes graphic arts, printing, photography and documentary production. He is the founder of HD Graph Estudio Gráfico and Bremen Printing, projects that strengthened his technical mastery of materials, surfaces and image processes. These experiences contributed to a distinctive approach where craftsmanship and conceptual inquiry coexist within the same visual field.
+</p>
+
+<p>
+His paintings investigate fundamental questions about origin, existence and the evolution of human consciousness. Through abstraction, he seeks to move beyond representation, allowing color, form and gesture to function as metaphors for the unseen forces that shape life. His work frequently explores contrasts between the sacred and the terrestrial, the finite and the infinite, the personal and the universal.
+</p>
+
+<p>
+Wagner’s visual discourse is deeply philosophical. Rather than illustrating ideas, his works propose spaces for contemplation where viewers confront their own interpretations. The absence of literal narratives opens a field of emotional and intellectual resonance, positioning abstraction as a language capable of expressing complexity, spirituality and the mystery of being.
+</p>
+
+<p>
+Throughout his career, his work has been recognized through awards and participation in exhibitions and artistic initiatives. His practice has also received positive critical attention from prominent Dominican media outlets such as Hoy, El Caribe, Diario Libre, Listín Diario and Noticias SIN, which have highlighted the conceptual strength and expressive power present in his artistic production.
+</p>
+
+<p>
+Working across large and small formats, Wagner integrates painting, drawing and photographic explorations into a unified vision. Each medium becomes part of an ongoing investigation into humanity’s place within the universe, emphasizing process, transformation and the passage between visible reality and inner experience.
+</p>
+
+<p>
+In parallel with his visual work, he continues to develop theoretical and written reflections around his artistic practice, including essays and a long-term book project focused on the philosophical foundations of his work. These writings expand his visual language into a broader intellectual framework, reinforcing the connection between artistic creation and existential inquiry.
+</p>
+
+<p>
+Today, Ricardo Wagner continues to expand his practice through new exhibitions, conceptual research and interdisciplinary experimentation. His work stands as an invitation to slow down, contemplate and reconnect with the essential questions of existence — transforming painting into a space where the material and the spiritual converge.
+</p>
+
 </div>
 
-<div class="section">
-<img src="images/statement.jpg" alt="">
-<div class="text">
-Painting for me is an exploration of existence and the infinite.
-My work investigates origin, human presence and the tension between the sacred and the earthly through abstraction.
-</div>
 </div>
 
 </section>

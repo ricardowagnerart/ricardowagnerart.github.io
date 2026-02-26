@@ -9,13 +9,14 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-font-family:Arial,Helvetica,sans-serif;
+font-family:Georgia,"Times New Roman",serif;
 background:#fff;
 color:#111;
-line-height:1.7;
+line-height:1.75;
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
+
 header{
 height:74px;
 background:#000;
@@ -24,20 +25,22 @@ justify-content:space-between;
 align-items:center;
 padding:0 52px;
 position:fixed;
-top:0;left:0;
+top:0;
+left:0;
 width:100%;
 z-index:1000;
 }
 
 .logo{
+font-family:Arial,Helvetica,sans-serif;
 font-size:24px;
 font-weight:600;
 color:#fff;
 text-decoration:none;
-white-space:nowrap;
 }
 
 nav a{
+font-family:Arial,Helvetica,sans-serif;
 color:#fff;
 text-decoration:none;
 margin-left:24px;
@@ -52,7 +55,8 @@ opacity:.45;
 pointer-events:none;
 }
 
-/* PAGE */
+/* ===== PAGE ===== */
+
 .page{
 max-width:1300px;
 margin:130px auto 80px;
@@ -60,35 +64,112 @@ padding:0 45px;
 }
 
 h1{
-font-size:64px;
-font-weight:300;
-margin-bottom:50px;
-letter-spacing:-1px;
+font-size:26px;
+font-weight:400;
+letter-spacing:.5px;
+margin-bottom:35px;
+text-transform:uppercase;
 }
+
+/* ===== LAYOUT ===== */
 
 .bio-wrap{
 display:flex;
 gap:50px;
 align-items:flex-start;
+margin-bottom:90px;
+}
+
+/* ===== IMAGE EFFECT ===== */
+
+.photo-wrap{
+position:relative;
+max-width:520px;
+flex-shrink:0;
+cursor:zoom-in;
+overflow:hidden;
 }
 
 .bio-photo{
 width:100%;
-max-width:520px;
-flex-shrink:0;
+display:block;
+transition:transform .6s ease, box-shadow .6s ease;
 }
+
+/* efecto elegante */
+.photo-wrap:hover .bio-photo{
+transform:scale(1.03);
+box-shadow:0 18px 40px rgba(0,0,0,.18);
+}
+
+/* icono lupa */
+.lens{
+position:absolute;
+right:14px;
+bottom:14px;
+background:rgba(0,0,0,.55);
+color:#fff;
+font-size:18px;
+padding:6px 10px;
+border-radius:20px;
+opacity:0;
+transition:.3s;
+}
+
+.photo-wrap:hover .lens{
+opacity:1;
+}
+
+/* ===== TEXT ===== */
 
 .bio-text{
 font-size:20px;
-font-weight:300;
 max-width:700px;
 }
 
 .bio-text p{
-margin-bottom:24px;
+margin-bottom:22px;
 }
 
-/* MOBILE */
+/* ===== STATEMENT ===== */
+
+.statement{
+max-width:950px;
+}
+
+.statement h2{
+font-size:26px;
+font-weight:400;
+letter-spacing:.5px;
+margin-bottom:30px;
+text-transform:uppercase;
+}
+
+.statement p{
+font-size:20px;
+margin-bottom:22px;
+}
+
+/* ===== LIGHTBOX (ZOOM) ===== */
+
+.lightbox{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.9);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:5000;
+cursor:zoom-out;
+}
+
+.lightbox img{
+max-width:90%;
+max-height:90%;
+}
+
+/* ===== MOBILE ===== */
+
 @media(max-width:900px){
 
 header{
@@ -108,21 +189,22 @@ margin:110px auto 50px;
 padding:0 20px;
 }
 
-h1{
-font-size:42px;
-margin-bottom:30px;
-}
-
 .bio-wrap{
 flex-direction:column;
 }
 
-.bio-photo{
+.photo-wrap{
 max-width:100%;
 }
 
-.bio-text{
+.bio-text,
+.statement p{
 font-size:17px;
+}
+
+h1,
+.statement h2{
+font-size:20px;
 }
 }
 </style>
@@ -148,51 +230,51 @@ font-size:17px;
 
 <div class="bio-wrap">
 
-<img src="images/bio.jpg" class="bio-photo" alt="Ricardo Wagner">
+<!-- FOTO CON EFECTO -->
+<div class="photo-wrap" onclick="openZoom('images/bio.jpg')">
+<img src="images/bio.jpg" class="bio-photo" alt="">
+<div class="lens">⌕</div>
+</div>
 
 <div class="bio-text">
-
-<p>
-Ricardo Wagner is a Dominican multidisciplinary visual artist based in Santo Domingo whose practice moves between painting, drawing, watercolor, photography and mixed media. His artistic language is rooted in abstraction and informalism, developing a body of work that explores the relationship between humanity, nature and the infinite through gesture, texture and conceptual depth.
-</p>
-
-<p>
-Originally trained in advertising and communication at the Universidad Autónoma de Santo Domingo, Wagner built a strong foundation in visual communication and graphic structure before fully dedicating himself to the visual arts. This early formation shaped his understanding of composition, symbolic language and the power of images as vehicles of meaning, elements that continue to inform his artistic practice today.
-</p>
-
-<p>
-Beyond his work as a painter, Wagner has developed a broad professional trajectory that includes graphic arts, printing, photography and documentary production. He is the founder of HD Graph Estudio Gráfico and Bremen Printing, projects that strengthened his technical mastery of materials, surfaces and image processes. These experiences contributed to a distinctive approach where craftsmanship and conceptual inquiry coexist within the same visual field.
-</p>
-
-<p>
-His paintings investigate fundamental questions about origin, existence and the evolution of human consciousness. Through abstraction, he seeks to move beyond representation, allowing color, form and gesture to function as metaphors for the unseen forces that shape life. His work frequently explores contrasts between the sacred and the terrestrial, the finite and the infinite, the personal and the universal.
-</p>
-
-<p>
-Wagner’s visual discourse is deeply philosophical. Rather than illustrating ideas, his works propose spaces for contemplation where viewers confront their own interpretations. The absence of literal narratives opens a field of emotional and intellectual resonance, positioning abstraction as a language capable of expressing complexity, spirituality and the mystery of being.
-</p>
-
-<p>
-Throughout his career, his work has been recognized through awards and participation in exhibitions and artistic initiatives. His practice has also received positive critical attention from prominent Dominican media outlets such as Hoy, El Caribe, Diario Libre, Listín Diario and Noticias SIN, which have highlighted the conceptual strength and expressive power present in his artistic production.
-</p>
-
-<p>
-Working across large and small formats, Wagner integrates painting, drawing and photographic explorations into a unified vision. Each medium becomes part of an ongoing investigation into humanity’s place within the universe, emphasizing process, transformation and the passage between visible reality and inner experience.
-</p>
-
-<p>
-In parallel with his visual work, he continues to develop theoretical and written reflections around his artistic practice, including essays and a long-term book project focused on the philosophical foundations of his work. These writings expand his visual language into a broader intellectual framework, reinforcing the connection between artistic creation and existential inquiry.
-</p>
-
-<p>
-Today, Ricardo Wagner continues to expand his practice through new exhibitions, conceptual research and interdisciplinary experimentation. His work stands as an invitation to slow down, contemplate and reconnect with the essential questions of existence — transforming painting into a space where the material and the spiritual converge.
-</p>
+<p>Ricardo Wagner is a Dominican multidisciplinary visual artist based in Santo Domingo whose practice moves between painting, drawing, watercolor, photography and mixed media.</p>
+<p>Originally trained in advertising and communication, his work developed toward abstraction and informalism, exploring origin, existence and the relationship between humanity and nature.</p>
+<p>He is founder of HD Graph Estudio Gráfico and Bremen Printing, experiences that shaped his technical and visual understanding of image construction.</p>
+<p>His work has received recognition and awards, and has been featured in media such as Hoy, El Caribe, Diario Libre, Listín Diario and Noticias SIN.</p>
+</div>
 
 </div>
+
+<div class="statement">
+
+<h2>Statement</h2>
+
+<p>My work explores existence through abstraction. Painting becomes a space where gesture, matter and intuition create a dialogue between the visible and the invisible.</p>
+
+<p>I investigate the tension between the sacred and the earthly, the finite and the infinite, seeking to create contemplative experiences rather than representations.</p>
+
+<p>Each painting develops through a balance between control and spontaneity, allowing the work to reveal its own internal structure and emotional resonance.</p>
+
+<p>Ultimately, my intention is to invite reflection — to create a space where viewers encounter silence, presence and their own interpretation.</p>
 
 </div>
 
 </section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeZoom()">
+<img id="zoomed">
+</div>
+
+<script>
+function openZoom(src){
+document.getElementById("zoomed").src = src;
+document.getElementById("lightbox").style.display="flex";
+}
+function closeZoom(){
+document.getElementById("lightbox").style.display="none";
+}
+</script>
 
 </body>
 </html>

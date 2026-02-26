@@ -12,7 +12,11 @@ body{
 font-family:Arial,Helvetica,sans-serif;
 background:#fff;
 color:#111;
+opacity:0;
+animation:fadeIn .8s ease forwards;
 }
+
+@keyframes fadeIn{to{opacity:1;}}
 
 /* ===== HEADER ===== */
 header{
@@ -23,8 +27,7 @@ justify-content:space-between;
 align-items:center;
 padding:0 52px;
 position:fixed;
-top:0;
-left:0;
+top:0;left:0;
 width:100%;
 z-index:1000;
 }
@@ -50,7 +53,7 @@ nav a:hover{opacity:.55;}
 
 /* ===== PAGE ===== */
 .page{
-max-width:1600px;
+max-width:1500px;
 margin:120px auto 80px;
 padding:0 40px;
 }
@@ -58,35 +61,34 @@ padding:0 40px;
 h1{
 font-size:64px;
 font-weight:300;
-margin-bottom:55px;
+margin-bottom:60px;
 }
 
-/* ===== CURATORIAL LAYOUT ===== */
+/* ===== CURATORIAL FLOW ===== */
 .works{
 display:flex;
 flex-direction:column;
-gap:80px;
+gap:90px;
 }
 
 .work{
 position:relative;
-width:100%;
 overflow:hidden;
 }
 
 .work img{
 width:100%;
 display:block;
-transition:transform .6s ease;
+transition:transform .8s ease;
 }
 
-/* diferentes tamaños */
-.work.large img{max-height:900px;object-fit:cover;}
-.work.medium img{max-height:700px;object-fit:cover;}
-.work.small img{max-height:550px;object-fit:cover;}
+/* visual rhythm */
+.large img{max-height:950px;object-fit:cover;}
+.medium img{max-height:720px;object-fit:cover;}
+.small img{max-height:560px;object-fit:cover;}
 
 .work:hover img{
-transform:scale(1.02);
+transform:scale(1.015);
 }
 
 /* info */
@@ -96,9 +98,9 @@ left:0;
 bottom:0;
 width:100%;
 padding:20px 25px;
-background:linear-gradient(to top, rgba(0,0,0,.65), transparent);
+background:linear-gradient(to top,rgba(0,0,0,.65),transparent);
 color:#fff;
-font-size:14px;
+font-size:13px;
 letter-spacing:.5px;
 opacity:0;
 transition:.3s;
@@ -112,13 +114,11 @@ opacity:1;
 @media(max-width:900px){
 
 header{
-padding:0 18px;
 height:68px;
+padding:0 18px;
 }
 
-.logo{
-font-size:19px;
-}
+.logo{font-size:19px;}
 
 nav a{
 font-size:10px;
@@ -132,7 +132,7 @@ padding:0 18px;
 
 h1{
 font-size:42px;
-margin-bottom:30px;
+margin-bottom:35px;
 }
 
 .works{
@@ -189,6 +189,19 @@ max-height:none !important;
 </div>
 
 </section>
+
+<script>
+document.querySelectorAll("a").forEach(link=>{
+link.addEventListener("click",function(e){
+const url=this.getAttribute("href");
+if(url && !url.startsWith("#")){
+e.preventDefault();
+document.body.style.opacity="0";
+setTimeout(()=>{window.location=url;},300);
+}
+});
+});
+</script>
 
 </body>
 </html>

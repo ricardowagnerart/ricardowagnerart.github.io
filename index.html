@@ -43,7 +43,7 @@ nav ul li a{
     font-weight:600;
     letter-spacing:1px;
     text-transform:uppercase;
-    transition:transform .35s ease, color .35s ease;
+    transition:transform .35s ease;
 }
 
 nav ul li a:hover{
@@ -68,44 +68,76 @@ nav ul li a:hover{
     overflow:hidden;
 }
 
-/* velo blanco degradado */
+/* velo blanco SOLO cuando hover en menú */
 .slider::after{
     content:"";
     position:absolute;
     inset:0;
     background:linear-gradient(
         to bottom,
-        rgba(255,255,255,.22) 0%,
-        rgba(255,255,255,.08) 35%,
-        rgba(255,255,255,0) 70%
+        rgba(255,255,255,.28) 0%,
+        rgba(255,255,255,.12) 30%,
+        rgba(255,255,255,0) 65%
     );
+    opacity:0;
+    transition:opacity .45s ease;
+    z-index:3;
+    pointer-events:none;
+}
+
+header:hover ~ .hero .slider::after{
+    opacity:1;
+}
+
+/* capa blanca para fade a blanco */
+.fade-white{
+    position:absolute;
+    inset:0;
+    background:#fff;
+    opacity:0;
+    animation:whiteFlash 16s linear infinite;
     z-index:2;
     pointer-events:none;
 }
 
-/* transición cinematic suave */
-.slide{
-    position:absolute;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    opacity:0;
-    transform:scale(1.06);
-    animation:cinematicFade 16s ease-in-out infinite;
-    filter:contrast(1.05) saturate(1.05);
+@keyframes whiteFlash{
+    0%,23%{opacity:0;}
+    24%,26%{opacity:.9;}
+    27%,100%{opacity:0;}
 }
 
-.slide:nth-child(1){animation-delay:0s;}
-.slide:nth-child(2){animation-delay:4s;}
-.slide:nth-child(3){animation-delay:8s;}
-.slide:nth-child(4){animation-delay:12s;}
+/* SLIDES */
+/* paneo lento izquierda → derecha */
+.slide{
+    position:absolute;
+    width:110%;
+    height:100%;
+    left:-5%;
+    top:0;
+    object-fit:cover;
+    opacity:0;
+    animation:
+        fadeSlides 16s ease-in-out infinite,
+        panLR 16s linear infinite;
+    will-change:transform,opacity;
+}
 
-@keyframes cinematicFade{
-    0%{opacity:0;transform:scale(1.06);}
-    8%{opacity:1;transform:scale(1.02);}
-    22%{opacity:1;transform:scale(1);}
-    30%{opacity:0;transform:scale(1.04);}
-    100%{opacity:0;transform:scale(1.06);}
+.slide:nth-child(1){animation-delay:0s,0s;}
+.slide:nth-child(2){animation-delay:4s,4s;}
+.slide:nth-child(3){animation-delay:8s,8s;}
+.slide:nth-child(4){animation-delay:12s,12s;}
+
+@keyframes fadeSlides{
+    0%{opacity:0;}
+    5%{opacity:1;}
+    22%{opacity:1;}
+    26%{opacity:0;}
+    100%{opacity:0;}
+}
+
+@keyframes panLR{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(4%);}
 }
 
 /* ===== TEXTO CENTRAL ===== */
@@ -157,9 +189,7 @@ nav ul li a:hover{
         white-space:normal;
     }
 
-    .hero-text p{
-        font-size:22px;
-    }
+    .hero-text p{font-size:22px;}
 }
 
 @media(max-width:768px){
@@ -178,13 +208,9 @@ nav ul li a:hover{
         white-space:normal;
     }
 
-    .hero-text p{
-        font-size:18px;
-    }
+    .hero-text p{font-size:18px;}
 
-    .copyright{
-        font-size:11px;
-    }
+    .copyright{font-size:11px;}
 }
 </style>
 </head>
@@ -206,11 +232,11 @@ nav ul li a:hover{
 <section class="hero">
 
     <div class="slider">
-        <!-- RUTA CORRECTA: carpeta images -->
         <img class="slide" src="images/cabeza11.jpg" alt="">
         <img class="slide" src="images/cabeza12.jpg" alt="">
         <img class="slide" src="images/cabeza4.jpg" alt="">
         <img class="slide" src="images/cabeza7.jpg" alt="">
+        <div class="fade-white"></div>
     </div>
 
     <div class="hero-text">

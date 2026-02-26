@@ -10,17 +10,13 @@
 
 body{
 font-family:Arial,Helvetica,sans-serif;
-background:#000;
-color:#fff;
-overflow:hidden;
+background:#fff;
+overflow-x:hidden;
 opacity:0;
-animation:fadeIn .8s ease forwards;
+animation:fadeIn .6s ease forwards;
 }
 
-/* PAGE FADE IN */
-@keyframes fadeIn{
-to{opacity:1;}
-}
+@keyframes fadeIn{to{opacity:1;}}
 
 /* ===== HEADER ===== */
 header{
@@ -31,11 +27,9 @@ justify-content:space-between;
 align-items:center;
 padding:0 52px;
 position:fixed;
-top:0;
-left:0;
+top:0;left:0;
 width:100%;
 z-index:1000;
-border-bottom:1px solid rgba(255,255,255,.12);
 }
 
 .logo{
@@ -58,9 +52,10 @@ transition:.3s;
 
 nav a:hover{opacity:.55;}
 
-/* ===== HERO ===== */
-.hero{
+/* ===== SLIDER ===== */
+.slider{
 margin-top:74px;
+width:100%;
 height:calc(100vh - 74px);
 position:relative;
 overflow:hidden;
@@ -68,59 +63,40 @@ overflow:hidden;
 
 .slide{
 position:absolute;
-inset:0;
-background-size:cover;
-background-position:center;
+width:100%;
+height:100%;
 opacity:0;
-animation:cinema 32s infinite;
-transform:scale(1.08);
+transition:opacity 1.2s ease;
 }
 
-.slide:nth-child(1){background-image:url("images/cabeza11.jpg");animation-delay:0s;}
-.slide:nth-child(2){background-image:url("images/cabeza12.jpg");animation-delay:8s;}
-.slide:nth-child(3){background-image:url("images/cabeza4.jpg");animation-delay:16s;}
-.slide:nth-child(4){background-image:url("images/cabeza7.jpg");animation-delay:24s;}
-
-@keyframes cinema{
-0%{opacity:0;transform:scale(1.08);}
-6%{opacity:1;}
-24%{opacity:1;transform:scale(1);}
-30%{opacity:0;}
-100%{opacity:0;}
+.slide.active{
+opacity:1;
 }
 
-/* ===== MENU VEIL ===== */
-.menu-fade{
+.slide img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* ===== MENU HOVER VEIL (KELLY STYLE) ===== */
+.veil{
 position:absolute;
 top:0;
 left:0;
 width:100%;
-height:42%;
-background:linear-gradient(
-to bottom,
-rgba(255,255,255,.35),
-rgba(255,255,255,.12),
-transparent
-);
+height:45%;
+background:linear-gradient(to bottom,
+rgba(255,255,255,.55),
+rgba(255,255,255,0));
 opacity:0;
-transition:.4s;
 pointer-events:none;
+transition:.35s;
+z-index:5;
 }
 
-header:hover + .hero .menu-fade{
+header:hover ~ .slider .veil{
 opacity:1;
-}
-
-/* ===== TEXT ===== */
-.hero-text{
-position:absolute;
-left:52px;
-bottom:48px;
-font-size:36px;
-font-weight:300;
-line-height:1.2;
-max-width:680px;
-text-shadow:0 3px 12px rgba(0,0,0,.45);
 }
 
 /* ===== MOBILE ===== */
@@ -138,16 +114,9 @@ font-size:10px;
 margin-left:10px;
 }
 
-.hero{
+.slider{
 margin-top:68px;
 height:calc(100vh - 68px);
-}
-
-.hero-text{
-left:18px;
-bottom:28px;
-font-size:24px;
-max-width:90%;
 }
 }
 </style>
@@ -167,30 +136,45 @@ max-width:90%;
 </nav>
 </header>
 
-<section class="hero">
+<section class="slider">
 
-<div class="slide"></div>
-<div class="slide"></div>
-<div class="slide"></div>
-<div class="slide"></div>
+<div class="veil"></div>
 
-<div class="menu-fade"></div>
+<div class="slide active">
+<img src="images/cabeza11.jpg" alt="">
+</div>
 
-<div class="hero-text">
-Painting as an exploration of existence and the infinite
+<div class="slide">
+<img src="images/cabeza12.jpg" alt="">
+</div>
+
+<div class="slide">
+<img src="images/cabeza4.jpg" alt="">
+</div>
+
+<div class="slide">
+<img src="images/cabeza7.jpg" alt="">
 </div>
 
 </section>
 
 <script>
-/* ===== PAGE TRANSITION OUT ===== */
+let slides=document.querySelectorAll(".slide");
+let index=0;
+
+setInterval(()=>{
+slides[index].classList.remove("active");
+index=(index+1)%slides.length;
+slides[index].classList.add("active");
+},4000);
+
 document.querySelectorAll("a").forEach(link=>{
 link.addEventListener("click",function(e){
 const url=this.getAttribute("href");
 if(url && !url.startsWith("#")){
 e.preventDefault();
 document.body.style.opacity="0";
-setTimeout(()=>{window.location=url;},300);
+setTimeout(()=>{window.location=url;},250);
 }
 });
 });

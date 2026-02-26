@@ -6,178 +6,209 @@
 <title>Ricardo Wagner</title>
 
 <style>
+
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
 font-family:Arial,Helvetica,sans-serif;
-background:#fff;
+background:#000;
 overflow-x:hidden;
-opacity:0;
-animation:fadeIn .6s ease forwards;
 }
 
-@keyframes fadeIn{to{opacity:1;}}
+/* ===== HEADER DESKTOP ===== */
 
-/* ===== HEADER ===== */
 header{
-height:74px;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:90px;
 background:#000;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:0 52px;
-position:fixed;
-top:0;left:0;
-width:100%;
+padding:0 60px;
 z-index:1000;
 }
 
 .logo{
-font-size:24px;
-font-weight:600;
+font-size:52px;
+font-weight:bold;
+line-height:0.9;
 color:#fff;
 text-decoration:none;
+}
+
+nav{
+display:flex;
+gap:40px;
 }
 
 nav a{
 color:#fff;
 text-decoration:none;
-margin-left:24px;
-font-size:11px;
+font-weight:600;
 letter-spacing:1px;
-text-transform:uppercase;
-opacity:.9;
-transition:.3s;
 }
 
-nav a:hover{opacity:.55;}
+/* ===== HERO ===== */
 
-/* ===== SLIDER ===== */
-.slider{
-margin-top:74px;
-width:100%;
-height:calc(100vh - 74px);
-position:relative;
-overflow:hidden;
+.hero{
+height:100vh;
+background:url("images/slider1.jpg") center/cover no-repeat;
+display:flex;
+align-items:flex-end;
+padding:80px;
 }
 
-.slide{
+.hero h1{
+color:#fff;
+font-size:64px;
+font-weight:300;
+max-width:700px;
+}
+
+/* ===== MOBILE CENTER NAME ===== */
+
+.mobile-center{
+display:none;
 position:absolute;
-width:100%;
-height:100%;
-opacity:0;
-transition:opacity 1.2s ease;
+top:25px;
+left:50%;
+transform:translateX(-50%);
+color:#fff;
+font-size:42px;
+font-weight:bold;
+text-align:center;
+line-height:0.9;
+z-index:1200;
+cursor:pointer;
 }
 
-.slide.active{
-opacity:1;
-}
+/* ===== MOBILE FULL MENU ===== */
 
-.slide img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-/* ===== MENU HOVER VEIL (KELLY STYLE) ===== */
-.veil{
-position:absolute;
+.mobile-menu{
+position:fixed;
 top:0;
 left:0;
 width:100%;
-height:45%;
-background:linear-gradient(to bottom,
-rgba(255,255,255,.55),
-rgba(255,255,255,0));
+height:100%;
+background:#f5f5f5;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:35px;
+z-index:2000;
 opacity:0;
 pointer-events:none;
-transition:.35s;
-z-index:5;
+transition:0.4s;
 }
 
-header:hover ~ .slider .veil{
+.mobile-menu.active{
 opacity:1;
+pointer-events:auto;
+}
+
+.mobile-menu a{
+text-decoration:none;
+font-size:42px;
+font-weight:300;
+color:#888;
+}
+
+.mobile-menu a.sub{
+font-size:34px;
+color:#111;
+}
+
+.close{
+position:absolute;
+top:30px;
+right:30px;
+font-size:45px;
+cursor:pointer;
 }
 
 /* ===== MOBILE ===== */
+
 @media(max-width:900px){
 
 header{
-height:68px;
-padding:0 18px;
+display:none;
 }
 
-.logo{font-size:19px;}
-
-nav a{
-font-size:10px;
-margin-left:10px;
+.mobile-center{
+display:block;
 }
 
-.slider{
-margin-top:68px;
-height:calc(100vh - 68px);
+.hero{
+padding:30px;
+align-items:flex-end;
 }
+
+.hero h1{
+font-size:48px;
 }
+
+}
+
 </style>
 </head>
 
 <body>
 
+<!-- DESKTOP HEADER -->
 <header>
-<a href="index.html" class="logo">RICARDO WAGNER</a>
+<a href="index.html" class="logo">RICARDO<br>WAGNER</a>
 
 <nav>
-<a href="biography.html">Biography</a>
-<a href="works.html">Works</a>
-<a href="philosophy.html">Philosophy</a>
-<a href="exhibitions.html">Exhibitions</a>
-<a href="publications.html">Publications</a>
+<a href="biography.html">BIOGRAPHY</a>
+<a href="works.html">WORKS</a>
+<a href="philosophy.html">PHILOSOPHY</a>
+<a href="exhibitions.html">EXHIBITIONS</a>
+<a href="publications.html">PUBLICATIONS</a>
 </nav>
 </header>
 
-<section class="slider">
-
-<div class="veil"></div>
-
-<div class="slide active">
-<img src="images/cabeza11.jpg" alt="">
+<!-- MOBILE CENTER NAME -->
+<div class="mobile-center" onclick="openMenu()">
+RICARDO<br>WAGNER
 </div>
 
-<div class="slide">
-<img src="images/cabeza12.jpg" alt="">
-</div>
-
-<div class="slide">
-<img src="images/cabeza4.jpg" alt="">
-</div>
-
-<div class="slide">
-<img src="images/cabeza7.jpg" alt="">
-</div>
-
+<!-- HERO -->
+<section class="hero">
+<h1>Painting as an exploration of existence and the infinite</h1>
 </section>
 
+<!-- MOBILE FULL MENU -->
+<div class="mobile-menu" id="mobileMenu">
+
+<div class="close" onclick="closeMenu()">✕</div>
+
+<a href="biography.html">Biography</a>
+
+<a href="works.html">Works</a>
+<a class="sub" href="works.html#paintings">Paintings</a>
+<a class="sub" href="works.html#drawings">Drawings</a>
+<a class="sub" href="works.html#watercolors">Watercolors</a>
+<a class="sub" href="works.html#photography">Photography</a>
+
+<a href="exhibitions.html">Exhibitions</a>
+<a href="publications.html">Publications</a>
+
+</div>
+
 <script>
-let slides=document.querySelectorAll(".slide");
-let index=0;
 
-setInterval(()=>{
-slides[index].classList.remove("active");
-index=(index+1)%slides.length;
-slides[index].classList.add("active");
-},4000);
-
-document.querySelectorAll("a").forEach(link=>{
-link.addEventListener("click",function(e){
-const url=this.getAttribute("href");
-if(url && !url.startsWith("#")){
-e.preventDefault();
-document.body.style.opacity="0";
-setTimeout(()=>{window.location=url;},250);
+function openMenu(){
+document.getElementById("mobileMenu").classList.add("active");
 }
-});
-});
+
+function closeMenu(){
+document.getElementById("mobileMenu").classList.remove("active");
+}
+
 </script>
 
 </body>

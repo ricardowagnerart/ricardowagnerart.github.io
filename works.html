@@ -15,7 +15,7 @@ background:#000;
 overflow-x:hidden;
 }
 
-/* ===== HEADER ===== */
+/* ===== TOP BAR ===== */
 
 header{
 position:fixed;
@@ -30,15 +30,11 @@ align-items:center;
 z-index:1000;
 }
 
-nav{
-display:flex;
-gap:55px;
-}
-
-nav a{
+header a{
 color:#fff;
 text-decoration:none;
-font-size:13px;
+font-size:42px;
+font-weight:700;
 letter-spacing:1px;
 text-transform:uppercase;
 }
@@ -56,46 +52,17 @@ padding-top:140px;
 overflow:hidden;
 }
 
-/* slider background */
+/* ===== SINGLE BACKGROUND IMAGE ===== */
 
-.slider{
+.bg{
 position:absolute;
 inset:0;
+background:url("cabeza11.jpg") center center / cover no-repeat;
+opacity:.40; /* 60% transparente */
 z-index:0;
 }
 
-.slide{
-position:absolute;
-inset:0;
-background-size:cover;
-background-position:center;
-opacity:0;
-animation:fade 20s infinite;
-filter:brightness(0.9);
-}
-
-.slide:nth-child(1){background-image:url("cabeza11.jpg");animation-delay:0s;}
-.slide:nth-child(2){background-image:url("cabeza12.jpg");animation-delay:5s;}
-.slide:nth-child(3){background-image:url("cabeza4.jpg");animation-delay:10s;}
-.slide:nth-child(4){background-image:url("cabeza7.jpg");animation-delay:15s;}
-
-@keyframes fade{
-0%{opacity:0;}
-5%{opacity:.4;}
-25%{opacity:.4;}
-30%{opacity:0;}
-100%{opacity:0;}
-}
-
-/* overlay white layer */
-.slider::after{
-content:"";
-position:absolute;
-inset:0;
-background:rgba(255,255,255,.6);
-}
-
-/* ===== MENU CENTER ===== */
+/* ===== CENTER MENU ===== */
 
 .works-menu{
 position:relative;
@@ -104,22 +71,21 @@ text-align:center;
 }
 
 .works-menu h1{
-font-size:88px;
+font-size:44px; /* 50% reducido PC */
 color:#111;
-margin-bottom:60px;
+margin-bottom:35px;
 }
 
-/* PC = EN UNA SOLA LÍNEA */
 .menu-line{
 display:flex;
-gap:70px;
+gap:40px;
 justify-content:center;
 align-items:center;
 }
 
 .menu-line a{
-font-size:64px;
-color:#8a8a8a;
+font-size:32px; /* 50% reducido PC */
+color:#7d7d7d;
 text-decoration:none;
 transition:.25s ease;
 white-space:nowrap;
@@ -133,36 +99,32 @@ color:#000;
 
 @media(max-width:768px){
 
-header{height:70px;}
-
-nav{
-gap:20px;
+header{
+height:70px;
 }
 
-nav a{
-font-size:10px;
+header a{
+font-size:28px;
 }
 
 .works-hero{
 height:auto;
 padding-top:110px;
-padding-bottom:80px;
-align-items:center;
+padding-bottom:70px;
 }
 
 .works-menu h1{
-font-size:42px;
-margin-bottom:30px;
+font-size:30px; /* 30% menos adicional */
+margin-bottom:20px;
 }
 
-/* móvil vertical */
 .menu-line{
 flex-direction:column;
-gap:20px;
+gap:14px;
 }
 
 .menu-line a{
-font-size:32px; /* 50% aprox */
+font-size:22px; /* 30% menos adicional */
 }
 
 }
@@ -173,23 +135,12 @@ font-size:32px; /* 50% aprox */
 <body>
 
 <header>
-<nav>
-<a href="biography.html">Biography</a>
-<a href="works.html">Works</a>
-<a href="philosophy.html">Philosophy</a>
-<a href="exhibitions.html">Exhibitions</a>
-<a href="publications.html">Publications</a>
-</nav>
+<a href="index.html">RICARDO WAGNER</a>
 </header>
 
 <section class="works-hero">
 
-<div class="slider">
-<div class="slide"></div>
-<div class="slide"></div>
-<div class="slide"></div>
-<div class="slide"></div>
-</div>
+<div class="bg"></div>
 
 <div class="works-menu">
 <h1>Works</h1>

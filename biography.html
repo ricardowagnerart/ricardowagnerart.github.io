@@ -27,7 +27,7 @@ background:#000;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:0 60px;
+padding:0 40px;
 position:fixed;
 top:0;
 left:0;
@@ -38,18 +38,24 @@ z-index:1000;
 .logo{
 font-size:56px;
 font-weight:900;
-line-height:0.85;
 color:white;
 text-decoration:none;
+white-space:nowrap;
+}
+
+nav{
+display:flex;
+align-items:center;
 }
 
 nav a{
 color:#fff;
 text-decoration:none;
-margin-left:35px;
+margin-left:30px;
 font-weight:700;
 font-size:28px;
 text-transform:uppercase;
+white-space:nowrap;
 }
 
 /* ===== CONTENT ===== */
@@ -61,8 +67,6 @@ max-width:1400px;
 margin-left:auto;
 margin-right:auto;
 }
-
-/* ===== BIO SECTION ===== */
 
 .section{
 margin-bottom:120px;
@@ -80,19 +84,17 @@ display:block;
 margin:0 auto 40px auto;
 }
 
-.text{
-font-size:34px;
-line-height:1.5;
-max-width:1100px;
-}
-
-/* ===== STATEMENT ===== */
-
 .statement-image{
 width:100%;
 max-width:700px;
 display:block;
 margin:0 auto 40px auto;
+}
+
+.text{
+font-size:34px;
+line-height:1.5;
+max-width:1100px;
 }
 
 .statement-title{
@@ -108,87 +110,8 @@ height:80px;
 }
 
 .logo{
-font-size:42px;
+font-size:34px;
 }
 
 nav a{
-font-size:18px;
-margin-left:18px;
-}
-
-main{
-padding:30px;
-margin-top:100px;
-}
-
-.section h1{
-font-size:42px;
-}
-
-.text{
-font-size:22px;
-}
-
-.statement-title{
-font-size:42px;
-}
-
-}
-
-</style>
-</head>
-
-<body>
-
-<header>
-
-<a href="index.html" class="logo">
-RICARDO<br>WAGNER
-</a>
-
-<nav>
-<a href="biography.html">Biography</a>
-<a href="works.html">Works</a>
-<a href="philosophy.html">Philosophy</a>
-<a href="exhibitions.html">Exhibitions</a>
-<a href="publications.html">Publications</a>
-</nav>
-
-</header>
-
-<main>
-
-<!-- ===== BIO ===== -->
-
-<section class="section">
-
-<h1>Biography</h1>
-
-<img src="images/bio.jpg" class="bio-image">
-
-<div class="text">
-Ricardo Wagner is a Dominican multidisciplinary visual artist based in Santo Domingo.  
-His work spans painting, drawing, watercolor, photography and mixed media, developing a visual language rooted in abstraction and informalism.
-</div>
-
-</section>
-
-<!-- ===== STATEMENT ===== -->
-
-<section class="section">
-
-<h1 class="statement-title">Statement</h1>
-
-<img src="images/statement.jpg" class="statement-image">
-
-<div class="text">
-Painting for me is an exploration of existence and the infinite.  
-My work investigates the origin of things, human presence in the universe, and the tension between the sacred and the earthly through abstraction.
-</div>
-
-</section>
-
-</main>
-
-</body>
-</html>
+font-size:

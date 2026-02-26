@@ -67,7 +67,7 @@ nav ul li a:hover{
     overflow:hidden;
 }
 
-/* VELO NEGRO SOLO AL HOVER DEL MENÚ */
+/* velo negro solo hover menú */
 .slider::after{
     content:"";
     position:absolute;
@@ -88,41 +88,32 @@ header:hover ~ .hero .slider::after{
     opacity:1;
 }
 
-/* ===== SLIDES ===== */
-/* 4 slides x 5s = 20s total */
+/* ===== SLIDES (SOLO FUNDIDOS) ===== */
+/* 4 slides x 5s = 20s */
 .slide{
     position:absolute;
-    width:120%;              /* más ancho para notar barrido */
+    width:100%;
     height:100%;
-    left:-10%;
+    left:0;
     top:0;
     object-fit:cover;
     opacity:0;
-    animation:
-        fadeSlides 20s ease-in-out infinite,
-        panLR 20s linear infinite;
-    will-change:transform,opacity;
+    animation:fadeOnly 20s linear infinite;
 }
 
-/* delays exactos 5s */
-.slide:nth-child(1){animation-delay:0s,0s;}
-.slide:nth-child(2){animation-delay:5s,5s;}
-.slide:nth-child(3){animation-delay:10s,10s;}
-.slide:nth-child(4){animation-delay:15s,15s;}
+/* delays */
+.slide:nth-child(1){animation-delay:0s;}
+.slide:nth-child(2){animation-delay:5s;}
+.slide:nth-child(3){animation-delay:10s;}
+.slide:nth-child(4){animation-delay:15s;}
 
-/* FADE limpio (sin salto final) */
-@keyframes fadeSlides{
+/* fundido limpio sin salto final */
+@keyframes fadeOnly{
     0%{opacity:0;}
     6%{opacity:1;}
     22%{opacity:1;}
     28%{opacity:0;}
     100%{opacity:0;}
-}
-
-/* paneo MÁS visible */
-@keyframes panLR{
-    0%{transform:translateX(0);}
-    100%{transform:translateX(10%);}
 }
 
 /* ===== TEXTO CENTRAL ===== */
@@ -136,12 +127,41 @@ header:hover ~ .hero .slider::after{
     z-index:5;
 }
 
-.hero-text h1{
+/* nombre clic -> biography */
+.hero-name{
+    position:relative;
+    display:inline-block;
     font-size:90px;
     font-weight:700;
     letter-spacing:2px;
     text-transform:uppercase;
     white-space:nowrap;
+    color:#fff;
+    text-decoration:none;
+}
+
+/* aura blanca sutil */
+.hero-name::after{
+    content:attr(data-text);
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    color:#fff;
+    opacity:0;
+    filter:blur(10px);
+    transform:scale(1.01);
+    pointer-events:none;
+}
+
+.hero-name:hover::after{
+    animation:auraFlash .45s ease-out;
+}
+
+@keyframes auraFlash{
+    0%{opacity:0;}
+    35%{opacity:.9;}
+    100%{opacity:0;}
 }
 
 .hero-text p{
@@ -169,7 +189,7 @@ header:hover ~ .hero .slider::after{
     nav ul{gap:25px;}
     nav ul li a{font-size:10px;}
 
-    .hero-text h1{
+    .hero-name{
         font-size:58px;
         white-space:normal;
     }
@@ -188,7 +208,7 @@ header:hover ~ .hero .slider::after{
         height:calc(100vh - 140px);
     }
 
-    .hero-text h1{
+    .hero-name{
         font-size:42px;
         white-space:normal;
     }
@@ -224,7 +244,7 @@ header:hover ~ .hero .slider::after{
     </div>
 
     <div class="hero-text">
-        <h1>RICARDO WAGNER</h1>
+        <a href="biography.html" class="hero-name" data-text="RICARDO WAGNER">RICARDO WAGNER</a>
         <p>Visual Artist — Abstraction, Matter & Infinity</p>
     </div>
 

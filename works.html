@@ -47,8 +47,15 @@ font-size:11px;
 letter-spacing:1px;
 text-transform:uppercase;
 opacity:.9;
+transition:.3s;
 }
+
 nav a:hover{opacity:.55;}
+
+nav a.active{
+opacity:.45;
+pointer-events:none;
+}
 
 /* ===== PAGE ===== */
 .page{
@@ -63,7 +70,7 @@ font-weight:300;
 margin-bottom:45px;
 }
 
-/* ===== CLEAN GRID (FINAL) ===== */
+/* ===== GALLERY ===== */
 .gallery{
 display:grid;
 grid-template-columns:repeat(2,1fr);

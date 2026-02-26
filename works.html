@@ -9,16 +9,13 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-font-family:Arial,Helvetica,sans-serif;
+font-family:"Cormorant Garamond",serif;
 background:#fff;
 color:#111;
-opacity:0;
-animation:fadeIn .6s ease forwards;
 }
 
-@keyframes fadeIn{to{opacity:1;}}
-
 /* ===== HEADER ===== */
+
 header{
 height:74px;
 background:#000;
@@ -27,12 +24,14 @@ justify-content:space-between;
 align-items:center;
 padding:0 52px;
 position:fixed;
-top:0;left:0;
+top:0;
+left:0;
 width:100%;
 z-index:1000;
 }
 
 .logo{
+font-family:Arial,Helvetica,sans-serif;
 font-size:24px;
 font-weight:600;
 color:#fff;
@@ -40,6 +39,7 @@ text-decoration:none;
 }
 
 nav a{
+font-family:Arial,Helvetica,sans-serif;
 color:#fff;
 text-decoration:none;
 margin-left:24px;
@@ -47,77 +47,117 @@ font-size:11px;
 letter-spacing:1px;
 text-transform:uppercase;
 opacity:.9;
-transition:.3s;
 }
 
-nav a:hover{opacity:.55;}
-
-nav a.active{
-opacity:.45;
-pointer-events:none;
-}
+nav a.active{opacity:.45;pointer-events:none;}
 
 /* ===== PAGE ===== */
+
 .page{
-max-width:1300px;
-margin:120px auto 70px;
-padding:0 35px;
+max-width:1450px;
+margin:130px auto 80px;
+padding:0 45px;
 }
 
 h1{
-font-size:58px;
-font-weight:300;
+font-size:22px;
+letter-spacing:1px;
+margin-bottom:25px;
+text-transform:uppercase;
+}
+
+/* ===== SUBMENU ===== */
+
+.submenu{
+display:flex;
+gap:30px;
 margin-bottom:45px;
+border-bottom:1px solid #ddd;
+padding-bottom:12px;
+}
+
+.submenu a{
+font-family:Arial,Helvetica,sans-serif;
+font-size:12px;
+letter-spacing:1px;
+text-transform:uppercase;
+text-decoration:none;
+color:#222;
+opacity:.6;
+cursor:pointer;
+transition:.3s;
+}
+
+.submenu a:hover,
+.submenu a.active{
+opacity:1;
 }
 
 /* ===== GALLERY ===== */
+
 .gallery{
 display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:30px;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:28px;
 }
 
 .work{
 position:relative;
 overflow:hidden;
-background:#f3f3f3;
+cursor:zoom-in;
 }
 
 .work img{
 width:100%;
 display:block;
-transition:transform .6s ease;
+transition:.6s;
 }
 
 .work:hover img{
-transform:scale(1.02);
+transform:scale(1.03);
+filter:brightness(.88);
 }
 
 .info{
 position:absolute;
-left:0;
 bottom:0;
+left:0;
 width:100%;
-padding:16px 20px;
+padding:14px 16px;
 background:linear-gradient(to top,rgba(0,0,0,.65),transparent);
 color:#fff;
-font-size:13px;
 opacity:0;
-transition:.3s;
+transition:.4s;
 }
 
-.work:hover .info{
-opacity:1;
+.work:hover .info{opacity:1;}
+
+.title{font-size:17px;}
+.meta{font-size:14px;opacity:.85;}
+
+/* ===== LIGHTBOX ===== */
+
+.lightbox{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.93);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:5000;
+cursor:zoom-out;
+}
+
+.lightbox img{
+max-width:90%;
+max-height:90%;
 }
 
 /* ===== MOBILE ===== */
+
 @media(max-width:900px){
 
-header{
-height:68px;
-padding:0 18px;
-}
-
+header{height:68px;padding:0 18px;}
 .logo{font-size:19px;}
 
 nav a{
@@ -126,18 +166,17 @@ margin-left:10px;
 }
 
 .page{
-margin:100px auto 40px;
-padding:0 18px;
+margin:110px auto 50px;
+padding:0 20px;
 }
 
-h1{
-font-size:40px;
-margin-bottom:25px;
+.submenu{
+overflow-x:auto;
+gap:18px;
 }
 
 .gallery{
 grid-template-columns:1fr;
-gap:20px;
 }
 }
 </style>
@@ -161,43 +200,112 @@ gap:20px;
 
 <h1>Works</h1>
 
-<div class="gallery">
-
-<div class="work">
-<img src="images/cabeza11.jpg" alt="">
-<div class="info">Untitled — Oil on canvas</div>
+<!-- SUBMENU -->
+<div class="submenu">
+<a class="active" onclick="showCategory('paintings',this)">Paintings</a>
+<a onclick="showCategory('drawings',this)">Drawings</a>
+<a onclick="showCategory('watercolors',this)">Watercolors</a>
+<a onclick="showCategory('photography',this)">Photography</a>
 </div>
 
-<div class="work">
-<img src="images/cabeza12.jpg" alt="">
-<div class="info">Untitled — Mixed media</div>
+<!-- ===== PAINTINGS ===== -->
+<div id="paintings" class="gallery category">
+
+<!-- 20 obras -->
+<!-- SOLO CAMBIAS imágenes luego -->
+<!-- paintings1.jpg ... paintings20.jpg -->
+
+<!-- GENERADAS -->
+<script>
+for(let i=1;i<=20;i++){
+document.write(`
+<div class="work" onclick="openZoom('images/paintings${i}.jpg')">
+<img src="images/paintings${i}.jpg">
+<div class="info">
+<div class="title">Painting ${i}</div>
+<div class="meta">Acrylic on canvas</div>
+</div>
+</div>
+`);
+}
+</script>
+
 </div>
 
-<div class="work">
-<img src="images/cabeza4.jpg" alt="">
-<div class="info">Untitled — Abstract composition</div>
+<!-- ===== DRAWINGS ===== -->
+<div id="drawings" class="gallery category" style="display:none;">
+<script>
+for(let i=1;i<=20;i++){
+document.write(`
+<div class="work" onclick="openZoom('images/drawings${i}.jpg')">
+<img src="images/drawings${i}.jpg">
+<div class="info">
+<div class="title">Drawing ${i}</div>
+<div class="meta">Ink / Graphite</div>
+</div>
+</div>
+`);
+}
+</script>
 </div>
 
-<div class="work">
-<img src="images/cabeza7.jpg" alt="">
-<div class="info">Untitled — Study</div>
+<!-- ===== WATERCOLORS ===== -->
+<div id="watercolors" class="gallery category" style="display:none;">
+<script>
+for(let i=1;i<=20;i++){
+document.write(`
+<div class="work" onclick="openZoom('images/watercolors${i}.jpg')">
+<img src="images/watercolors${i}.jpg">
+<div class="info">
+<div class="title">Watercolor ${i}</div>
+<div class="meta">Watercolor on paper</div>
+</div>
+</div>
+`);
+}
+</script>
 </div>
 
+<!-- ===== PHOTOGRAPHY ===== -->
+<div id="photography" class="gallery category" style="display:none;">
+<script>
+for(let i=1;i<=20;i++){
+document.write(`
+<div class="work" onclick="openZoom('images/photography${i}.jpg')">
+<img src="images/photography${i}.jpg">
+<div class="info">
+<div class="title">Photography ${i}</div>
+<div class="meta">Digital photography</div>
+</div>
+</div>
+`);
+}
+</script>
 </div>
 
 </section>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeZoom()">
+<img id="zoomed">
+</div>
+
 <script>
-document.querySelectorAll("a").forEach(link=>{
-link.addEventListener("click",function(e){
-const url=this.getAttribute("href");
-if(url && !url.startsWith("#")){
-e.preventDefault();
-document.body.style.opacity="0";
-setTimeout(()=>{window.location=url;},250);
+function openZoom(src){
+document.getElementById("zoomed").src=src;
+document.getElementById("lightbox").style.display="flex";
 }
-});
-});
+function closeZoom(){
+document.getElementById("lightbox").style.display="none";
+}
+
+function showCategory(id,el){
+document.querySelectorAll('.category').forEach(c=>c.style.display='none');
+document.getElementById(id).style.display='grid';
+
+document.querySelectorAll('.submenu a').forEach(a=>a.classList.remove('active'));
+el.classList.add('active');
+}
 </script>
 
 </body>

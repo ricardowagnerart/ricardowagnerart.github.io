@@ -13,6 +13,13 @@ font-family:Arial,Helvetica,sans-serif;
 background:#000;
 color:#fff;
 overflow:hidden;
+opacity:0;
+animation:fadeIn .8s ease forwards;
+}
+
+/* PAGE FADE IN */
+@keyframes fadeIn{
+to{opacity:1;}
 }
 
 /* ===== HEADER ===== */
@@ -36,7 +43,6 @@ font-size:24px;
 font-weight:600;
 color:#fff;
 text-decoration:none;
-letter-spacing:.5px;
 }
 
 nav a{
@@ -47,8 +53,9 @@ font-size:11px;
 letter-spacing:1px;
 text-transform:uppercase;
 opacity:.9;
-transition:opacity .3s;
+transition:.3s;
 }
+
 nav a:hover{opacity:.55;}
 
 /* ===== HERO ===== */
@@ -59,7 +66,6 @@ position:relative;
 overflow:hidden;
 }
 
-/* ===== CINEMATIC SLIDES ===== */
 .slide{
 position:absolute;
 inset:0;
@@ -70,25 +76,11 @@ animation:cinema 32s infinite;
 transform:scale(1.08);
 }
 
-/* imágenes */
-.slide:nth-child(1){
-background-image:url("images/cabeza11.jpg");
-animation-delay:0s;
-}
-.slide:nth-child(2){
-background-image:url("images/cabeza12.jpg");
-animation-delay:8s;
-}
-.slide:nth-child(3){
-background-image:url("images/cabeza4.jpg");
-animation-delay:16s;
-}
-.slide:nth-child(4){
-background-image:url("images/cabeza7.jpg");
-animation-delay:24s;
-}
+.slide:nth-child(1){background-image:url("images/cabeza11.jpg");animation-delay:0s;}
+.slide:nth-child(2){background-image:url("images/cabeza12.jpg");animation-delay:8s;}
+.slide:nth-child(3){background-image:url("images/cabeza4.jpg");animation-delay:16s;}
+.slide:nth-child(4){background-image:url("images/cabeza7.jpg");animation-delay:24s;}
 
-/* animación premium */
 @keyframes cinema{
 0%{opacity:0;transform:scale(1.08);}
 6%{opacity:1;}
@@ -97,7 +89,7 @@ animation-delay:24s;
 100%{opacity:0;}
 }
 
-/* ===== VELO MENU ===== */
+/* ===== MENU VEIL ===== */
 .menu-fade{
 position:absolute;
 top:0;
@@ -111,9 +103,8 @@ rgba(255,255,255,.12),
 transparent
 );
 opacity:0;
-transition:opacity .4s ease;
+transition:.4s;
 pointer-events:none;
-z-index:5;
 }
 
 header:hover + .hero .menu-fade{
@@ -129,7 +120,6 @@ font-size:36px;
 font-weight:300;
 line-height:1.2;
 max-width:680px;
-z-index:10;
 text-shadow:0 3px 12px rgba(0,0,0,.45);
 }
 
@@ -141,9 +131,7 @@ height:68px;
 padding:0 18px;
 }
 
-.logo{
-font-size:19px;
-}
+.logo{font-size:19px;}
 
 nav a{
 font-size:10px;
@@ -193,6 +181,20 @@ Painting as an exploration of existence and the infinite
 </div>
 
 </section>
+
+<script>
+/* ===== PAGE TRANSITION OUT ===== */
+document.querySelectorAll("a").forEach(link=>{
+link.addEventListener("click",function(e){
+const url=this.getAttribute("href");
+if(url && !url.startsWith("#")){
+e.preventDefault();
+document.body.style.opacity="0";
+setTimeout(()=>{window.location=url;},300);
+}
+});
+});
+</script>
 
 </body>
 </html>

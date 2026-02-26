@@ -9,115 +9,140 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#000;
-  color:#fff;
-  overflow-x:hidden;
+font-family:Arial,Helvetica,sans-serif;
+background:#000;
+color:#fff;
+overflow-x:hidden;
 }
 
 /* ===== HEADER ===== */
 header{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:90px;
-  background:#000;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:0 60px;
-  z-index:1000;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:90px;
+background:#000;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 60px;
+z-index:1000;
 }
 
 .logo{
-  font-size:52px;
-  font-weight:bold;
-  line-height:0.9;
+font-size:52px;
+font-weight:bold;
+line-height:.9;
 }
 
 nav a{
-  color:#fff;
-  text-decoration:none;
-  margin-left:40px;
-  font-size:28px;
-  font-weight:600;
-  transition:.3s;
+color:#fff;
+text-decoration:none;
+margin-left:34px;
+font-size:14px;
+font-weight:500;
+letter-spacing:.3px;
+transition:.3s;
 }
 
 nav a:hover{
-  opacity:.6;
+opacity:.6;
 }
 
-/* ===== HERO SLIDER ===== */
+/* ===== HERO ===== */
 .hero{
-  margin-top:90px;
-  width:100%;
-  height:calc(100vh - 90px);
-  position:relative;
-  overflow:hidden;
+margin-top:90px;
+width:100%;
+height:calc(100vh - 90px);
+position:relative;
+overflow:hidden;
 }
 
+/* overlay tipo Kelly */
+.menu-overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:45%;
+background:linear-gradient(
+to bottom,
+rgba(255,255,255,0.22),
+rgba(255,255,255,0)
+);
+opacity:0;
+transition:opacity .35s ease;
+pointer-events:none;
+z-index:5;
+}
+
+header:hover + .hero .menu-overlay{
+opacity:1;
+}
+
+/* ===== SLIDES ===== */
 .slide{
-  position:absolute;
-  width:100%;
-  height:100%;
-  background-size:cover;
-  background-position:center;
-  opacity:0;
-  animation:fade 20s infinite;
+position:absolute;
+width:100%;
+height:100%;
+background-size:cover;
+background-position:center;
+opacity:0;
+animation:fade 20s infinite;
 }
 
-.slide:nth-child(1){background-image:url("images/cabeza11.jpg");animation-delay:0s;}
-.slide:nth-child(2){background-image:url("images/cabeza12.jpg");animation-delay:5s;}
-.slide:nth-child(3){background-image:url("images/cabeza4.jpg");animation-delay:10s;}
-.slide:nth-child(4){background-image:url("images/cabeza7.jpg");animation-delay:15s;}
+.slide:nth-child(2){background-image:url("images/cabeza11.jpg");animation-delay:0s;}
+.slide:nth-child(3){background-image:url("images/cabeza12.jpg");animation-delay:5s;}
+.slide:nth-child(4){background-image:url("images/cabeza4.jpg");animation-delay:10s;}
+.slide:nth-child(5){background-image:url("images/cabeza7.jpg");animation-delay:15s;}
 
 @keyframes fade{
-  0%{opacity:0;}
-  5%{opacity:1;}
-  25%{opacity:1;}
-  30%{opacity:0;}
-  100%{opacity:0;}
+0%{opacity:0;}
+5%{opacity:1;}
+25%{opacity:1;}
+30%{opacity:0;}
+100%{opacity:0;}
 }
 
 /* ===== TEXTO ===== */
 .hero-text{
-  position:absolute;
-  bottom:60px;
-  left:60px;
-  font-size:58px;
-  font-weight:500;
-  max-width:900px;
+position:absolute;
+bottom:55px;
+left:60px;
+font-size:50px;
+font-weight:400;
+max-width:850px;
+z-index:10;
 }
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:900px){
 
-  header{
-    padding:0 20px;
-    height:80px;
-  }
+header{
+padding:0 20px;
+height:80px;
+}
 
-  .logo{
-    font-size:24px;
-  }
+.logo{
+font-size:24px;
+}
 
-  nav a{
-    margin-left:15px;
-    font-size:18px;
-  }
+nav a{
+margin-left:12px;
+font-size:12px;
+}
 
-  .hero{
-    margin-top:80px;
-    height:calc(100vh - 80px);
-  }
+.hero{
+margin-top:80px;
+height:calc(100vh - 80px);
+}
 
-  .hero-text{
-    font-size:48px;
-    left:20px;
-    bottom:40px;
-  }
+.hero-text{
+font-size:34px;
+left:20px;
+bottom:30px;
+}
 }
 </style>
 </head>
@@ -125,26 +150,30 @@ nav a:hover{
 <body>
 
 <header>
-  <div class="logo">RICARDO<br>WAGNER</div>
+<div class="logo">RICARDO<br>WAGNER</div>
 
-  <nav>
-    <a href="biography.html">Biography</a>
-    <a href="works.html">Works</a>
-    <a href="philosophy.html">Philosophy</a>
-    <a href="exhibitions.html">Exhibitions</a>
-    <a href="publications.html">Publications</a>
-  </nav>
+<nav>
+<a href="biography.html">Biography</a>
+<a href="works.html">Works</a>
+<a href="philosophy.html">Philosophy</a>
+<a href="exhibitions.html">Exhibitions</a>
+<a href="publications.html">Publications</a>
+</nav>
 </header>
 
 <section class="hero">
-  <div class="slide"></div>
-  <div class="slide"></div>
-  <div class="slide"></div>
-  <div class="slide"></div>
 
-  <div class="hero-text">
-    Painting as an exploration of existence and the infinite
-  </div>
+<div class="menu-overlay"></div>
+
+<div class="slide"></div>
+<div class="slide"></div>
+<div class="slide"></div>
+<div class="slide"></div>
+
+<div class="hero-text">
+Painting as an exploration of existence and the infinite
+</div>
+
 </section>
 
 </body>

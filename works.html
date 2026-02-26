@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Works — Ricardo Wagner</title>
+<title>Works - Ricardo Wagner</title>
 
 <style>
+
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-font-family:"Cormorant Garamond",serif;
+font-family:Arial,Helvetica,sans-serif;
 background:#fff;
 color:#111;
 }
@@ -17,296 +18,176 @@ color:#111;
 /* ===== HEADER ===== */
 
 header{
-height:74px;
-background:#000;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:0 52px;
 position:fixed;
 top:0;
 left:0;
 width:100%;
+height:90px;
+background:#000;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 60px;
 z-index:1000;
 }
 
 .logo{
-font-family:Arial,Helvetica,sans-serif;
-font-size:24px;
-font-weight:600;
+font-size:52px;
+font-weight:bold;
+line-height:0.9;
 color:#fff;
 text-decoration:none;
+white-space:nowrap;
+}
+
+nav{
+display:flex;
+gap:40px;
 }
 
 nav a{
-font-family:Arial,Helvetica,sans-serif;
 color:#fff;
 text-decoration:none;
-margin-left:24px;
-font-size:11px;
+font-weight:600;
 letter-spacing:1px;
-text-transform:uppercase;
-opacity:.9;
 }
 
-nav a.active{opacity:.45;pointer-events:none;}
+/* ===== WORKS MENU ===== */
 
-/* ===== PAGE ===== */
-
-.page{
-max-width:1450px;
-margin:130px auto 80px;
-padding:0 45px;
-}
-
-h1{
-font-size:22px;
-letter-spacing:1px;
-margin-bottom:25px;
-text-transform:uppercase;
-}
-
-/* ===== SUBMENU ===== */
-
-.submenu{
+.works-menu{
+margin-top:160px;
+max-width:800px;
+margin-left:auto;
+margin-right:auto;
+padding:0 40px;
 display:flex;
-gap:30px;
-margin-bottom:45px;
-border-bottom:1px solid #ddd;
-padding-bottom:12px;
+flex-direction:column;
+gap:35px;
 }
 
-.submenu a{
-font-family:Arial,Helvetica,sans-serif;
-font-size:12px;
+.works-menu h1{
+font-size:60px;
+font-weight:300;
+margin-bottom:30px;
 letter-spacing:1px;
-text-transform:uppercase;
+}
+
+.works-menu a{
 text-decoration:none;
-color:#222;
-opacity:.6;
-cursor:pointer;
-transition:.3s;
+font-size:42px;
+font-weight:300;
+color:#888;
+transition:0.3s;
 }
 
-.submenu a:hover,
-.submenu a.active{
-opacity:1;
+.works-menu a:hover{
+color:#000;
+transform:translateX(8px);
 }
 
-/* ===== GALLERY ===== */
+/* ===== SECTIONS (VACÍAS POR AHORA) ===== */
 
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:28px;
+.section{
+height:500px;
+padding:120px 80px;
+border-top:1px solid #eee;
 }
 
-.work{
-position:relative;
-overflow:hidden;
-cursor:zoom-in;
-}
-
-.work img{
-width:100%;
-display:block;
-transition:.6s;
-}
-
-.work:hover img{
-transform:scale(1.03);
-filter:brightness(.88);
-}
-
-.info{
-position:absolute;
-bottom:0;
-left:0;
-width:100%;
-padding:14px 16px;
-background:linear-gradient(to top,rgba(0,0,0,.65),transparent);
-color:#fff;
-opacity:0;
-transition:.4s;
-}
-
-.work:hover .info{opacity:1;}
-
-.title{font-size:17px;}
-.meta{font-size:14px;opacity:.85;}
-
-/* ===== LIGHTBOX ===== */
-
-.lightbox{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.93);
-display:none;
-justify-content:center;
-align-items:center;
-z-index:5000;
-cursor:zoom-out;
-}
-
-.lightbox img{
-max-width:90%;
-max-height:90%;
+.section h2{
+font-size:42px;
+font-weight:300;
 }
 
 /* ===== MOBILE ===== */
 
 @media(max-width:900px){
 
-header{height:68px;padding:0 18px;}
-.logo{font-size:19px;}
-
-nav a{
-font-size:10px;
-margin-left:10px;
-}
-
-.page{
-margin:110px auto 50px;
+header{
 padding:0 20px;
+height:80px;
 }
 
-.submenu{
-overflow-x:auto;
-gap:18px;
+.logo{
+font-size:38px;
 }
 
-.gallery{
-grid-template-columns:1fr;
+nav{
+display:none;
 }
+
+.works-menu{
+margin-top:130px;
+padding:0 25px;
 }
+
+.works-menu h1{
+font-size:44px;
+}
+
+.works-menu a{
+font-size:34px;
+}
+
+.section{
+padding:80px 25px;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-<a href="index.html" class="logo">RICARDO WAGNER</a>
+
+<a href="index.html" class="logo">RICARDO<br>WAGNER</a>
 
 <nav>
-<a href="biography.html">Biography</a>
-<a href="works.html" class="active">Works</a>
-<a href="philosophy.html">Philosophy</a>
-<a href="exhibitions.html">Exhibitions</a>
-<a href="publications.html">Publications</a>
+<a href="biography.html">BIOGRAPHY</a>
+<a href="works.html">WORKS</a>
+<a href="philosophy.html">PHILOSOPHY</a>
+<a href="exhibitions.html">EXHIBITIONS</a>
+<a href="publications.html">PUBLICATIONS</a>
 </nav>
+
 </header>
 
-<section class="page">
+<!-- ===== WORKS MENU ===== -->
+
+<section class="works-menu">
 
 <h1>Works</h1>
 
-<!-- SUBMENU -->
-<div class="submenu">
-<a class="active" onclick="showCategory('paintings',this)">Paintings</a>
-<a onclick="showCategory('drawings',this)">Drawings</a>
-<a onclick="showCategory('watercolors',this)">Watercolors</a>
-<a onclick="showCategory('photography',this)">Photography</a>
-</div>
-
-<!-- ===== PAINTINGS ===== -->
-<div id="paintings" class="gallery category">
-
-<!-- 20 obras -->
-<!-- SOLO CAMBIAS imágenes luego -->
-<!-- paintings1.jpg ... paintings20.jpg -->
-
-<!-- GENERADAS -->
-<script>
-for(let i=1;i<=20;i++){
-document.write(`
-<div class="work" onclick="openZoom('images/paintings${i}.jpg')">
-<img src="images/paintings${i}.jpg">
-<div class="info">
-<div class="title">Painting ${i}</div>
-<div class="meta">Acrylic on canvas</div>
-</div>
-</div>
-`);
-}
-</script>
-
-</div>
-
-<!-- ===== DRAWINGS ===== -->
-<div id="drawings" class="gallery category" style="display:none;">
-<script>
-for(let i=1;i<=20;i++){
-document.write(`
-<div class="work" onclick="openZoom('images/drawings${i}.jpg')">
-<img src="images/drawings${i}.jpg">
-<div class="info">
-<div class="title">Drawing ${i}</div>
-<div class="meta">Ink / Graphite</div>
-</div>
-</div>
-`);
-}
-</script>
-</div>
-
-<!-- ===== WATERCOLORS ===== -->
-<div id="watercolors" class="gallery category" style="display:none;">
-<script>
-for(let i=1;i<=20;i++){
-document.write(`
-<div class="work" onclick="openZoom('images/watercolors${i}.jpg')">
-<img src="images/watercolors${i}.jpg">
-<div class="info">
-<div class="title">Watercolor ${i}</div>
-<div class="meta">Watercolor on paper</div>
-</div>
-</div>
-`);
-}
-</script>
-</div>
-
-<!-- ===== PHOTOGRAPHY ===== -->
-<div id="photography" class="gallery category" style="display:none;">
-<script>
-for(let i=1;i<=20;i++){
-document.write(`
-<div class="work" onclick="openZoom('images/photography${i}.jpg')">
-<img src="images/photography${i}.jpg">
-<div class="info">
-<div class="title">Photography ${i}</div>
-<div class="meta">Digital photography</div>
-</div>
-</div>
-`);
-}
-</script>
-</div>
+<a href="#paintings">Paintings</a>
+<a href="#drawings">Drawings</a>
+<a href="#watercolors">Watercolors</a>
+<a href="#photography">Photography</a>
+<a href="#available">Obras disponibles</a>
 
 </section>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeZoom()">
-<img id="zoomed">
-</div>
+<!-- ===== EMPTY SECTIONS READY ===== -->
 
-<script>
-function openZoom(src){
-document.getElementById("zoomed").src=src;
-document.getElementById("lightbox").style.display="flex";
-}
-function closeZoom(){
-document.getElementById("lightbox").style.display="none";
-}
+<section id="paintings" class="section">
+<h2>Paintings</h2>
+</section>
 
-function showCategory(id,el){
-document.querySelectorAll('.category').forEach(c=>c.style.display='none');
-document.getElementById(id).style.display='grid';
+<section id="drawings" class="section">
+<h2>Drawings</h2>
+</section>
 
-document.querySelectorAll('.submenu a').forEach(a=>a.classList.remove('active'));
-el.classList.add('active');
-}
-</script>
+<section id="watercolors" class="section">
+<h2>Watercolors</h2>
+</section>
+
+<section id="photography" class="section">
+<h2>Photography</h2>
+</section>
+
+<section id="available" class="section">
+<h2>Obras disponibles</h2>
+</section>
 
 </body>
 </html>

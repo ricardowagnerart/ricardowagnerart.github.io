@@ -7,27 +7,141 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:Arial,Helvetica,sans-serif;background:#fff;color:#111;}
 
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:#fff;
+color:#111;
+}
+
+/* ===== HEADER ===== */
 header{
-height:74px;background:#000;display:flex;justify-content:space-between;
-align-items:center;padding:0 52px;position:fixed;top:0;left:0;width:100%;
-}
-.logo{font-size:24px;font-weight:600;color:#fff;text-decoration:none;}
-nav a{color:#fff;text-decoration:none;margin-left:24px;font-size:11px;letter-spacing:1px;text-transform:uppercase;}
-
-.page{max-width:1400px;margin:130px auto 60px;padding:0 40px;}
-h1{font-size:64px;font-weight:300;margin-bottom:40px;}
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:25px;
+height:74px;
+background:#000;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 52px;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+z-index:1000;
 }
 
-.gallery img{
+.logo{
+font-size:24px;
+font-weight:600;
+color:#fff;
+text-decoration:none;
+}
+
+nav a{
+color:#fff;
+text-decoration:none;
+margin-left:24px;
+font-size:11px;
+letter-spacing:1px;
+text-transform:uppercase;
+opacity:.9;
+transition:.3s;
+}
+nav a:hover{opacity:.55;}
+
+/* ===== PAGE ===== */
+.page{
+max-width:1600px;
+margin:120px auto 80px;
+padding:0 40px;
+}
+
+h1{
+font-size:64px;
+font-weight:300;
+margin-bottom:55px;
+}
+
+/* ===== CURATORIAL LAYOUT ===== */
+.works{
+display:flex;
+flex-direction:column;
+gap:80px;
+}
+
+.work{
+position:relative;
+width:100%;
+overflow:hidden;
+}
+
+.work img{
 width:100%;
 display:block;
+transition:transform .6s ease;
+}
+
+/* diferentes tamaños */
+.work.large img{max-height:900px;object-fit:cover;}
+.work.medium img{max-height:700px;object-fit:cover;}
+.work.small img{max-height:550px;object-fit:cover;}
+
+.work:hover img{
+transform:scale(1.02);
+}
+
+/* info */
+.info{
+position:absolute;
+left:0;
+bottom:0;
+width:100%;
+padding:20px 25px;
+background:linear-gradient(to top, rgba(0,0,0,.65), transparent);
+color:#fff;
+font-size:14px;
+letter-spacing:.5px;
+opacity:0;
+transition:.3s;
+}
+
+.work:hover .info{
+opacity:1;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:900px){
+
+header{
+padding:0 18px;
+height:68px;
+}
+
+.logo{
+font-size:19px;
+}
+
+nav a{
+font-size:10px;
+margin-left:10px;
+}
+
+.page{
+margin:100px auto 40px;
+padding:0 18px;
+}
+
+h1{
+font-size:42px;
+margin-bottom:30px;
+}
+
+.works{
+gap:30px;
+}
+
+.work img{
+max-height:none !important;
+}
 }
 </style>
 </head>
@@ -36,6 +150,7 @@ display:block;
 
 <header>
 <a href="index.html" class="logo">RICARDO WAGNER</a>
+
 <nav>
 <a href="biography.html">Biography</a>
 <a href="works.html">Works</a>
@@ -46,15 +161,31 @@ display:block;
 </header>
 
 <section class="page">
+
 <h1>Works</h1>
 
-<div class="gallery">
-<img src="images/cabeza11.jpg">
-<img src="images/cabeza12.jpg">
-<img src="images/cabeza4.jpg">
-<img src="images/cabeza7.jpg">
-<img src="images/cabeza11.jpg">
-<img src="images/cabeza12.jpg">
+<div class="works">
+
+<div class="work large">
+<img src="images/cabeza11.jpg" alt="">
+<div class="info">Untitled — Oil on canvas</div>
+</div>
+
+<div class="work medium">
+<img src="images/cabeza12.jpg" alt="">
+<div class="info">Untitled — Mixed media</div>
+</div>
+
+<div class="work large">
+<img src="images/cabeza4.jpg" alt="">
+<div class="info">Untitled — Abstract series</div>
+</div>
+
+<div class="work small">
+<img src="images/cabeza7.jpg" alt="">
+<div class="info">Untitled — Composition study</div>
+</div>
+
 </div>
 
 </section>

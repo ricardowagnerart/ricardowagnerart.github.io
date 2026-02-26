@@ -3,47 +3,144 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Biography — Ricardo Wagner</title>
+
+<title>Biography - Ricardo Wagner</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:Arial,Helvetica,sans-serif;background:#fff;color:#111;line-height:1.7;}
 
-header{
-height:74px;background:#000;display:flex;justify-content:space-between;
-align-items:center;padding:0 52px;position:fixed;top:0;left:0;width:100%;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-.logo{font-size:24px;font-weight:600;color:#fff;text-decoration:none;}
-nav a{color:#fff;text-decoration:none;margin-left:24px;font-size:11px;
-letter-spacing:1px;text-transform:uppercase;}
+body{
+font-family:Arial, Helvetica, sans-serif;
+background:#fff;
+color:#111;
+}
 
-.page{max-width:1000px;margin:130px auto 80px;padding:0 45px;}
-h1{font-size:64px;font-weight:300;margin-bottom:40px;}
-p{font-size:20px;font-weight:300;margin-bottom:25px;}
+/* ===== HEADER ===== */
+
+header{
+height:90px;
+background:#000;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 60px;
+}
+
+.logo{
+font-size:52px;
+font-weight:900;
+line-height:0.9;
+letter-spacing:-2px;
+color:#fff;
+text-decoration:none;
+}
+
+nav a{
+color:#fff;
+text-decoration:none;
+margin-left:40px;
+font-weight:700;
+font-size:30px;
+transition:opacity .3s;
+}
+
+nav a:hover{
+opacity:.6;
+}
+
+/* ===== CONTENT ===== */
+
+.bio-container{
+max-width:1200px;
+margin:80px auto;
+padding:0 40px;
+}
+
+.bio-image{
+width:100%;
+max-width:700px;
+display:block;
+margin:0 auto 60px auto;
+}
+
+.bio-title{
+font-size:64px;
+font-weight:900;
+margin-bottom:40px;
+}
+
+.bio-text{
+font-size:32px;
+line-height:1.6;
+max-width:900px;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:900px){
+
+.logo{
+font-size:36px;
+}
+
+nav a{
+font-size:20px;
+margin-left:20px;
+}
+
+.bio-title{
+font-size:42px;
+}
+
+.bio-text{
+font-size:22px;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-<a href="index.html" class="logo">RICARDO WAGNER</a>
+
+<a class="logo" href="index.html">
+RICARDO WAGNER
+</a>
 
 <nav>
-<a href="biography.html" class="active">Biography</a>
+<a href="biography.html">Biography</a>
 <a href="works.html">Works</a>
 <a href="philosophy.html">Philosophy</a>
 <a href="exhibitions.html">Exhibitions</a>
 <a href="publications.html">Publications</a>
 </nav>
+
 </header>
 
-<section class="page">
-<h1>Biography</h1>
+<section class="bio-container">
 
-<p>Ricardo Wagner is a Dominican multidisciplinary visual artist working across painting, drawing, photography and mixed media.</p>
-<p>His artistic language explores abstraction, existence, nature, and spirituality through expressive visual structures.</p>
-<p>His work has been recognized through exhibitions, awards, and critical attention within contemporary Caribbean art.</p>
+<img src="images/portrait-bw.jpg" class="bio-image">
+
+<h1 class="bio-title">Biography</h1>
+
+<div class="bio-text">
+
+Ricardo Wagner is a Dominican multidisciplinary visual artist based in Santo Domingo.
+
+His work spans painting, drawing, watercolor, photography and mixed media, developing a visual language rooted in abstraction and informalism.
+
+His artistic discourse explores creation, existence, and humanity’s relationship with nature, moving between the sacred and the terrestrial, the infinite and the intimate.
+
+Through abstraction, his paintings investigate the origin of things, the evolution of human consciousness, and the mystery of the universe.
+
+</div>
 
 </section>
 

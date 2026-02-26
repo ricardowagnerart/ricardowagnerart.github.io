@@ -24,7 +24,7 @@ header{
     background:#000;
     display:flex;
     align-items:center;
-    justify-content:center; /* menú centrado */
+    justify-content:center;
     z-index:1000;
 }
 
@@ -38,9 +38,9 @@ nav ul{
 nav ul li a{
     color:#fff;
     text-decoration:none;
-    font-size:20px;
+    font-size:11px; /* -45% aprox */
     font-weight:600;
-    letter-spacing:.5px;
+    letter-spacing:1px;
     text-transform:uppercase;
 }
 
@@ -57,16 +57,19 @@ nav ul li a{
     top:90px;
     left:0;
     width:100%;
-    height:calc(100vh - 170px); /* mismo rectángulo */
+    height:calc(100vh - 170px);
 }
 
+/* transición cinematic */
 .slide{
     position:absolute;
     width:100%;
     height:100%;
     object-fit:cover;
     opacity:0;
-    animation:fade 16s infinite;
+    transform:scale(1.06);
+    animation:cinematicFade 16s ease-in-out infinite;
+    filter:contrast(1.05) saturate(1.05);
 }
 
 .slide:nth-child(1){animation-delay:0s;}
@@ -74,12 +77,27 @@ nav ul li a{
 .slide:nth-child(3){animation-delay:8s;}
 .slide:nth-child(4){animation-delay:12s;}
 
-@keyframes fade{
-    0%{opacity:0;}
-    6%{opacity:1;}
-    24%{opacity:1;}
-    30%{opacity:0;}
-    100%{opacity:0;}
+@keyframes cinematicFade{
+    0%{
+        opacity:0;
+        transform:scale(1.06);
+    }
+    8%{
+        opacity:1;
+        transform:scale(1.02);
+    }
+    22%{
+        opacity:1;
+        transform:scale(1);
+    }
+    30%{
+        opacity:0;
+        transform:scale(1.04);
+    }
+    100%{
+        opacity:0;
+        transform:scale(1.06);
+    }
 }
 
 /* ===== TEXTO CENTRAL ===== */
@@ -98,12 +116,12 @@ nav ul li a{
     font-weight:700;
     letter-spacing:2px;
     text-transform:uppercase;
-    white-space:nowrap; /* UNA sola línea en desktop */
+    white-space:nowrap;
 }
 
 .hero-text p{
     margin-top:14px;
-    font-size:27px; /* reducido 20% */
+    font-size:27px;
     font-weight:300;
     opacity:.9;
 }
@@ -111,7 +129,7 @@ nav ul li a{
 /* ===== RESPONSIVE ===== */
 @media(max-width:1100px){
     nav ul{gap:25px;}
-    nav ul li a{font-size:16px;}
+    nav ul li a{font-size:10px;}
 
     .hero-text h1{
         font-size:58px;
@@ -126,12 +144,10 @@ nav ul li a{
 @media(max-width:768px){
     header{height:75px;}
 
-    nav ul{
-        gap:16px;
-    }
+    nav ul{gap:14px;}
 
     nav ul li a{
-        font-size:13px;
+        font-size:9px;
     }
 
     .slider{
@@ -168,10 +184,11 @@ nav ul li a{
 <section class="hero">
 
     <div class="slider">
-        <img class="slide" src="watercolors1.jpg" alt="">
-        <img class="slide" src="watercolors2.jpg" alt="">
-        <img class="slide" src="watercolors3.jpg" alt="">
-        <img class="slide" src="watercolors4.jpg" alt="">
+        <!-- imágenes llamadas cabeza -->
+        <img class="slide" src="cabeza1.jpg" alt="">
+        <img class="slide" src="cabeza2.jpg" alt="">
+        <img class="slide" src="cabeza3.jpg" alt="">
+        <img class="slide" src="cabeza4.jpg" alt="">
     </div>
 
     <div class="hero-text">

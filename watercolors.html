@@ -3,115 +3,141 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Watercolors</title>
 
 <style>
 
 body{
-    margin:0;
-    background:#f2f2f2;
-    font-family:Arial, Helvetica, sans-serif;
+margin:0;
+background:#f2f2f2;
+font-family:Arial,Helvetica,sans-serif;
 }
 
 /* HEADER */
 .header{
-    text-align:center;
-    padding:35px 0 25px;
-    font-size:42px;
-    letter-spacing:12px;
+text-align:center;
+padding:35px 0 25px;
+font-size:42px;
+letter-spacing:12px;
 }
 .header a{
-    color:#9c9c9c;
-    text-decoration:none;
+color:#9c9c9c;
+text-decoration:none;
 }
 
 /* GRID */
 .gallery{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:28px;
-    padding:20px 40px 60px;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:28px;
+padding:20px 40px 60px;
 }
 
 .art-item{
-    width:30%;
-    transition:.4s ease;
-    cursor:pointer;
+width:30%;
+transition:.6s ease;
+cursor:pointer;
 }
 
 .art-item img{
-    width:100%;
-    display:block;
+width:100%;
+display:block;
+transition:.6s ease;
 }
 
 /* FICHA */
 .tech{
-    margin-top:12px;
-    font-size:14px;
-    color:#555;
-    line-height:1.5;
+margin-top:12px;
+font-size:14px;
+color:#555;
+line-height:1.5;
 }
 .tech h3{
-    margin:0 0 8px;
-    font-size:17px;
-    font-style:italic;
-    font-weight:normal;
-    color:#111;
+margin:0 0 8px;
+font-size:17px;
+font-style:italic;
+font-weight:normal;
 }
 
-/* EFECTO BLANCO Y NEGRO + BLUR */
+/* BLUR + B/N */
 .gallery:hover .art-item{
-    opacity:.35;
-    filter:grayscale(100%) blur(3px);
+opacity:.35;
+filter:grayscale(100%) blur(3px);
+transform:scale(.98);
 }
-
 .gallery .art-item:hover{
-    opacity:1;
-    filter:none;
+opacity:1;
+filter:none;
+transform:scale(1);
 }
 
-/* VIEWER */
+/* ===== VIEWER LUXURY ===== */
+
 .viewer{
-    position:fixed;
-    inset:0;
-    background:#f2f2f2;
-    display:none;
-    justify-content:center;
-    align-items:center;
-    z-index:999;
+position:fixed;
+inset:0;
+background:#f2f2f2;
+display:none;
+justify-content:center;
+align-items:center;
+z-index:999;
+overflow:hidden;
+opacity:0;
+transition:opacity .5s ease;
+}
+
+.viewer.active{
+display:flex;
+opacity:1;
 }
 
 .viewer img{
-    max-width:90%;
-    max-height:90%;
-    cursor:zoom-in;
-    transition:transform .2s ease;
+max-width:90%;
+max-height:90%;
+transition:transform .4s ease;
+cursor:zoom-in;
 }
+
+/* arrows */
+.nav{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+font-size:50px;
+color:#777;
+cursor:pointer;
+user-select:none;
+padding:20px;
+}
+.prev{left:20px;}
+.next{right:20px;}
 
 /* MOBILE */
 @media(max-width:900px){
 
 .header{
-    font-size:28px;
-    letter-spacing:8px;
+font-size:28px;
+letter-spacing:8px;
 }
 
 .gallery{
-    padding:10px 20px 40px;
+padding:10px 20px 40px;
 }
 
 .art-item{
-    width:100%;
+width:100%;
 }
 
 .tech{
-    font-size:11px;
+font-size:11px;
+}
+.tech h3{
+font-size:14px;
 }
 
-.tech h3{
-    font-size:14px;
+.nav{
+font-size:34px;
 }
 
 }
@@ -125,17 +151,29 @@ body{
 <a href="works.html">RICARDO WAGNER</a>
 </div>
 
-<div class="gallery">
+<div class="gallery" id="gallery"></div>
 
-<!-- ===== 30 OBRAS ===== -->
-
-<!-- SOLO CAMBIA LOS NOMBRES DESPUÉS SI QUIERES -->
+<!-- VIEWER -->
+<div class="viewer" id="viewer">
+<div class="nav prev" onclick="prevImg()">‹</div>
+<img id="viewerImg">
+<div class="nav next" onclick="nextImg()">›</div>
+</div>
 
 <script>
+
+/* ===== GENERAR 30 OBRAS ===== */
+
+const gallery=document.getElementById("gallery");
+let images=[];
+
 for(let i=1;i<=30;i++){
-document.write(`
+
+images.push(`images/watercolors${i}.jpg`);
+
+gallery.innerHTML += `
 <div class="art-item">
-<img src="images/watercolors${i}.jpg" onclick="openViewer(this)">
+<img loading="lazy" src="images/watercolors${i}.jpg" onclick="openViewer(${i-1})">
 <div class="tech">
 <h3>White Ring</h3>
 <p>1963</p>
@@ -144,43 +182,66 @@ document.write(`
 <p>EK 322</p>
 </div>
 </div>
-`);
+`;
 }
-</script>
 
-</div>
-
-<!-- VIEWER -->
-<div class="viewer" id="viewer" onclick="closeViewer()">
-<img id="viewerImg">
-</div>
-
-<script>
+/* ===== VIEWER ===== */
 
 const viewer=document.getElementById("viewer");
 const viewerImg=document.getElementById("viewerImg");
 
-function openViewer(img){
-viewer.style.display="flex";
-viewerImg.src=img.src;
-}
+let current=0;
+let zoom=1;
 
-function closeViewer(){
-viewer.style.display="none";
+function openViewer(index){
+current=index;
+viewerImg.src=images[current];
+viewer.classList.add("active");
+zoom=1;
 viewerImg.style.transform="scale(1)";
 }
 
-/* LUPA */
+function closeViewer(){
+viewer.classList.remove("active");
+}
+
+viewer.addEventListener("click",e=>{
+if(e.target===viewer) closeViewer();
+});
+
+/* navigation */
+function nextImg(){
+current=(current+1)%images.length;
+viewerImg.src=images[current];
+}
+
+function prevImg(){
+current=(current-1+images.length)%images.length;
+viewerImg.src=images[current];
+}
+
+/* ===== LUXURY ZOOM (desktop) ===== */
+
 viewerImg.addEventListener("mousemove",e=>{
+if(window.innerWidth<900) return;
+
 const rect=viewerImg.getBoundingClientRect();
 const x=(e.clientX-rect.left)/rect.width*100;
 const y=(e.clientY-rect.top)/rect.height*100;
+
 viewerImg.style.transformOrigin=`${x}% ${y}%`;
-viewerImg.style.transform="scale(2.5)";
+viewerImg.style.transform="scale(2.2)";
 });
 
 viewerImg.addEventListener("mouseleave",()=>{
 viewerImg.style.transform="scale(1)";
+});
+
+/* ===== TOUCH ZOOM MOBILE ===== */
+
+viewerImg.addEventListener("touchstart",()=>{
+zoom = zoom===1 ? 2 : 1;
+viewerImg.style.transform=`scale(${zoom})`;
 });
 
 </script>

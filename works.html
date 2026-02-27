@@ -199,11 +199,11 @@ body{
 <a href="index.html" class="desktop-name">RICARDO WAGNER</a>
 
 <div class="desktop-menu">
-    <a href="#">Paintings</a>
-    <a href="#">Drawings</a>
-    <a href="#">Watercolors</a>
-    <a href="#">Photography</a>
-    <a href="#">Available Works</a>
+    <a href="#paintings">Paintings</a>
+<a href="#drawings">Drawings</a>
+<a href="#watercolors">Watercolors</a>
+<a href="#photography">Photography</a>
+<a href="#available">Available Works</a>
 </div>
 
 <div class="desktop-slider">
@@ -241,4 +241,53 @@ body{
 </div>
 
 </body>
+    <!-- ===== WORKS GALLERIES (SOLO CONTENIDO) ===== -->
+
+<section id="paintings" class="gallery">
+  <img src="images/painting1.jpg" alt="">
+  <img src="images/painting2.jpg" alt="">
+  <img src="images/painting3.jpg" alt="">
+</section>
+
+<section id="drawings" class="gallery">
+  <img src="images/drawing1.jpg" alt="">
+  <img src="images/drawing2.jpg" alt="">
+  <img src="images/drawing3.jpg" alt="">
+</section>
+
+<section id="watercolors" class="gallery">
+  <img src="images/watercolor1.jpg" alt="">
+  <img src="images/watercolor2.jpg" alt="">
+  <img src="images/watercolor3.jpg" alt="">
+</section>
+
+<section id="photography" class="gallery">
+  <img src="images/photo1.jpg" alt="">
+  <img src="images/photo2.jpg" alt="">
+  <img src="images/photo3.jpg" alt="">
+</section>
+
+<section id="available" class="gallery">
+  <img src="images/available1.jpg" alt="">
+  <img src="images/available2.jpg" alt="">
+  <img src="images/available3.jpg" alt="">
+</section>
+
+<style>
+.gallery{
+  width:100%;
+  max-width:1200px;
+  margin:80px auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+  padding:0 20px;
+}
+
+.gallery img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+</style>
 </html>

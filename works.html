@@ -3,29 +3,78 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Works</title>
 
 <style>
 
-/* ===== BASE (NO TOCA PC) ===== */
 body{
     margin:0;
     font-family:Arial, Helvetica, sans-serif;
     background:#f2f2f2;
 }
 
-/* ===== VERSION MOVIL ===== */
-@media (max-width: 900px){
+/* ============================= */
+/* ===== VERSION PC (RESTORE) === */
+/* ============================= */
+
+@media (min-width:901px){
+
+    .mobile-only{ display:none; }
+
+    .pc-wrap{
+        text-align:center;
+        padding-top:40px;
+    }
+
+    .pc-name{
+        font-size:56px;
+        letter-spacing:12px;
+        color:#111;
+        text-decoration:none;
+    }
+
+    .pc-menu{
+        margin-top:45px;
+        display:flex;
+        justify-content:center;
+        gap:70px;
+        font-size:34px;
+    }
+
+    .pc-menu a{
+        text-decoration:none;
+        color:#111;
+    }
+
+    .pc-slider{
+        margin-top:40px;
+        width:100%;
+        height:320px;
+        background:url('images/work1.jpg') center/cover no-repeat;
+    }
+
+    .pc-copy{
+        margin-top:18px;
+        font-size:14px;
+        color:#888;
+    }
+}
+
+/* ============================= */
+/* ===== VERSION MOVIL ========= */
+/* ============================= */
+
+@media (max-width:900px){
+
+    .pc-only{ display:none; }
 
     body{
         text-align:center;
     }
 
-    /* RECTANGULO GRIS DETRAS DEL NOMBRE */
     .mobile-header{
         width:100%;
-        background:#e9e9e9; /* gris muy sutil */
+        background:#e9e9e9;
         padding:22px 0;
         margin-bottom:25px;
     }
@@ -39,9 +88,8 @@ body{
         transition:all .35s ease;
     }
 
-    /* efecto delicado touch */
     .mobile-header a:active{
-        transform:scale(0.97);
+        transform:scale(.97);
         opacity:.75;
     }
 
@@ -64,7 +112,6 @@ body{
         color:#111;
     }
 
-    /* REDES SOCIALES */
     .socials{
         margin-top:80px;
         display:flex;
@@ -76,27 +123,14 @@ body{
     .socials a{
         color:#222;
         text-decoration:none;
-        transition:.3s;
     }
 
-    .socials a:active{
-        transform:scale(.9);
-        opacity:.6;
-    }
-
-    /* COPYRIGHT FINAL */
     .copyright{
         margin-top:35px;
         margin-bottom:30px;
         color:#9c9c9c;
         font-size:20px;
     }
-
-}
-
-/* ===== PC INTACTA ===== */
-@media (min-width:901px){
-    /* NO TOCAMOS NADA */
 }
 
 </style>
@@ -104,32 +138,51 @@ body{
 
 <body>
 
-<!-- HEADER MOVIL -->
-<div class="mobile-header">
-    <a href="index.html">RICARDO WAGNER</a>
+<!-- ================= PC ================= -->
+<div class="pc-only pc-wrap">
+
+    <a class="pc-name" href="index.html">RICARDO WAGNER</a>
+
+    <div class="pc-menu">
+        <a href="paintings.html">Paintings</a>
+        <a href="drawings.html">Drawings</a>
+        <a href="watercolors.html">Watercolors</a>
+        <a href="photography.html">Photography</a>
+        <a href="available.html">Available Works</a>
+    </div>
+
+    <div class="pc-slider"></div>
+
+    <div class="pc-copy">© Ricardo Wagner</div>
+
 </div>
 
-<div class="works-title">Works</div>
+<!-- ================= MOVIL ================= -->
+<div class="mobile-only">
 
-<div class="menu">
-    <a href="paintings.html">Paintings</a>
-    <a href="drawings.html">Drawings</a>
-    <a href="watercolors.html">Watercolors</a>
-    <a href="photography.html">Photography</a>
-    <a href="available.html">Available Works</a>
-</div>
+    <div class="mobile-header">
+        <a href="index.html">RICARDO WAGNER</a>
+    </div>
 
-<!-- REDES (donde estaba el copyright) -->
-<div class="socials">
-    <a href="https://www.instagram.com/ricwagner.art?igsh=NHkya2c2N3ZiNm5q&utm_source=qr">📷</a>
-    <a href="https://www.linkedin.com/in/ricardo-wagner-167681b0?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">in</a>
-    <a href="https://www.facebook.com/share/1HUK9p4KyG/?mibextid=wwXIfr">f</a>
-    <a href="https://x.com/wagnergallery?s=21">𝕏</a>
-</div>
+    <div class="works-title">Works</div>
 
-<!-- COPYRIGHT FINAL -->
-<div class="copyright">
-© Ricardo Wagner
+    <div class="menu">
+        <a href="paintings.html">Paintings</a>
+        <a href="drawings.html">Drawings</a>
+        <a href="watercolors.html">Watercolors</a>
+        <a href="photography.html">Photography</a>
+        <a href="available.html">Available Works</a>
+    </div>
+
+    <div class="socials">
+        <a href="https://www.instagram.com/ricwagner.art?igsh=NHkya2c2N3ZiNm5q&utm_source=qr">📷</a>
+        <a href="https://www.linkedin.com/in/ricardo-wagner-167681b0?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">in</a>
+        <a href="https://www.facebook.com/share/1HUK9p4KyG/?mibextid=wwXIfr">f</a>
+        <a href="https://x.com/wagnergallery?s=21">𝕏</a>
+    </div>
+
+    <div class="copyright">© Ricardo Wagner</div>
+
 </div>
 
 </body>

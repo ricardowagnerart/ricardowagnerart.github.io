@@ -23,19 +23,10 @@ body{
    MOBILE (NO TOCAR)
 ========================= */
 
-@media (max-width: 1023px){
+@media (max-width:1023px){
 
-body{
-    background:#efefef;
-}
-
-.mobile-only{
-    display:block;
-}
-
-.desktop-only{
-    display:none;
-}
+.mobile-only{display:block;}
+.desktop-only{display:none;}
 
 }
 
@@ -45,13 +36,8 @@ body{
 
 @media (min-width:1024px){
 
-.mobile-only{
-    display:none;
-}
-
-.desktop-only{
-    display:block;
-}
+.mobile-only{display:none;}
+.desktop-only{display:block;}
 
 /* ===== HEADER ===== */
 
@@ -61,50 +47,43 @@ body{
     text-align:center;
 }
 
+/* nombre NEGRO */
 .desktop-header a{
     text-decoration:none;
-    color:#9a9a9a;
+    color:#000;
     letter-spacing:10px;
     font-size:42px;
     font-weight:300;
-    transition:all .35s ease;
     display:inline-block;
+    transition:all .35s ease;
 }
 
-/* movimiento elegante hover */
 .desktop-header a:hover{
     transform:translateY(-3px);
-    opacity:.8;
+    opacity:.75;
 }
 
-/* ===== WORKS BLOCK ===== */
+/* ===== MENU (sin Works) ===== */
 
 .desktop-works{
     width:100%;
     text-align:center;
-    margin-top:20px;
+    margin-top:10px; /* subido hacia arriba */
 }
 
-.desktop-title{
-    font-size:95px;
-    color:#b7b7b7;
-    font-weight:300;
-    margin-bottom:40px;
-}
-
-/* menú reducido 50% */
+/* menú reducido 40% */
 .desktop-menu{
     display:flex;
     justify-content:center;
-    gap:70px;
+    gap:50px;
     flex-wrap:wrap;
-    margin-bottom:50px;
+    margin-bottom:35px;
 }
 
 .desktop-menu a{
     text-decoration:none;
     color:#2b2b2b;
-    font-size:38px;
+    font-size:23px; /* reducción */
     font-weight:300;
     transition:opacity .3s ease;
 }
@@ -134,10 +113,10 @@ body{
     animation:fade 16s infinite;
 }
 
-.slide:nth-child(1){background-image:url('images/work1.jpg'); animation-delay:0s;}
-.slide:nth-child(2){background-image:url('images/work2.jpg'); animation-delay:4s;}
-.slide:nth-child(3){background-image:url('images/work3.jpg'); animation-delay:8s;}
-.slide:nth-child(4){background-image:url('images/work4.jpg'); animation-delay:12s;}
+.slide:nth-child(1){background-image:url('images/work1.jpg');animation-delay:0s;}
+.slide:nth-child(2){background-image:url('images/work2.jpg');animation-delay:4s;}
+.slide:nth-child(3){background-image:url('images/work3.jpg');animation-delay:8s;}
+.slide:nth-child(4){background-image:url('images/work4.jpg');animation-delay:12s;}
 
 @keyframes fade{
     0%{opacity:0;}
@@ -169,43 +148,39 @@ body{
 
 <div class="desktop-only">
 
-    <!-- nombre -->
-    <header class="desktop-header">
-        <a href="index.html">RICARDO WAGNER</a>
-    </header>
+<header class="desktop-header">
+    <a href="index.html">RICARDO WAGNER</a>
+</header>
 
-    <!-- works -->
-    <section class="desktop-works">
+<section class="desktop-works">
 
-        <h1 class="desktop-title">Works</h1>
+    <!-- Works eliminado -->
 
-        <nav class="desktop-menu">
-            <a href="#">Paintings</a>
-            <a href="#">Drawings</a>
-            <a href="#">Watercolors</a>
-            <a href="#">Photography</a>
-            <a href="#">Available Works</a>
-        </nav>
+    <nav class="desktop-menu">
+        <a href="#">Paintings</a>
+        <a href="#">Drawings</a>
+        <a href="#">Watercolors</a>
+        <a href="#">Photography</a>
+        <a href="#">Available Works</a>
+    </nav>
 
-    </section>
+</section>
 
-    <!-- sliders -->
-    <section class="slider-wrap">
-        <div class="slide"></div>
-        <div class="slide"></div>
-        <div class="slide"></div>
-        <div class="slide"></div>
-    </section>
+<section class="slider-wrap">
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+</section>
 
-    <!-- copyright -->
-    <div class="desktop-copy">
-        © Ricardo Wagner
-    </div>
+<div class="desktop-copy">
+    © Ricardo Wagner
+</div>
 
 </div>
 
 <!-- =========================
-     MOBILE VERSION (SE QUEDA)
+     MOBILE VERSION (NO TOCAR)
 ========================= -->
 
 <div class="mobile-only">

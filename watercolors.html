@@ -3,143 +3,80 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Watercolors</title>
 
 <style>
 
+/* ===== BASE ===== */
 body{
-margin:0;
-background:#f2f2f2;
-font-family:Arial,Helvetica,sans-serif;
+  margin:0;
+  background:#efefef;
+  font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+  color:#666;
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 .header{
-text-align:center;
-padding:35px 0 25px;
-font-size:42px;
-letter-spacing:12px;
+  text-align:center;
+  padding:30px 0;
+  font-size:42px;
+  letter-spacing:12px;
+  font-weight:300;
+  color:#9c9c9c;
 }
+
 .header a{
-color:#9c9c9c;
-text-decoration:none;
+  text-decoration:none;
+  color:inherit;
 }
 
-/* GRID */
-.gallery{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:28px;
-padding:20px 40px 60px;
+/* ===== CONTENEDOR OBRAS ===== */
+.mobile-gallery{
+  display:flex;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
 }
 
-.art-item{
-width:30%;
-transition:.6s ease;
-cursor:pointer;
+.art-piece{
+  min-width:100%;
+  scroll-snap-align:start;
+  padding:0 5vw 60px;
+  box-sizing:border-box;
 }
 
-.art-item img{
-width:100%;
-display:block;
-transition:.6s ease;
+/* ===== IMAGEN ===== */
+.art-piece img{
+  width:100%;
+  height:auto;
+  display:block;
 }
 
-/* FICHA */
-.tech{
-margin-top:12px;
-font-size:14px;
-color:#555;
-line-height:1.5;
-}
-.tech h3{
-margin:0 0 8px;
-font-size:17px;
-font-style:italic;
-font-weight:normal;
+/* ===== FICHA TÉCNICA ===== */
+.art-info{
+  margin-top:20px;
+  color:#666;
 }
 
-/* BLUR + B/N */
-.gallery:hover .art-item{
-opacity:.35;
-filter:grayscale(100%) blur(3px);
-transform:scale(.98);
-}
-.gallery .art-item:hover{
-opacity:1;
-filter:none;
-transform:scale(1);
+.art-title{
+  font-size:44px;
+  font-weight:300;
+  font-style:italic;
+  margin-bottom:20px;
 }
 
-/* ===== VIEWER LUXURY ===== */
-
-.viewer{
-position:fixed;
-inset:0;
-background:#f2f2f2;
-display:none;
-justify-content:center;
-align-items:center;
-z-index:999;
-overflow:hidden;
-opacity:0;
-transition:opacity .5s ease;
+.art-meta{
+  font-size:34px;
+  font-weight:300;
+  line-height:1.5;
 }
 
-.viewer.active{
-display:flex;
-opacity:1;
-}
-
-.viewer img{
-max-width:90%;
-max-height:90%;
-transition:transform .4s ease;
-cursor:zoom-in;
-}
-
-/* arrows */
-.nav{
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-font-size:50px;
-color:#777;
-cursor:pointer;
-user-select:none;
-padding:20px;
-}
-.prev{left:20px;}
-.next{right:20px;}
-
-/* MOBILE */
-@media(max-width:900px){
-
-.header{
-font-size:28px;
-letter-spacing:8px;
-}
-
-.gallery{
-padding:10px 20px 40px;
-}
-
-.art-item{
-width:100%;
-}
-
-.tech{
-font-size:11px;
-}
-.tech h3{
-font-size:14px;
-}
-
-.nav{
-font-size:34px;
-}
-
+/* ===== SOLO MÓVIL ===== */
+@media (min-width: 769px){
+  .mobile-gallery{
+    display:none;
+  }
 }
 
 </style>
@@ -148,103 +85,54 @@ font-size:34px;
 <body>
 
 <div class="header">
-<a href="works.html">RICARDO WAGNER</a>
+  <a href="works.html">RICARDO WAGNER</a>
 </div>
 
-<div class="gallery" id="gallery"></div>
+<div class="mobile-gallery">
 
-<!-- VIEWER -->
-<div class="viewer" id="viewer">
-<div class="nav prev" onclick="prevImg()">‹</div>
-<img id="viewerImg">
-<div class="nav next" onclick="nextImg()">›</div>
+  <!-- OBRA 1 -->
+  <div class="art-piece">
+    <img src="images/watercolors1.jpg">
+    <div class="art-info">
+      <div class="art-title">White Ring</div>
+      <div class="art-meta">
+        1963<br><br>
+        painted aluminum<br><br>
+        70 × 72 × ¼ inches<br><br>
+        EK 322
+      </div>
+    </div>
+  </div>
+
+  <!-- OBRA 2 -->
+  <div class="art-piece">
+    <img src="images/watercolors2.jpg">
+    <div class="art-info">
+      <div class="art-title">White Ring</div>
+      <div class="art-meta">
+        1963<br><br>
+        painted aluminum<br><br>
+        70 × 72 × ¼ inches<br><br>
+        EK 322
+      </div>
+    </div>
+  </div>
+
+  <!-- OBRA 3 -->
+  <div class="art-piece">
+    <img src="images/watercolors3.jpg">
+    <div class="art-info">
+      <div class="art-title">White Ring</div>
+      <div class="art-meta">
+        1963<br><br>
+        painted aluminum<br><br>
+        70 × 72 × ¼ inches<br><br>
+        EK 322
+      </div>
+    </div>
+  </div>
+
 </div>
-
-<script>
-
-/* ===== GENERAR 30 OBRAS ===== */
-
-const gallery=document.getElementById("gallery");
-let images=[];
-
-for(let i=1;i<=30;i++){
-
-images.push(`images/watercolors${i}.jpg`);
-
-gallery.innerHTML += `
-<div class="art-item">
-<img loading="lazy" src="images/watercolors${i}.jpg" onclick="openViewer(${i-1})">
-<div class="tech">
-<h3>White Ring</h3>
-<p>1963</p>
-<p>painted aluminum</p>
-<p>70 × 72 × ¼ inches</p>
-<p>EK 322</p>
-</div>
-</div>
-`;
-}
-
-/* ===== VIEWER ===== */
-
-const viewer=document.getElementById("viewer");
-const viewerImg=document.getElementById("viewerImg");
-
-let current=0;
-let zoom=1;
-
-function openViewer(index){
-current=index;
-viewerImg.src=images[current];
-viewer.classList.add("active");
-zoom=1;
-viewerImg.style.transform="scale(1)";
-}
-
-function closeViewer(){
-viewer.classList.remove("active");
-}
-
-viewer.addEventListener("click",e=>{
-if(e.target===viewer) closeViewer();
-});
-
-/* navigation */
-function nextImg(){
-current=(current+1)%images.length;
-viewerImg.src=images[current];
-}
-
-function prevImg(){
-current=(current-1+images.length)%images.length;
-viewerImg.src=images[current];
-}
-
-/* ===== LUXURY ZOOM (desktop) ===== */
-
-viewerImg.addEventListener("mousemove",e=>{
-if(window.innerWidth<900) return;
-
-const rect=viewerImg.getBoundingClientRect();
-const x=(e.clientX-rect.left)/rect.width*100;
-const y=(e.clientY-rect.top)/rect.height*100;
-
-viewerImg.style.transformOrigin=`${x}% ${y}%`;
-viewerImg.style.transform="scale(2.2)";
-});
-
-viewerImg.addEventListener("mouseleave",()=>{
-viewerImg.style.transform="scale(1)";
-});
-
-/* ===== TOUCH ZOOM MOBILE ===== */
-
-viewerImg.addEventListener("touchstart",()=>{
-zoom = zoom===1 ? 2 : 1;
-viewerImg.style.transform=`scale(${zoom})`;
-});
-
-</script>
 
 </body>
 </html>

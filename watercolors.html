@@ -12,7 +12,6 @@ body{
     margin:0;
     background:#f2f2f2;
     font-family:Arial, Helvetica, sans-serif;
-    color:#111;
 }
 
 /* HEADER */
@@ -22,7 +21,6 @@ body{
     font-size:42px;
     letter-spacing:12px;
 }
-
 .header a{
     color:#9c9c9c;
     text-decoration:none;
@@ -39,7 +37,7 @@ body{
 
 .art-item{
     width:30%;
-    transition:.35s ease;
+    transition:.4s ease;
     cursor:pointer;
 }
 
@@ -48,15 +46,13 @@ body{
     display:block;
 }
 
-/* FICHA TÉCNICA */
+/* FICHA */
 .tech{
     margin-top:12px;
     font-size:14px;
     color:#555;
     line-height:1.5;
 }
-
-/* TITULO REDUCIDO 50% */
 .tech h3{
     margin:0 0 8px;
     font-size:17px;
@@ -65,10 +61,10 @@ body{
     color:#111;
 }
 
-/* HOVER */
+/* EFECTO BLANCO Y NEGRO + BLUR */
 .gallery:hover .art-item{
-    opacity:.4;
-    filter:blur(2px);
+    opacity:.35;
+    filter:grayscale(100%) blur(3px);
 }
 
 .gallery .art-item:hover{
@@ -85,10 +81,8 @@ body{
     justify-content:center;
     align-items:center;
     z-index:999;
-    overflow:hidden;
 }
 
-/* LUPA */
 .viewer img{
     max-width:90%;
     max-height:90%;
@@ -128,35 +122,20 @@ body{
 <body>
 
 <div class="header">
-    <a href="works.html">RICARDO WAGNER</a>
+<a href="works.html">RICARDO WAGNER</a>
 </div>
 
 <div class="gallery">
 
-<div class="art-item">
-<img src="images/watercolors1.jpg" onclick="openViewer(this)">
-<div class="tech">
-<h3>White Ring</h3>
-<p>1963</p>
-<p>painted aluminum</p>
-<p>70 × 72 × ¼ inches</p>
-<p>EK 322</p>
-</div>
-</div>
+<!-- ===== 30 OBRAS ===== -->
 
-<div class="art-item">
-<img src="images/watercolors2.jpg" onclick="openViewer(this)">
-<div class="tech">
-<h3>White Ring</h3>
-<p>1963</p>
-<p>painted aluminum</p>
-<p>70 × 72 × ¼ inches</p>
-<p>EK 322</p>
-</div>
-</div>
+<!-- SOLO CAMBIA LOS NOMBRES DESPUÉS SI QUIERES -->
 
+<script>
+for(let i=1;i<=30;i++){
+document.write(`
 <div class="art-item">
-<img src="images/watercolors3.jpg" onclick="openViewer(this)">
+<img src="images/watercolors${i}.jpg" onclick="openViewer(this)">
 <div class="tech">
 <h3>White Ring</h3>
 <p>1963</p>
@@ -165,41 +144,43 @@ body{
 <p>EK 322</p>
 </div>
 </div>
+`);
+}
+</script>
 
 </div>
 
 <!-- VIEWER -->
 <div class="viewer" id="viewer" onclick="closeViewer()">
-    <img id="viewerImg">
+<img id="viewerImg">
 </div>
 
 <script>
 
-const viewer = document.getElementById("viewer");
-const viewerImg = document.getElementById("viewerImg");
+const viewer=document.getElementById("viewer");
+const viewerImg=document.getElementById("viewerImg");
 
 function openViewer(img){
-    viewer.style.display="flex";
-    viewerImg.src = img.src;
+viewer.style.display="flex";
+viewerImg.src=img.src;
 }
 
 function closeViewer(){
-    viewer.style.display="none";
-    viewerImg.style.transform="scale(1)";
+viewer.style.display="none";
+viewerImg.style.transform="scale(1)";
 }
 
-/* LUPA ZOOM */
-viewerImg.addEventListener("mousemove", e=>{
-    const rect = viewerImg.getBoundingClientRect();
-    const x = (e.clientX - rect.left)/rect.width * 100;
-    const y = (e.clientY - rect.top)/rect.height * 100;
-
-    viewerImg.style.transformOrigin = `${x}% ${y}%`;
-    viewerImg.style.transform = "scale(2.5)";
+/* LUPA */
+viewerImg.addEventListener("mousemove",e=>{
+const rect=viewerImg.getBoundingClientRect();
+const x=(e.clientX-rect.left)/rect.width*100;
+const y=(e.clientY-rect.top)/rect.height*100;
+viewerImg.style.transformOrigin=`${x}% ${y}%`;
+viewerImg.style.transform="scale(2.5)";
 });
 
-viewerImg.addEventListener("mouseleave", ()=>{
-    viewerImg.style.transform="scale(1)";
+viewerImg.addEventListener("mouseleave",()=>{
+viewerImg.style.transform="scale(1)";
 });
 
 </script>

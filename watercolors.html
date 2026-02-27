@@ -3,58 +3,98 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Watercolor - Ricardo Wagner</title>
+
+<title>Watercolors — Ricardo Wagner</title>
 
 <style>
 
 body{
-  margin:0;
-  background:#e9e9e9;
-  font-family:Arial, Helvetica, sans-serif;
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#efefef;
+    color:#444;
 }
 
 /* HEADER */
-.top{
-  text-align:center;
-  padding:40px 0 20px;
-  letter-spacing:12px;
-  font-size:38px;
-  color:#9a9a9a;
-}
-
-.top a{
-  text-decoration:none;
-  color:#9a9a9a;
-}
-
-/* GRID OBRAS */
-.gallery{
-  width:90%;
-  max-width:1200px;
-  margin:0 auto 80px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:25px;
-}
-
-.gallery img{
-  width:100%;
-  display:block;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-
-  .top{
-    font-size:28px;
+.header{
+    text-align:center;
+    padding:30px 0;
     letter-spacing:8px;
-    padding-top:30px;
-  }
+    font-size:32px;
+    color:#9a9a9a;
+}
 
-  .gallery{
-    width:92%;
-    gap:18px;
-  }
+.header a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* OBRA */
+.artwork{
+    width:100%;
+    max-width:900px;
+    margin:0 auto 120px auto;
+}
+
+.artwork img{
+    width:100%;
+    display:block;
+}
+
+/* FICHA TECNICA */
+.info{
+    padding:50px 40px;
+    line-height:1.8;
+    color:#888;
+}
+
+.info h2{
+    margin:0 0 20px 0;
+    font-size:34px;
+    font-style:italic;
+    font-weight:400;
+    color:#333;
+}
+
+.info p{
+    margin:8px 0;
+    font-size:28px;
+}
+
+/* COPYRIGHT */
+.copyright{
+    text-align:center;
+    font-size:18px;
+    color:#999;
+    padding:40px 0 80px;
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width:768px){
+
+.header{
+    font-size:34px;
+    letter-spacing:6px;
+    padding:25px 0;
+}
+
+.info{
+    padding:40px 28px;
+}
+
+.info h2{
+    font-size:44px;
+}
+
+.info p{
+    font-size:34px;
+}
+
+.copyright{
+    font-size:20px;
+}
+
 }
 
 </style>
@@ -62,48 +102,58 @@ body{
 
 <body>
 
-<div class="top">
-  <a href="index.html">RICARDO WAGNER</a>
+<div class="header">
+    <a href="index.html">RICARDO WAGNER</a>
 </div>
 
-<section class="gallery">
+<!-- OBRA 1 -->
+<section class="artwork">
 
-  <img src="images/watercolors1.jpg">
-  <img src="images/watercolors2.jpg">
-  <img src="images/watercolors3.jpg">
-  <img src="images/watercolors4.jpg">
-  <img src="images/watercolors5.jpg">
-  <img src="images/watercolors6.jpg">
-  <img src="images/watercolors7.jpg">
-  <img src="images/watercolors8.jpg">
-  <img src="images/watercolors9.jpg">
-  <img src="images/watercolors10.jpg">
-  <img src="images/watercolors11.jpg">
-  <img src="images/watercolors12.jpg">
-  <img src="images/watercolors13.jpg">
-  <img src="images/watercolors14.jpg">
-  <img src="images/watercolors15.jpg">
-  <img src="images/watercolors16.jpg">
-  <img src="images/watercolors17.jpg">
-  <img src="images/watercolors18.jpg">
-  <img src="images/watercolors19.jpg">
-  <img src="images/watercolors20.jpg">
-  <img src="images/watercolors21.jpg">
-  <img src="images/watercolors22.jpg">
-  <img src="images/watercolors23.jpg">
-  <img src="images/watercolors24.jpg">
-  <img src="images/watercolors25.jpg">
-  <img src="images/watercolors26.jpg">
-  <img src="images/watercolors27.jpg">
-  <img src="images/watercolors28.jpg">
-  <img src="images/watercolors29.jpg">
-  <img src="images/watercolors30.jpg">
-  <img src="images/watercolors31.jpg">
-  <img src="images/watercolors32.jpg">
-  <img src="images/watercolors33.jpg">
+    <img src="images/watercolor1.jpg" alt="Artwork">
 
+    <div class="info">
+        <h2>Untitled</h2>
+        <p>2024</p>
+        <p>Watercolor on paper</p>
+        <p>70 × 50 inches</p>
+        <p>RW 001</p>
+    </div>
 
 </section>
+
+<!-- OBRA 2 -->
+<section class="artwork">
+
+    <img src="images/watercolor2.jpg" alt="Artwork">
+
+    <div class="info">
+        <h2>Untitled</h2>
+        <p>2024</p>
+        <p>Watercolor on paper</p>
+        <p>70 × 50 inches</p>
+        <p>RW 002</p>
+    </div>
+
+</section>
+
+<!-- OBRA 3 -->
+<section class="artwork">
+
+    <img src="images/watercolor3.jpg" alt="Artwork">
+
+    <div class="info">
+        <h2>Untitled</h2>
+        <p>2024</p>
+        <p>Watercolor on paper</p>
+        <p>70 × 50 inches</p>
+        <p>RW 003</p>
+    </div>
+
+</section>
+
+<div class="copyright">
+© Ricardo Wagner
+</div>
 
 </body>
 </html>

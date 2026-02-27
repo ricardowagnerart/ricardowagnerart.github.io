@@ -6,171 +6,61 @@
 <title>Paintings</title>
 
 <style>
-
-body{
-    margin:0;
-    background:#f2f2f2;
-    font-family:Arial, Helvetica, sans-serif;
-    color:#111;
-}
-
-/* ===== HEADER ===== */
-.header{
-    text-align:center;
-    padding:35px 0 25px;
-    font-size:42px;
-    letter-spacing:12px;
-    color:#9c9c9c;
-}
-
-/* ===== GRID PC ===== */
-.gallery{
-    width:90%;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:30px;
-}
-
-.artwork{
-    display:flex;
-    flex-direction:column;
-}
-
-.artwork img{
-    width:100%;
-    display:block;
-}
-
-/* ===== FICHA TECNICA ===== */
-.info{
-    margin-top:18px;
-    color:#8f8f8f;
-    font-size:20px;
-    line-height:1.6;
-}
-
-.info .title{
-    font-style:italic;
-    color:#222;
-    font-size:28px;
-}
-
-.info .code{
-    font-size:18px;
-    letter-spacing:1px;
-}
-
-/* ===== COPYRIGHT ===== */
-.footer{
-    text-align:center;
-    margin:40px 0;
-    color:#9c9c9c;
-    font-size:14px;
-}
-
-/* ================================================= */
-/* ================== MOBILE ======================= */
-/* ================================================= */
-
-@media (max-width:768px){
-
-.header{
-    font-size:34px;
-    letter-spacing:8px;
-    padding:25px 0;
-}
-
-/* UNA SOLA IMAGEN COMO KELLY */
-.gallery{
-    display:block;
-    width:100%;
-}
-
-.artwork{
-    margin-bottom:70px;
-}
-
-.artwork img{
-    width:92%;
-    margin:auto;
-    display:block;
-}
-
-/* ficha EXACTA estilo Kelly */
-.info{
-    width:82%;
-    margin:30px auto 0;
-    font-size:36px;
-    line-height:1.9;
-    color:#9a9a9a;
-}
-
-.info .title{
-    font-size:46px;
-    font-style:italic;
-    color:#222;
-}
-
-.info .code{
-    font-size:30px;
-}
-
-.footer{
-    font-size:24px;
-    margin:60px 0;
-}
-
-}
-
+body{margin:0;background:#f2f2f2;font-family:Arial}
+.header{text-align:center;padding:35px 0 25px;font-size:42px;letter-spacing:12px}
+.header a{color:#9c9c9c;text-decoration:none}
+.gallery{display:flex;flex-wrap:wrap;justify-content:center;gap:28px;padding:20px 40px 60px}
+.art-item{width:30%;transition:.6s ease;cursor:pointer}
+.art-item img{width:100%;display:block}
+.tech{margin-top:12px;font-size:14px;color:#555;line-height:1.5}
+.tech h3{margin:0 0 8px;font-size:17px;font-style:italic;font-weight:normal}
+.gallery:hover .art-item{opacity:.35;filter:grayscale(100%) blur(3px);transform:scale(.98)}
+.gallery .art-item:hover{opacity:1;filter:none;transform:scale(1)}
+.viewer{position:fixed;inset:0;background:#f2f2f2;display:none;justify-content:center;align-items:center;z-index:999;opacity:0;transition:.5s}
+.viewer.active{display:flex;opacity:1}
+.viewer img{max-width:90%;max-height:90%}
+.nav{position:absolute;top:50%;transform:translateY(-50%);font-size:50px;color:#777;cursor:pointer;padding:20px}
+.prev{left:20px}.next{right:20px}
+@media(max-width:900px){.header{font-size:28px}.gallery{padding:10px 20px}.art-item{width:100%}}
 </style>
 </head>
 
 <body>
 
-<div class="header">RICARDO WAGNER</div>
+<div class="header"><a href="works.html">RICARDO WAGNER</a></div>
 
-<div class="gallery">
+<div class="gallery" id="gallery"></div>
 
-    <!-- OBRA 1 -->
-    <div class="artwork">
-        <img src="images/water1.jpg" alt="">
-        <div class="info">
-            <div class="title">White Ring</div>
-            <div>1963</div>
-            <div>painted aluminum</div>
-            <div>70 × 72 × ¼ inches</div>
-            <div class="code">EK 322</div>
-        </div>
-    </div>
-
-    <!-- OBRA 2 -->
-    <div class="artwork">
-        <img src="images/water2.jpg" alt="">
-        <div class="info">
-            <div class="title">White Ring</div>
-            <div>1963</div>
-            <div>painted aluminum</div>
-            <div>70 × 72 × ¼ inches</div>
-            <div class="code">EK 322</div>
-        </div>
-    </div>
-
-    <!-- OBRA 3 -->
-    <div class="artwork">
-        <img src="images/water3.jpg" alt="">
-        <div class="info">
-            <div class="title">White Ring</div>
-            <div>1963</div>
-            <div>painted aluminum</div>
-            <div>70 × 72 × ¼ inches</div>
-            <div class="code">EK 322</div>
-        </div>
-    </div>
-
+<div class="viewer" id="viewer">
+<div class="nav prev" onclick="prevImg()">‹</div>
+<img id="viewerImg">
+<div class="nav next" onclick="nextImg()">›</div>
 </div>
 
-<div class="footer">© Ricardo Wagner</div>
+<script>
+const gallery=document.getElementById("gallery");
+let images=[];
+
+for(let i=1;i<=30;i++){
+images.push(`images/paintings${i}.jpg`);
+gallery.innerHTML+=`
+<div class="art-item">
+<img loading="lazy" src="images/paintings${i}.jpg" onclick="openViewer(${i-1})">
+<div class="tech">
+<h3>Painting</h3>
+<p>Year</p><p>Technique</p><p>Size</p><p>Code</p>
+</div></div>`;
+}
+
+const viewer=document.getElementById("viewer");
+const viewerImg=document.getElementById("viewerImg");
+let current=0;
+
+function openViewer(i){current=i;viewerImg.src=images[current];viewer.classList.add("active")}
+function nextImg(){current=(current+1)%images.length;viewerImg.src=images[current]}
+function prevImg(){current=(current-1+images.length)%images.length;viewerImg.src=images[current]}
+viewer.onclick=e=>{if(e.target===viewer)viewer.classList.remove("active")}
+</script>
 
 </body>
 </html>

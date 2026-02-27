@@ -3,137 +3,153 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Works — Ricardo Wagner</title>
+<title>Works – Ricardo Wagner</title>
 
 <style>
-
-*{margin:0;padding:0;box-sizing:border-box;}
+/* ===== RESET ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#efefef;
-    color:#111;
+  font-family: Arial, Helvetica, sans-serif;
+  background:#ececec;
+  overflow:hidden;
 }
 
-/* HEADER */
-header{
-    width:100%;
-    padding:30px 0 20px;
-    text-align:center;
-    font-size:28px;
+/* ===== FULL SCREEN LAYOUT ===== */
+.works-page{
+  width:100vw;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;   /* CENTRADO VERTICAL */
+  align-items:center;       /* CENTRADO HORIZONTAL */
+  position:relative;
+}
+
+/* ===== TOP BAR ===== */
+.top-name{
+  position:absolute;
+  top:28px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:28px;
+  letter-spacing:10px;
+  color:#a8a8a8;
+  text-decoration:none;
+  font-weight:400;
+}
+
+.close{
+  position:absolute;
+  top:24px;
+  right:26px;
+  font-size:52px;
+  color:#000;
+  text-decoration:none;
+  line-height:1;
+}
+
+/* ===== MENU ===== */
+.menu{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:34px; /* separación vertical */
+  text-align:center;
+}
+
+.menu-title{
+  font-size:110px;
+  font-weight:300;
+  color:#b5b5b5;
+  margin-bottom:18px;
+}
+
+.menu a{
+  text-decoration:none;
+  color:#111;
+  font-size:72px; /* REDUCIDO */
+  font-weight:400;
+  transition:transform .2s ease;
+}
+
+.menu a:active{
+  transform:scale(1.06);
+}
+
+/* ===== COPYRIGHT ===== */
+.copy{
+  position:absolute;
+  bottom:80px;
+  font-size:52px;
+  color:#9c9c9c;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width:900px){
+
+  .top-name{
+    top:22px;
+    font-size:14px;
     letter-spacing:8px;
-    color:#9a9a9a;
-    font-weight:300;
-}
+  }
 
-.close{
-    position:absolute;
-    right:30px;
-    top:25px;
-    font-size:40px;
-    text-decoration:none;
-    color:#111;
-}
-
-/* MENU */
-.menu-wrapper{
-    width:100%;
-    max-width:700px;
-    margin:40px auto 0;
-    text-align:center;
-}
-
-.section-title{
-    font-size:70px;
-    color:#b0b0b0;
-    font-weight:300;
-    margin:40px 0 25px;
-}
-
-.submenu a{
-    display:block;
-    text-decoration:none;
-    color:#111;
-    font-size:48px;
-    margin:28px 0;
-    transition:.25s;
-}
-
-.submenu a:hover{
-    transform:scale(1.04);
-}
-
-/* FOOTER */
-footer{
-    margin-top:70px;
-    text-align:center;
-    color:#999;
-    font-size:24px;
-    padding-bottom:40px;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-
-header{
-    font-size:22px;
-    letter-spacing:6px;
-    padding-top:20px;
-}
-
-.close{
+  .close{
+    top:14px;
     right:20px;
-    top:18px;
-    font-size:34px;
-}
+    font-size:56px;
+  }
 
-.menu-wrapper{
-    margin-top:20px;
-}
+  .menu{
+    gap:26px;
+  }
 
-.section-title{
-    font-size:54px;
-    margin:30px 0 20px;
-}
+  .menu-title{
+    font-size:86px;
+    margin-bottom:8px;
+  }
 
-.submenu a{
-    font-size:34px;
-    margin:22px 0;
-}
+  .menu a{
+    font-size:64px;
+  }
 
-footer{
-    font-size:18px;
+  .copy{
+    bottom:70px;
+    font-size:42px;
+  }
 }
-
-}
-
 </style>
 </head>
 
 <body>
 
-<header>
-    RICARDO WAGNER
-</header>
+<div class="works-page">
 
-<a class="close" href="index.html">×</a>
+  <!-- NOMBRE ARRIBA CON LINK A HOME -->
+  <a href="index.html" class="top-name">RICARDO WAGNER</a>
 
-<div class="menu-wrapper">
+  <!-- X CERRAR -->
+  <a href="index.html" class="close">×</a>
 
-    <div class="section-title">Works</div>
+  <!-- MENU CENTRADO TOTAL -->
+  <div class="menu">
+    <div class="menu-title">Works</div>
 
-    <div class="submenu">
-        <a href="paintings.html">Paintings</a>
-        <a href="drawings.html">Drawings</a>
-        <a href="watercolors.html">Watercolors</a>
-        <a href="photography.html">Photography</a>
-    </div>
+    <a href="paintings.html">Paintings</a>
+    <a href="drawings.html">Drawings</a>
+    <a href="watercolors.html">Watercolors</a>
+    <a href="photography.html">Photography</a>
+  </div>
+
+  <!-- COPYRIGHT -->
+  <div class="copy">© Ricardo Wagner</div>
 
 </div>
-
-<footer>
-© Ricardo Wagner
-</footer>
 
 </body>
 </html>

@@ -28,7 +28,7 @@ body{
     text-decoration:none;
 }
 
-/* GRID PC */
+/* GRID */
 .gallery{
     display:flex;
     flex-wrap:wrap;
@@ -56,15 +56,16 @@ body{
     line-height:1.5;
 }
 
+/* TITULO REDUCIDO 50% */
 .tech h3{
     margin:0 0 8px;
-    font-size:34px;
+    font-size:17px;
     font-style:italic;
     font-weight:normal;
     color:#111;
 }
 
-/* HOVER EFFECT */
+/* HOVER */
 .gallery:hover .art-item{
     opacity:.4;
     filter:blur(2px);
@@ -75,7 +76,7 @@ body{
     filter:none;
 }
 
-/* FULLSCREEN VIEW */
+/* VIEWER */
 .viewer{
     position:fixed;
     inset:0;
@@ -84,11 +85,15 @@ body{
     justify-content:center;
     align-items:center;
     z-index:999;
+    overflow:hidden;
 }
 
+/* LUPA */
 .viewer img{
     max-width:90%;
     max-height:90%;
+    cursor:zoom-in;
+    transition:transform .2s ease;
 }
 
 /* MOBILE */
@@ -97,7 +102,6 @@ body{
 .header{
     font-size:28px;
     letter-spacing:8px;
-    padding:30px 0 20px;
 }
 
 .gallery{
@@ -113,7 +117,7 @@ body{
 }
 
 .tech h3{
-    font-size:22px;
+    font-size:14px;
 }
 
 }
@@ -129,115 +133,75 @@ body{
 
 <div class="gallery">
 
-    <div class="art-item">
-        <img src="images/watercolors1.jpg" onclick="openViewer(this)">
-        <div class="tech">
-            <h3>White Ring</h3>
-            <p>1963</p>
-            <p>painted aluminum</p>
-            <p>70 × 72 × ¼ inches</p>
-            <p>EK 322</p>
-        </div>
-    </div>
+<div class="art-item">
+<img src="images/watercolors1.jpg" onclick="openViewer(this)">
+<div class="tech">
+<h3>White Ring</h3>
+<p>1963</p>
+<p>painted aluminum</p>
+<p>70 × 72 × ¼ inches</p>
+<p>EK 322</p>
+</div>
+</div>
 
-    <div class="art-item">
-        <img src="images/watercolors2.jpg" onclick="openViewer(this)">
-        <div class="tech">
-            <h3>White Ring</h3>
-            <p>1963</p>
-            <p>painted aluminum</p>
-            <p>70 × 72 × ¼ inches</p>
-            <p>EK 322</p>
-        </div>
-    </div>
+<div class="art-item">
+<img src="images/watercolors2.jpg" onclick="openViewer(this)">
+<div class="tech">
+<h3>White Ring</h3>
+<p>1963</p>
+<p>painted aluminum</p>
+<p>70 × 72 × ¼ inches</p>
+<p>EK 322</p>
+</div>
+</div>
 
-    <div class="art-item">
-        <img src="images/watercolors3.jpg" onclick="openViewer(this)">
-        <div class="tech">
-            <h3>White Ring</h3>
-            <p>1963</p>
-            <p>painted aluminum</p>
-            <p>70 × 72 × ¼ inches</p>
-            <p>EK 322</p>
-        </div>
-    </div>
-    
-    <div class="art-item">
-        <img src="images/watercolors4.jpg" onclick="openViewer(this)">
-        <div class="tech">
-            <h3>White Ring</h3>
-            <p>1963</p>
-            <p>painted aluminum</p>
-            <p>70 × 72 × ¼ inches</p>
-            <p>EK 322</p>
-        </div>
-
-        <div class="art-item">
-        <img src="images/watercolors5.jpg" onclick="openViewer(this)">
-        <div class="tech">
-            <h3>White Ring</h3>
-            <p>1963</p>
-            <p>painted aluminum</p>
-            <p>70 × 72 × ¼ inches</p>
-            <p>EK 322</p>
-        </div>
-
-            <div class="art-item">
-        <img src="images/watercolors6.jpg" onclick="openViewer(this)">
-        <div class="tech">
-            <h3>White Ring</h3>
-            <p>1963</p>
-            <p>painted aluminum</p>
-            <p>70 × 72 × ¼ inches</p>
-            <p>EK 322</p>
-        </div>
-
-                <div class="art-item">
-        <img src="images/watercolors7.jpg" onclick="openViewer(this)">
-        <div class="tech">
-            <h3>White Ring</h3>
-            <p>1963</p>
-            <p>painted aluminum</p>
-            <p>70 × 72 × ¼ inches</p>
-            <p>EK 322</p>
-        </div>
-
-                    <div class="art-item">
-        <img src="images/watercolors8.jpg" onclick="openViewer(this)">
-        <div class="tech">
-            <h3>White Ring</h3>
-            <p>1963</p>
-            <p>painted aluminum</p>
-            <p>70 × 72 × ¼ inches</p>
-            <p>EK 322</p>
-        </div>
-
-                        <div class="art-item">
-        <img src="images/watercolors9.jpg" onclick="openViewer(this)">
-        <div class="tech">
-            <h3>White Ring</h3>
-            <p>1963</p>
-            <p>painted aluminum</p>
-            <p>70 × 72 × ¼ inches</p>
-            <p>EK 322</p>
-        </div>
+<div class="art-item">
+<img src="images/watercolors3.jpg" onclick="openViewer(this)">
+<div class="tech">
+<h3>White Ring</h3>
+<p>1963</p>
+<p>painted aluminum</p>
+<p>70 × 72 × ¼ inches</p>
+<p>EK 322</p>
+</div>
+</div>
 
 </div>
 
-<!-- FULLSCREEN -->
+<!-- VIEWER -->
 <div class="viewer" id="viewer" onclick="closeViewer()">
     <img id="viewerImg">
 </div>
 
 <script>
+
+const viewer = document.getElementById("viewer");
+const viewerImg = document.getElementById("viewerImg");
+
 function openViewer(img){
-    document.getElementById("viewer").style.display="flex";
-    document.getElementById("viewerImg").src=img.src;
+    viewer.style.display="flex";
+    viewerImg.src = img.src;
 }
 
 function closeViewer(){
-    document.getElementById("viewer").style.display="none";
+    viewer.style.display="none";
+    viewerImg.style.transform="scale(1)";
 }
+
+/* LUPA ZOOM */
+viewerImg.addEventListener("mousemove", e=>{
+    const rect = viewerImg.getBoundingClientRect();
+    const x = (e.clientX - rect.left)/rect.width * 100;
+    const y = (e.clientY - rect.top)/rect.height * 100;
+
+    viewerImg.style.transformOrigin = `${x}% ${y}%`;
+    viewerImg.style.transform = "scale(2.5)";
+});
+
+viewerImg.addEventListener("mouseleave", ()=>{
+    viewerImg.style.transform="scale(1)";
+});
+
 </script>
 
 </body>

@@ -3,178 +3,176 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Works — Ricardo Wagner</title>
+<title>Works – Ricardo Wagner</title>
 
 <style>
-
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-font-family:Arial, Helvetica, sans-serif;
-background:#000;
-overflow-x:hidden;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#000;
+    color:#fff;
+    overflow:hidden;
 }
 
 /* ===== HEADER ===== */
-
 header{
-position:absolute;
-top:40px; /* MÁS ABAJO */
-left:0;
-width:100%;
-height:70px;
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:1000;
-background:transparent;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:70px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:20;
+    background:transparent;
 }
 
 header a{
-color:#fff;
-text-decoration:none;
-font-size:20px;
-font-weight:700;
-letter-spacing:1px;
-text-transform:uppercase;
+    color:#fff;
+    text-decoration:none;
+    font-weight:700;
+    letter-spacing:2px;
+    font-size:48px;
+    transition:.25s;
 }
 
-/* ===== HERO ===== */
-
-.works-hero{
-position:relative;
-width:100%;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-overflow:hidden;
+header a:hover{
+    opacity:.85;
 }
 
+/* ===== FONDO ===== */
 .bg{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:url("./images/cabeza11.jpg") center center / cover no-repeat;
-opacity:0.45;
-animation:pan 12s linear infinite alternate;
-z-index:0;
+    position:fixed;
+    top:0;
+    left:0;
+    width:120%;
+    height:100vh;
+    background:url("cabeza11.jpg") center center / cover no-repeat;
+    opacity:.60;
+    animation:pan 24s linear infinite alternate;
+    z-index:1;
 }
 
-/* IZQUIERDA → DERECHA */
 @keyframes pan{
-0%{transform:translateX(-12%);}
-100%{transform:translateX(0);}
+    0%{transform:translateX(-8%);}
+    100%{transform:translateX(0%);}
 }
 
-.works-menu{
-position:relative;
-z-index:2;
-text-align:center;
-margin-top:90px;
+/* ===== OVERLAY OSCURO ===== */
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    z-index:2;
 }
 
-.works-menu h1{
-font-size:24px;
-color:#111;
-margin-bottom:30px;
+/* ===== CONTENIDO ===== */
+.works{
+    position:relative;
+    z-index:10;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
 }
 
-.menu-line{
-display:flex;
-flex-direction:column;
-gap:34px; /* MÁS SEPARACIÓN */
-justify-content:center;
-align-items:center;
+.works h1{
+    font-size:56px;
+    margin-bottom:40px;
+    font-weight:700;
 }
 
-.menu-line a{
-font-size:20px;
-color:#9a9a9a;
-text-decoration:none;
-transition:.25s ease;
+.menu{
+    display:flex;
+    flex-direction:row;
+    gap:70px;
 }
 
-.menu-line a:hover{
-color:#fff;
-transform:scale(1.05);
+.menu a{
+    color:rgba(255,255,255,.65);
+    text-decoration:none;
+    font-size:52px;
+    font-weight:400;
+    transition:.25s;
 }
 
-.menu-line a:active{
-transform:scale(1.08);
-color:#fff;
+.menu a:hover{
+    color:#fff;
+    transform:scale(1.08);
 }
 
-/* ===== DESKTOP ===== */
-
-@media(min-width:769px){
-
-header{
-top:28px;
+.menu a:active{
+    transform:scale(1.12);
 }
 
-header a{
-font-size:18px;
-}
+/* ===== MOBILE ===== */
+@media (max-width:900px){
 
-.works-menu{
-margin-top:60px;
-}
+    header{
+        height:60px;
+        top:35px; /* baja el nombre */
+    }
 
-.works-menu h1{
-font-size:30px;
-margin-bottom:26px;
-}
+    header a{
+        font-size:52px;
+        letter-spacing:1px;
+    }
 
-.menu-line{
-flex-direction:row;
-gap:55px;
-}
+    .bg{
+        width:140%;
+        height:100vh;
+        animation:panMobile 18s linear infinite alternate;
+    }
 
-.menu-line a{
-font-size:16px;
-}
+    @keyframes panMobile{
+        0%{transform:translateX(0);}
+        100%{transform:translateX(-12%);}
+    }
 
-.bg{
-opacity:0.40;
-animation:panDesktop 16s linear infinite alternate;
-}
+    .works{
+        justify-content:center;
+        padding-top:40px;
+    }
 
-/* IZQUIERDA → DERECHA */
-@keyframes panDesktop{
-0%{transform:translateX(-8%);}
-100%{transform:translateX(0);}
-}
+    .works h1{
+        font-size:34px;
+        margin-bottom:35px;
+    }
 
-}
+    .menu{
+        flex-direction:column;
+        gap:38px; /* separación mayor */
+    }
 
+    .menu a{
+        font-size:48px; /* más pequeño móvil */
+    }
+}
 </style>
 </head>
 
 <body>
 
+<div class="bg"></div>
+<div class="overlay"></div>
+
 <header>
-<a href="index.html">RICARDO WAGNER</a>
+    <a href="index.html">RICARDO WAGNER</a>
 </header>
 
-<section class="works-hero">
+<section class="works">
+    <h1>Works</h1>
 
-<div class="bg"></div>
-
-<div class="works-menu">
-<h1>Works</h1>
-
-<div class="menu-line">
-<a href="#">Paintings</a>
-<a href="#">Drawings</a>
-<a href="#">Watercolors</a>
-<a href="#">Photography</a>
-</div>
-
-</div>
-
+    <nav class="menu">
+        <a href="#">Paintings</a>
+        <a href="#">Drawings</a>
+        <a href="#">Watercolors</a>
+        <a href="#">Photography</a>
+    </nav>
 </section>
 
 </body>

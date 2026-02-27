@@ -8,117 +8,136 @@
 <style>
 
 body{
-    margin:0;
-    background:#f2f2f2;
-    font-family:Arial, Helvetica, sans-serif;
-    color:#111;
+margin:0;
+background:#f2f2f2;
+font-family:Arial,Helvetica,sans-serif;
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 .header{
-    text-align:center;
-    padding:35px 0 25px;
-    font-size:42px;
-    letter-spacing:12px;
-    color:#9c9c9c;
+text-align:center;
+padding:35px 0 25px;
+font-size:42px;
+letter-spacing:12px;
+}
+.header a{
+color:#9c9c9c;
+text-decoration:none;
 }
 
-/* ===== GRID PC ===== */
+/* GRID */
 .gallery{
-    width:90%;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:30px;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:28px;
+padding:20px 40px 60px;
 }
 
-.artwork{
-    display:flex;
-    flex-direction:column;
+.art-item{
+width:30%;
+transition:.6s ease;
+cursor:pointer;
 }
 
-.artwork img{
-    width:100%;
-    display:block;
+.art-item img{
+width:100%;
+display:block;
+transition:.6s ease;
 }
 
-/* ===== FICHA TECNICA ===== */
-.info{
-    margin-top:18px;
-    color:#8f8f8f;
-    font-size:20px;
-    line-height:1.6;
+/* FICHA */
+.tech{
+margin-top:12px;
+font-size:14px;
+color:#555;
+line-height:1.5;
+}
+.tech h3{
+margin:0 0 8px;
+font-size:17px;
+font-style:italic;
+font-weight:normal;
 }
 
-.info .title{
-    font-style:italic;
-    color:#222;
-    font-size:28px;
+/* BLUR + B/N */
+.gallery:hover .art-item{
+opacity:.35;
+filter:grayscale(100%) blur(3px);
+transform:scale(.98);
+}
+.gallery .art-item:hover{
+opacity:1;
+filter:none;
+transform:scale(1);
 }
 
-.info .code{
-    font-size:18px;
-    letter-spacing:1px;
+/* ===== VIEWER LUXURY ===== */
+
+.viewer{
+position:fixed;
+inset:0;
+background:#f2f2f2;
+display:none;
+justify-content:center;
+align-items:center;
+z-index:999;
+overflow:hidden;
+opacity:0;
+transition:opacity .5s ease;
 }
 
-/* ===== COPYRIGHT ===== */
-.footer{
-    text-align:center;
-    margin:40px 0;
-    color:#9c9c9c;
-    font-size:14px;
+.viewer.active{
+display:flex;
+opacity:1;
 }
 
-/* ================================================= */
-/* ================== MOBILE ======================= */
-/* ================================================= */
+.viewer img{
+max-width:90%;
+max-height:90%;
+transition:transform .4s ease;
+cursor:zoom-in;
+}
 
-@media (max-width:768px){
+/* arrows */
+.nav{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+font-size:50px;
+color:#777;
+cursor:pointer;
+user-select:none;
+padding:20px;
+}
+.prev{left:20px;}
+.next{right:20px;}
+
+/* MOBILE */
+@media(max-width:900px){
 
 .header{
-    font-size:34px;
-    letter-spacing:8px;
-    padding:25px 0;
+font-size:28px;
+letter-spacing:8px;
 }
 
-/* UNA SOLA IMAGEN COMO KELLY */
 .gallery{
-    display:block;
-    width:100%;
+padding:10px 20px 40px;
 }
 
-.artwork{
-    margin-bottom:70px;
+.art-item{
+width:100%;
 }
 
-.artwork img{
-    width:92%;
-    margin:auto;
-    display:block;
+.tech{
+font-size:11px;
+}
+.tech h3{
+font-size:14px;
 }
 
-/* ficha EXACTA estilo Kelly */
-.info{
-    width:82%;
-    margin:30px auto 0;
-    font-size:36px;
-    line-height:1.9;
-    color:#9a9a9a;
-}
-
-.info .title{
-    font-size:46px;
-    font-style:italic;
-    color:#222;
-}
-
-.info .code{
-    font-size:30px;
-}
-
-.footer{
-    font-size:24px;
-    margin:60px 0;
+.nav{
+font-size:34px;
 }
 
 }
@@ -128,49 +147,104 @@ body{
 
 <body>
 
-<div class="header">RICARDO WAGNER</div>
-
-<div class="gallery">
-
-    <!-- OBRA 1 -->
-    <div class="artwork">
-        <img src="images/water1.jpg" alt="">
-        <div class="info">
-            <div class="title">White Ring</div>
-            <div>1963</div>
-            <div>painted aluminum</div>
-            <div>70 × 72 × ¼ inches</div>
-            <div class="code">EK 322</div>
-        </div>
-    </div>
-
-    <!-- OBRA 2 -->
-    <div class="artwork">
-        <img src="images/water2.jpg" alt="">
-        <div class="info">
-            <div class="title">White Ring</div>
-            <div>1963</div>
-            <div>painted aluminum</div>
-            <div>70 × 72 × ¼ inches</div>
-            <div class="code">EK 322</div>
-        </div>
-    </div>
-
-    <!-- OBRA 3 -->
-    <div class="artwork">
-        <img src="images/water3.jpg" alt="">
-        <div class="info">
-            <div class="title">White Ring</div>
-            <div>1963</div>
-            <div>painted aluminum</div>
-            <div>70 × 72 × ¼ inches</div>
-            <div class="code">EK 322</div>
-        </div>
-    </div>
-
+<div class="header">
+<a href="works.html">RICARDO WAGNER</a>
 </div>
 
-<div class="footer">© Ricardo Wagner</div>
+<div class="gallery" id="gallery"></div>
+
+<!-- VIEWER -->
+<div class="viewer" id="viewer">
+<div class="nav prev" onclick="prevImg()">‹</div>
+<img id="viewerImg">
+<div class="nav next" onclick="nextImg()">›</div>
+</div>
+
+<script>
+
+/* ===== GENERAR 30 OBRAS ===== */
+
+const gallery=document.getElementById("gallery");
+let images=[];
+
+for(let i=1;i<=30;i++){
+
+images.push(`images/drawings${i}.jpg`);
+
+gallery.innerHTML += `
+<div class="art-item">
+<img loading="lazy" src="images/drawings${i}.jpg" onclick="openViewer(${i-1})">
+<div class="tech">
+<h3>White Ring</h3>
+<p>1963</p>
+<p>painted aluminum</p>
+<p>70 × 72 × ¼ inches</p>
+<p>EK 322</p>
+</div>
+</div>
+`;
+}
+
+/* ===== VIEWER ===== */
+
+const viewer=document.getElementById("viewer");
+const viewerImg=document.getElementById("viewerImg");
+
+let current=0;
+let zoom=1;
+
+function openViewer(index){
+current=index;
+viewerImg.src=images[current];
+viewer.classList.add("active");
+zoom=1;
+viewerImg.style.transform="scale(1)";
+}
+
+function closeViewer(){
+viewer.classList.remove("active");
+}
+
+viewer.addEventListener("click",e=>{
+if(e.target===viewer) closeViewer();
+});
+
+/* navigation */
+function nextImg(){
+current=(current+1)%images.length;
+viewerImg.src=images[current];
+}
+
+function prevImg(){
+current=(current-1+images.length)%images.length;
+viewerImg.src=images[current];
+}
+
+/* ===== LUXURY ZOOM (desktop) ===== */
+
+viewerImg.addEventListener("mousemove",e=>{
+if(window.innerWidth<900) return;
+
+const rect=viewerImg.getBoundingClientRect();
+const x=(e.clientX-rect.left)/rect.width*100;
+const y=(e.clientY-rect.top)/rect.height*100;
+
+viewerImg.style.transformOrigin=`${x}% ${y}%`;
+viewerImg.style.transform="scale(2.2)";
+});
+
+viewerImg.addEventListener("mouseleave",()=>{
+viewerImg.style.transform="scale(1)";
+});
+
+/* ===== TOUCH ZOOM MOBILE ===== */
+
+viewerImg.addEventListener("touchstart",()=>{
+zoom = zoom===1 ? 2 : 1;
+viewerImg.style.transform=`scale(${zoom})`;
+});
+
+</script>
 
 </body>
 </html>

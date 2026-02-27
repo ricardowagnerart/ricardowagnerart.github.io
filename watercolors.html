@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Watercolors</title>
 
 <style>
@@ -29,96 +30,90 @@ body{
 
 /* GRID PC */
 .gallery{
-    width:90%;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:30px;
-}
-
-.artwork{
     display:flex;
-    flex-direction:column;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:28px;
+    padding:20px 40px 60px;
 }
 
-.artwork img{
+.art-item{
+    width:30%;
+    transition:.35s ease;
+    cursor:pointer;
+}
+
+.art-item img{
     width:100%;
     display:block;
 }
 
-/* FICHA TECNICA */
-.info{
-    margin-top:18px;
-    color:#8f8f8f;
-    font-size:10px;
-    line-height:1.6;
+/* FICHA TÉCNICA */
+.tech{
+    margin-top:12px;
+    font-size:14px;
+    color:#555;
+    line-height:1.5;
 }
 
-.info .title{
+.tech h3{
+    margin:0 0 8px;
+    font-size:34px;
     font-style:italic;
-    color:#222;
-    font-size:14px;
+    font-weight:normal;
+    color:#111;
 }
 
-.info .code{
-    font-size:9px;
-    letter-spacing:1px;
+/* HOVER EFFECT */
+.gallery:hover .art-item{
+    opacity:.4;
+    filter:blur(2px);
 }
 
-/* COPYRIGHT */
-.footer{
-    text-align:center;
-    margin:40px 0;
-    color:#9c9c9c;
-    font-size:14px;
+.gallery .art-item:hover{
+    opacity:1;
+    filter:none;
 }
 
-/* ================= MOBILE ================= */
+/* FULLSCREEN VIEW */
+.viewer{
+    position:fixed;
+    inset:0;
+    background:#f2f2f2;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
 
-@media (max-width:768px){
+.viewer img{
+    max-width:90%;
+    max-height:90%;
+}
+
+/* MOBILE */
+@media(max-width:900px){
 
 .header{
-    font-size:34px;
+    font-size:28px;
     letter-spacing:8px;
-    padding:25px 0;
+    padding:30px 0 20px;
 }
 
 .gallery{
-    display:block;
+    padding:10px 20px 40px;
+}
+
+.art-item{
     width:100%;
 }
 
-.artwork{
-    margin-bottom:70px;
+.tech{
+    font-size:11px;
 }
 
-.artwork img{
-    width:92%;
-    margin:auto;
-    display:block;
-}
-
-.info{
-    width:82%;
-    margin:30px auto 0;
-    font-size:18px;
-    line-height:1.9;
-    color:#9a9a9a;
-}
-
-.info .title{
-    font-size:23px;
-    font-style:italic;
-    color:#222;
-}
-
-.info .code{
-    font-size:15px;
-}
-
-.footer{
-    font-size:24px;
-    margin:60px 0;
+.tech h3{
+    font-size:22px;
 }
 
 }
@@ -128,49 +123,62 @@ body{
 
 <body>
 
-<!-- NOMBRE CON LINK A WORKS -->
 <div class="header">
     <a href="works.html">RICARDO WAGNER</a>
 </div>
 
 <div class="gallery">
 
-    <div class="artwork">
-        <img src="images/watercolors1.jpg" alt="">
-        <div class="info">
-            <div class="title">White Ring</div>
-            <div>1963</div>
-            <div>painted aluminum</div>
-            <div>70 × 72 × ¼ inches</div>
-            <div class="code">EK 322</div>
+    <div class="art-item">
+        <img src="images/watercolors1.jpg" onclick="openViewer(this)">
+        <div class="tech">
+            <h3>White Ring</h3>
+            <p>1963</p>
+            <p>painted aluminum</p>
+            <p>70 × 72 × ¼ inches</p>
+            <p>EK 322</p>
         </div>
     </div>
 
-    <div class="artwork">
-        <img src="images/watercolors2.jpg" alt="">
-        <div class="info">
-            <div class="title">White Ring</div>
-            <div>1963</div>
-            <div>painted aluminum</div>
-            <div>70 × 72 × ¼ inches</div>
-            <div class="code">EK 322</div>
+    <div class="art-item">
+        <img src="images/watercolors2.jpg" onclick="openViewer(this)">
+        <div class="tech">
+            <h3>White Ring</h3>
+            <p>1963</p>
+            <p>painted aluminum</p>
+            <p>70 × 72 × ¼ inches</p>
+            <p>EK 322</p>
         </div>
     </div>
 
-    <div class="artwork">
-        <img src="images/watercolors3.jpg" alt="">
-        <div class="info">
-            <div class="title">White Ring</div>
-            <div>1963</div>
-            <div>painted aluminum</div>
-            <div>70 × 72 × ¼ inches</div>
-            <div class="code">EK 322</div>
+    <div class="art-item">
+        <img src="images/watercolors3.jpg" onclick="openViewer(this)">
+        <div class="tech">
+            <h3>White Ring</h3>
+            <p>1963</p>
+            <p>painted aluminum</p>
+            <p>70 × 72 × ¼ inches</p>
+            <p>EK 322</p>
         </div>
     </div>
 
 </div>
 
-<div class="footer">© Ricardo Wagner</div>
+<!-- FULLSCREEN -->
+<div class="viewer" id="viewer" onclick="closeViewer()">
+    <img id="viewerImg">
+</div>
+
+<script>
+function openViewer(img){
+    document.getElementById("viewer").style.display="flex";
+    document.getElementById("viewerImg").src=img.src;
+}
+
+function closeViewer(){
+    document.getElementById("viewer").style.display="none";
+}
+</script>
 
 </body>
 </html>

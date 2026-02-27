@@ -6,31 +6,154 @@
 <title>Paintings</title>
 
 <style>
-body{margin:0;background:#f2f2f2;font-family:Arial}
-.header{text-align:center;padding:35px 0 25px;font-size:42px;letter-spacing:12px}
-.header a{color:#9c9c9c;text-decoration:none}
-.gallery{display:flex;flex-wrap:wrap;justify-content:center;gap:28px;padding:20px 40px 60px}
-.art-item{width:30%;transition:.6s ease;cursor:pointer}
-.art-item img{width:100%;display:block}
-.tech{margin-top:12px;font-size:14px;color:#555;line-height:1.5}
-.tech h3{margin:0 0 8px;font-size:17px;font-style:italic;font-weight:normal}
-.gallery:hover .art-item{opacity:.35;filter:grayscale(100%) blur(3px);transform:scale(.98)}
-.gallery .art-item:hover{opacity:1;filter:none;transform:scale(1)}
-.viewer{position:fixed;inset:0;background:#f2f2f2;display:none;justify-content:center;align-items:center;z-index:999;opacity:0;transition:.5s}
-.viewer.active{display:flex;opacity:1}
-.viewer img{max-width:90%;max-height:90%}
-.nav{position:absolute;top:50%;transform:translateY(-50%);font-size:50px;color:#777;cursor:pointer;padding:20px}
-.prev{left:20px}.next{right:20px}
-@media(max-width:900px){.header{font-size:28px}.gallery{padding:10px 20px}.art-item{width:100%}}
+
+body{
+margin:0;
+background:#f2f2f2;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+/* HEADER */
+.header{
+text-align:center;
+padding:35px 0 25px;
+font-size:42px;
+letter-spacing:12px;
+}
+.header a{
+color:#9c9c9c;
+text-decoration:none;
+}
+
+/* GRID */
+.gallery{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:28px;
+padding:20px 40px 60px;
+}
+
+.art-item{
+width:30%;
+transition:.6s ease;
+cursor:pointer;
+}
+
+.art-item img{
+width:100%;
+display:block;
+transition:.6s ease;
+}
+
+/* FICHA */
+.tech{
+margin-top:12px;
+font-size:14px;
+color:#555;
+line-height:1.5;
+}
+.tech h3{
+margin:0 0 8px;
+font-size:17px;
+font-style:italic;
+font-weight:normal;
+}
+
+/* BLUR + B/N */
+.gallery:hover .art-item{
+opacity:.35;
+filter:grayscale(100%) blur(3px);
+transform:scale(.98);
+}
+.gallery .art-item:hover{
+opacity:1;
+filter:none;
+transform:scale(1);
+}
+
+/* ===== VIEWER LUXURY ===== */
+
+.viewer{
+position:fixed;
+inset:0;
+background:#f2f2f2;
+display:none;
+justify-content:center;
+align-items:center;
+z-index:999;
+overflow:hidden;
+opacity:0;
+transition:opacity .5s ease;
+}
+
+.viewer.active{
+display:flex;
+opacity:1;
+}
+
+.viewer img{
+max-width:90%;
+max-height:90%;
+transition:transform .4s ease;
+cursor:zoom-in;
+}
+
+/* arrows */
+.nav{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+font-size:50px;
+color:#777;
+cursor:pointer;
+user-select:none;
+padding:20px;
+}
+.prev{left:20px;}
+.next{right:20px;}
+
+/* MOBILE */
+@media(max-width:900px){
+
+.header{
+font-size:28px;
+letter-spacing:8px;
+}
+
+.gallery{
+padding:10px 20px 40px;
+}
+
+.art-item{
+width:100%;
+}
+
+.tech{
+font-size:11px;
+}
+.tech h3{
+font-size:14px;
+}
+
+.nav{
+font-size:34px;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="header"><a href="works.html">RICARDO WAGNER</a></div>
+<div class="header">
+<a href="works.html">RICARDO WAGNER</a>
+</div>
 
 <div class="gallery" id="gallery"></div>
 
+<!-- VIEWER -->
 <div class="viewer" id="viewer">
 <div class="nav prev" onclick="prevImg()">‹</div>
 <img id="viewerImg">
@@ -38,28 +161,89 @@ body{margin:0;background:#f2f2f2;font-family:Arial}
 </div>
 
 <script>
+
+/* ===== GENERAR 30 OBRAS ===== */
+
 const gallery=document.getElementById("gallery");
 let images=[];
 
 for(let i=1;i<=30;i++){
+
 images.push(`images/paintings${i}.jpg`);
-gallery.innerHTML+=`
+
+gallery.innerHTML += `
 <div class="art-item">
-<img loading="lazy" src="images/paintings${i}.jpg" onclick="openViewer(${i-1})">
+<img loading="lazy" src="images/watercolors${i}.jpg" onclick="openViewer(${i-1})">
 <div class="tech">
-<h3>Painting</h3>
-<p>Year</p><p>Technique</p><p>Size</p><p>Code</p>
-</div></div>`;
+<h3>White Ring</h3>
+<p>1963</p>
+<p>painted aluminum</p>
+<p>70 × 72 × ¼ inches</p>
+<p>EK 322</p>
+</div>
+</div>
+`;
 }
+
+/* ===== VIEWER ===== */
 
 const viewer=document.getElementById("viewer");
 const viewerImg=document.getElementById("viewerImg");
-let current=0;
 
-function openViewer(i){current=i;viewerImg.src=images[current];viewer.classList.add("active")}
-function nextImg(){current=(current+1)%images.length;viewerImg.src=images[current]}
-function prevImg(){current=(current-1+images.length)%images.length;viewerImg.src=images[current]}
-viewer.onclick=e=>{if(e.target===viewer)viewer.classList.remove("active")}
+let current=0;
+let zoom=1;
+
+function openViewer(index){
+current=index;
+viewerImg.src=images[current];
+viewer.classList.add("active");
+zoom=1;
+viewerImg.style.transform="scale(1)";
+}
+
+function closeViewer(){
+viewer.classList.remove("active");
+}
+
+viewer.addEventListener("click",e=>{
+if(e.target===viewer) closeViewer();
+});
+
+/* navigation */
+function nextImg(){
+current=(current+1)%images.length;
+viewerImg.src=images[current];
+}
+
+function prevImg(){
+current=(current-1+images.length)%images.length;
+viewerImg.src=images[current];
+}
+
+/* ===== LUXURY ZOOM (desktop) ===== */
+
+viewerImg.addEventListener("mousemove",e=>{
+if(window.innerWidth<900) return;
+
+const rect=viewerImg.getBoundingClientRect();
+const x=(e.clientX-rect.left)/rect.width*100;
+const y=(e.clientY-rect.top)/rect.height*100;
+
+viewerImg.style.transformOrigin=`${x}% ${y}%`;
+viewerImg.style.transform="scale(2.2)";
+});
+
+viewerImg.addEventListener("mouseleave",()=>{
+viewerImg.style.transform="scale(1)";
+});
+
+/* ===== TOUCH ZOOM MOBILE ===== */
+
+viewerImg.addEventListener("touchstart",()=>{
+zoom = zoom===1 ? 2 : 1;
+viewerImg.style.transform=`scale(${zoom})`;
+});
+
 </script>
 
 </body>

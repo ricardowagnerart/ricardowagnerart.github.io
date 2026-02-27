@@ -3,58 +3,124 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paintings - Ricardo Wagner</title>
+<title>Paintings</title>
 
 <style>
 
 body{
-  margin:0;
-  background:#e9e9e9;
-  font-family:Arial, Helvetica, sans-serif;
+    margin:0;
+    background:#f2f2f2;
+    font-family:Arial, Helvetica, sans-serif;
+    color:#111;
 }
 
-/* HEADER */
-.top{
-  text-align:center;
-  padding:40px 0 20px;
-  letter-spacing:12px;
-  font-size:38px;
-  color:#9a9a9a;
+/* ===== HEADER ===== */
+.header{
+    text-align:center;
+    padding:35px 0 25px;
+    font-size:42px;
+    letter-spacing:12px;
+    color:#9c9c9c;
 }
 
-.top a{
-  text-decoration:none;
-  color:#9a9a9a;
-}
-
-/* GRID OBRAS */
+/* ===== GRID PC ===== */
 .gallery{
-  width:90%;
-  max-width:1200px;
-  margin:0 auto 80px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:25px;
+    width:90%;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
 }
 
-.gallery img{
-  width:100%;
-  display:block;
+.artwork{
+    display:flex;
+    flex-direction:column;
 }
 
-/* MOBILE */
-@media(max-width:768px){
+.artwork img{
+    width:100%;
+    display:block;
+}
 
-  .top{
+/* ===== FICHA TECNICA ===== */
+.info{
+    margin-top:18px;
+    color:#8f8f8f;
+    font-size:20px;
+    line-height:1.6;
+}
+
+.info .title{
+    font-style:italic;
+    color:#222;
     font-size:28px;
-    letter-spacing:8px;
-    padding-top:30px;
-  }
+}
 
-  .gallery{
+.info .code{
+    font-size:18px;
+    letter-spacing:1px;
+}
+
+/* ===== COPYRIGHT ===== */
+.footer{
+    text-align:center;
+    margin:40px 0;
+    color:#9c9c9c;
+    font-size:14px;
+}
+
+/* ================================================= */
+/* ================== MOBILE ======================= */
+/* ================================================= */
+
+@media (max-width:768px){
+
+.header{
+    font-size:34px;
+    letter-spacing:8px;
+    padding:25px 0;
+}
+
+/* UNA SOLA IMAGEN COMO KELLY */
+.gallery{
+    display:block;
+    width:100%;
+}
+
+.artwork{
+    margin-bottom:70px;
+}
+
+.artwork img{
     width:92%;
-    gap:18px;
-  }
+    margin:auto;
+    display:block;
+}
+
+/* ficha EXACTA estilo Kelly */
+.info{
+    width:82%;
+    margin:30px auto 0;
+    font-size:36px;
+    line-height:1.9;
+    color:#9a9a9a;
+}
+
+.info .title{
+    font-size:46px;
+    font-style:italic;
+    color:#222;
+}
+
+.info .code{
+    font-size:30px;
+}
+
+.footer{
+    font-size:24px;
+    margin:60px 0;
+}
+
 }
 
 </style>
@@ -62,18 +128,49 @@ body{
 
 <body>
 
-<div class="top">
-  <a href="index.html">RICARDO WAGNER</a>
+<div class="header">RICARDO WAGNER</div>
+
+<div class="gallery">
+
+    <!-- OBRA 1 -->
+    <div class="artwork">
+        <img src="images/water1.jpg" alt="">
+        <div class="info">
+            <div class="title">White Ring</div>
+            <div>1963</div>
+            <div>painted aluminum</div>
+            <div>70 × 72 × ¼ inches</div>
+            <div class="code">EK 322</div>
+        </div>
+    </div>
+
+    <!-- OBRA 2 -->
+    <div class="artwork">
+        <img src="images/water2.jpg" alt="">
+        <div class="info">
+            <div class="title">White Ring</div>
+            <div>1963</div>
+            <div>painted aluminum</div>
+            <div>70 × 72 × ¼ inches</div>
+            <div class="code">EK 322</div>
+        </div>
+    </div>
+
+    <!-- OBRA 3 -->
+    <div class="artwork">
+        <img src="images/water3.jpg" alt="">
+        <div class="info">
+            <div class="title">White Ring</div>
+            <div>1963</div>
+            <div>painted aluminum</div>
+            <div>70 × 72 × ¼ inches</div>
+            <div class="code">EK 322</div>
+        </div>
+    </div>
+
 </div>
 
-<section class="gallery">
-
-  <img src="images/painting1.jpg">
-  <img src="images/painting2.jpg">
-  <img src="images/painting3.jpg">
-  <img src="images/painting4.jpg">
-
-</section>
+<div class="footer">© Ricardo Wagner</div>
 
 </body>
 </html>

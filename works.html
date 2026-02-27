@@ -18,22 +18,22 @@ overflow-x:hidden;
 /* ===== HEADER ===== */
 
 header{
-position:fixed;
-top:0;
+position:absolute;
+top:40px; /* MÁS ABAJO */
 left:0;
 width:100%;
-height:80px;
-background:#000;
+height:70px;
 display:flex;
 justify-content:center;
 align-items:center;
 z-index:1000;
+background:transparent;
 }
 
 header a{
 color:#fff;
 text-decoration:none;
-font-size:30px;
+font-size:20px;
 font-weight:700;
 letter-spacing:1px;
 text-transform:uppercase;
@@ -49,7 +49,6 @@ display:flex;
 justify-content:center;
 align-items:center;
 overflow:hidden;
-padding-top:80px;
 }
 
 .bg{
@@ -59,38 +58,41 @@ left:0;
 width:100%;
 height:100%;
 background:url("./images/cabeza11.jpg") center center / cover no-repeat;
-opacity:0.40;
-animation:pan 16s linear infinite alternate;
+opacity:0.45;
+animation:pan 12s linear infinite alternate;
 z-index:0;
 }
 
+/* IZQUIERDA → DERECHA */
 @keyframes pan{
-0%{transform:translateX(0);}
-100%{transform:translateX(-8%);}
+0%{transform:translateX(-12%);}
+100%{transform:translateX(0);}
 }
 
 .works-menu{
 position:relative;
 z-index:2;
 text-align:center;
+margin-top:90px;
 }
 
 .works-menu h1{
-font-size:36px;
+font-size:24px;
 color:#111;
-margin-bottom:22px;
+margin-bottom:30px;
 }
 
 .menu-line{
 display:flex;
-gap:28px;
+flex-direction:column;
+gap:34px; /* MÁS SEPARACIÓN */
 justify-content:center;
 align-items:center;
 }
 
 .menu-line a{
-font-size:24px;
-color:#8a8a8a;
+font-size:20px;
+color:#9a9a9a;
 text-decoration:none;
 transition:.25s ease;
 }
@@ -101,62 +103,49 @@ transform:scale(1.05);
 }
 
 .menu-line a:active{
-transform:scale(1.10);
+transform:scale(1.08);
 color:#fff;
 }
 
-/* ===== MOBILE ===== */
+/* ===== DESKTOP ===== */
 
-@media(max-width:768px){
+@media(min-width:769px){
 
 header{
-position:absolute;   /* elimina banda negra fija */
-height:70px;
-background:transparent;
-top:20px;            /* baja el nombre */
+top:28px;
 }
 
 header a{
-font-size:20px;
-}
-
-.works-hero{
-height:100vh;
-padding-top:0;       /* imagen ocupa todo */
-}
-
-.bg{
-animation:panMobile 10s linear infinite alternate; /* más visible */
-opacity:0.45;
-}
-
-@keyframes panMobile{
-0%{transform:translateX(0);}
-100%{transform:translateX(-14%);}
+font-size:18px;
 }
 
 .works-menu{
-margin-top:40px;
+margin-top:60px;
 }
 
 .works-menu h1{
-font-size:24px;
-margin-bottom:24px;
+font-size:30px;
+margin-bottom:26px;
 }
 
 .menu-line{
-flex-direction:column;
-gap:22px;   /* MÁS separación */
+flex-direction:row;
+gap:55px;
 }
 
 .menu-line a{
-font-size:20px;
-color:#9a9a9a;
+font-size:16px;
 }
 
-.menu-line a:active{
-transform:scale(1.08);
-color:#fff;
+.bg{
+opacity:0.40;
+animation:panDesktop 16s linear infinite alternate;
+}
+
+/* IZQUIERDA → DERECHA */
+@keyframes panDesktop{
+0%{transform:translateX(-8%);}
+100%{transform:translateX(0);}
 }
 
 }

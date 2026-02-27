@@ -14,9 +14,7 @@ body{
     color:#111;
 }
 
-/* =======================
-   DESKTOP (PC)
-======================= */
+/* ===== DESKTOP (NO TOCAR) ===== */
 .desktop-only{display:block;}
 .mobile-only{display:none;}
 
@@ -26,7 +24,6 @@ body{
     background:#f3f3f3;
     position:relative;
 }
-
 .pc-header{
     text-align:center;
     padding-top:35px;
@@ -35,7 +32,6 @@ body{
     color:#2b2b2b;
     font-weight:300;
 }
-
 .pc-close{
     position:absolute;
     right:40px;
@@ -44,30 +40,21 @@ body{
     text-decoration:none;
     color:#111;
 }
-
 .pc-menu{
     margin-top:55px;
     display:flex;
     justify-content:center;
     gap:110px;
 }
-
 .pc-menu a{
     text-decoration:none;
     color:#9b9b9b;
     font-size:46px;
     font-weight:300;
-    transition:.25s;
 }
 
-.pc-menu a:hover{
-    color:#111;
-}
-
-/* =======================
-   MOBILE
-======================= */
-@media (max-width: 900px){
+/* ===== MOBILE ===== */
+@media (max-width:900px){
 
 .desktop-only{display:none;}
 .mobile-only{display:flex;}
@@ -78,79 +65,74 @@ body{
     background:#e9e9e9;
     flex-direction:column;
     align-items:center;
-    padding-top:28px;
     position:relative;
+    padding-top:70px; /* nombre más abajo (2 espacios) */
 }
 
-.mobile-top{
-    width:100%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    position:relative;
-}
-
+/* nombre */
 .mobile-name{
-    font-size:30px;
-    letter-spacing:8px;
+    font-size:21px; /* -30% */
+    letter-spacing:7px;
     color:#9a9a9a;
     text-decoration:none;
     font-weight:300;
+    margin-bottom:40px;
 }
 
-.mobile-close{
-    position:absolute;
-    right:28px;
-    top:-4px;
-    font-size:52px;
-    text-decoration:none;
-    color:#111;
-}
-
+/* WORK */
 .mobile-title{
-    margin-top:40px;
-    font-size:92px;
+    font-size:28px; /* -70% */
     color:#b0b0b0;
     font-weight:300;
+    margin-bottom:28px;
+    cursor:pointer;
+    transition:.25s;
 }
 
+/* menú */
 .mobile-menu{
-    margin-top:35px;
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:28px;
+    gap:22px;
+    transition:transform .35s ease;
 }
 
 .mobile-menu a{
     text-decoration:none;
     color:#111;
-    font-size:66px;   /* REDUCIDO */
+    font-size:26px; /* -60% */
     font-weight:400;
-    transition:.2s;
+    transition:transform .22s ease, opacity .22s ease;
 }
 
+/* movimiento elegante al tocar */
 .mobile-menu a:active{
-    transform:scale(1.05);
+    transform:scale(1.08);
+    opacity:.75;
 }
 
+/* movimiento del bloque cuando tocan WORK */
+.mobile-menu.menu-bounce{
+    transform:translateY(8px);
+}
+
+/* copyright */
 .mobile-copy{
-    margin-top:70px;
-    font-size:52px;
+    margin-top:55px;
+    font-size:8px; /* -85% */
     color:#9a9a9a;
     font-weight:300;
 }
+
 }
 </style>
 </head>
 
 <body>
 
-<!-- =======================
-     DESKTOP VERSION
-======================= -->
+<!-- ===== DESKTOP ===== -->
 <div class="pc-wrap desktop-only">
-
     <div class="pc-header">RICARDO WAGNER</div>
     <a class="pc-close" href="index.html">×</a>
 
@@ -161,31 +143,41 @@ body{
         <a href="publications.html">Publications</a>
         <a href="statement.html">Foundation</a>
     </div>
-
 </div>
 
-<!-- =======================
-     MOBILE VERSION
-======================= -->
+<!-- ===== MOBILE ===== -->
 <div class="mobile-wrap mobile-only">
 
-    <div class="mobile-top">
-        <a class="mobile-name" href="index.html">RICARDO WAGNER</a>
-        <a class="mobile-close" href="index.html">×</a>
-    </div>
+    <!-- 11. nombre vuelve a HOME -->
+    <a class="mobile-name" href="index.html">RICARDO WAGNER</a>
 
-    <div class="mobile-title">Works</div>
+    <!-- 12. click mueve el menú -->
+    <div class="mobile-title" id="worksTitle">Works</div>
 
-    <div class="mobile-menu">
+    <div class="mobile-menu" id="worksMenu">
         <a href="#">Paintings</a>
         <a href="#">Drawings</a>
         <a href="#">Watercolors</a>
         <a href="#">Photography</a>
+        <a href="#">Available Works</a> <!-- Obras disponibles -->
     </div>
 
     <div class="mobile-copy">© Ricardo Wagner</div>
 
 </div>
+
+<script>
+/* movimiento elegante cuando tocan WORK */
+const title = document.getElementById("worksTitle");
+const menu  = document.getElementById("worksMenu");
+
+if(title){
+  title.addEventListener("click", ()=>{
+    menu.classList.add("menu-bounce");
+    setTimeout(()=>menu.classList.remove("menu-bounce"),300);
+  });
+}
+</script>
 
 </body>
 </html>
